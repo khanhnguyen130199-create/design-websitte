@@ -1,0 +1,2420 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>MK Digital — Crafting Digital Experience | Thiết kế Website &amp; UX/UI Cao Cấp</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter (hiển thị dấu tiếng Việt sắc nét chuẩn editorial) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          },
+          colors: {
+            obsidian: '#111111',
+            graphite: '#52525B',
+            canvas: '#F7F8FA',
+            surface: '#F4F5F7',
+            footerBg: '#F2F3F5',
+            hairline: '#E5E5E7',
+            highlight: '#D2E0FF',
+          },
+          letterSpacing: {
+            editorial: '-0.035em',
+            tighter2: '-0.025em',
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- =========================================================================
+       STYLESHEET (Cấu trúc tách rõ theo từng module — dễ dàng xuất sang style.css)
+       ========================================================================= -->
+
+</head>
+
+<body class="bg-white text-obsidian selection:bg-highlight selection:text-obsidian">
+
+  <!-- =========================================================================
+       HEADER (Sticky Glassmorphism)
+       Desktop: Left MK Logo + Trang chủ | Right Nav + VI/EN
+       Mobile/Tablet (<= 1024px): Compact MK Logo | Right VI/EN + 2-Line Hamburger
+       ========================================================================= -->
+  <header id="siteHeader" class="site-header fixed top-0 inset-x-0 z-50">
+    <div class="max-w-[1320px] mx-auto px-4 sm:px-7 lg:px-12 h-full flex items-center justify-between gap-3">
+
+      <!-- Left: Custom Geometric MK SVG Logo + Trang chủ (desktop) -->
+      <div class="flex items-center gap-5 xl:gap-8 min-w-0">
+        <a href="#home" class="flex items-center group focus:outline-none py-1 shrink-0" aria-label="MK Digital — Trang chủ">
+          <svg class="h-9 sm:h-10 lg:h-11 w-auto transition-transform duration-300 group-hover:scale-[1.02]" viewBox="0 0 260 112" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MK Crafting Digital Experience">
+            <!-- Sharp interlocking M -->
+            <path d="M52 10H58L108 55L156 10H163V34L108 86L78 59V94H52V10Z" fill="#111111"/>
+            <!-- Sharp interlocking K with crisp 45-degree diagonal white gap -->
+            <path d="M108 94V82L187 10H221L162 63L207 94H170L138 71L128 80V94H108Z" fill="#111111"/>
+            <!-- Tagline -->
+            <text x="130" y="108" text-anchor="middle" fill="#111111" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="11.5" letter-spacing="1.45">CRAFTING DIGITAL EXPERIENCE</text>
+          </svg>
+        </a>
+
+
+      </div>
+
+      <!-- Right: Desktop Nav + VI/EN Toggle + Mobile 2-Line Hamburger -->
+      <div class="flex items-center gap-2.5 sm:gap-4 lg:gap-6 shrink-0">
+        <nav class="hidden lg:flex items-center gap-6 xl:gap-7" aria-label="Primary Navigation">
+          <a href="#case-studies" data-i18n="nav.products" class="text-[14.5px] font-medium text-neutral-700 hover:text-obsidian editorial-link">Sản phẩm</a>
+          <a href="#clients" data-i18n="nav.clients" class="text-[14.5px] font-medium text-neutral-700 hover:text-obsidian editorial-link">Khách hàng</a>
+          <a href="#solutions" data-i18n="nav.services" class="text-[14.5px] font-medium text-neutral-700 hover:text-obsidian editorial-link">Dịch vụ</a>
+          <a href="#intro" data-i18n="nav.about" class="text-[14.5px] font-medium text-neutral-700 hover:text-obsidian editorial-link">Về chúng tôi</a>
+          <button type="button" id="openBlogBtn" data-i18n="nav.blog" class="text-[14.5px] font-medium text-neutral-700 hover:text-obsidian editorial-link bg-transparent border-0 p-0 cursor-pointer">Blog</button>
+          <a href="#contact" data-i18n="nav.contact" class="touch-pill px-5 rounded-full bg-surface text-[14px] font-semibold text-obsidian hover:bg-obsidian hover:text-white transition-colors duration-300">Contact</a>
+        </nav>
+
+        <!-- VI / EN Interactive Switcher (44px accessible touch height) -->
+        <div class="inline-flex items-center p-1 rounded-full bg-surface border border-hairline" role="group" aria-label="Language toggle">
+          <button type="button" data-lang="vi" class="lang-btn min-w-[38px] min-h-[34px] px-2.5 text-xs font-bold rounded-full transition-all duration-200 bg-obsidian text-white cursor-pointer">VI</button>
+          <button type="button" data-lang="en" class="lang-btn min-w-[38px] min-h-[34px] px-2.5 text-xs font-bold rounded-full transition-all duration-200 text-neutral-500 hover:text-obsidian cursor-pointer">EN</button>
+        </div>
+
+        <!-- Animated 2-Line Minimal Hamburger Button (<= 1024px) -->
+        <button type="button" id="mobileMenuBtn" class="hamburger-btn lg:hidden" aria-label="Mở menu điều hướng" aria-expanded="false" aria-controls="mobileDrawer">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       FULL-SCREEN FROSTED-GLASS MOBILE NAVIGATION DRAWER (<= 1024px)
+       ========================================================================= -->
+  <div id="mobileDrawer" class="mobile-drawer lg:hidden" aria-hidden="true">
+    <div class="max-w-xl mx-auto px-6 sm:px-10 h-full flex flex-col justify-between gap-10">
+      <nav class="flex flex-col divide-y divide-hairline/80" aria-label="Mobile Navigation">
+        <a href="#home" data-i18n="nav.home" class="drawer-item mobile-nav-link py-4 text-2xl sm:text-3xl font-semibold tracking-tight text-obsidian flex items-center justify-between">
+          <span>Trang chủ</span>
+          <span class="text-sm text-neutral-400 font-normal">01</span>
+        </a>
+        <a href="#case-studies" data-i18n="nav.products" class="drawer-item mobile-nav-link py-4 text-2xl sm:text-3xl font-semibold tracking-tight text-obsidian flex items-center justify-between">
+          <span>Sản phẩm</span>
+          <span class="text-sm text-neutral-400 font-normal">02</span>
+        </a>
+        <a href="#clients" data-i18n="nav.clients" class="drawer-item mobile-nav-link py-4 text-2xl sm:text-3xl font-semibold tracking-tight text-obsidian flex items-center justify-between">
+          <span>Khách hàng</span>
+          <span class="text-sm text-neutral-400 font-normal">03</span>
+        </a>
+        <a href="#solutions" data-i18n="nav.services" class="drawer-item mobile-nav-link py-4 text-2xl sm:text-3xl font-semibold tracking-tight text-obsidian flex items-center justify-between">
+          <span>Dịch vụ</span>
+          <span class="text-sm text-neutral-400 font-normal">04</span>
+        </a>
+        <a href="#intro" data-i18n="nav.about" class="drawer-item mobile-nav-link py-4 text-2xl sm:text-3xl font-semibold tracking-tight text-obsidian flex items-center justify-between">
+          <span>Về chúng tôi</span>
+          <span class="text-sm text-neutral-400 font-normal">05</span>
+        </a>
+        <button type="button" id="openBlogMobileBtn" class="drawer-item py-4 text-2xl sm:text-3xl font-semibold tracking-tight text-obsidian flex items-center justify-between text-left bg-transparent border-0 cursor-pointer w-full">
+          <span data-i18n="nav.blog">Blog</span>
+          <span class="text-sm text-neutral-400 font-normal">06</span>
+        </button>
+        <div class="drawer-item pt-6">
+          <a href="#contact" class="mobile-nav-link touch-pill w-full rounded-full bg-obsidian text-white text-base font-semibold py-3.5 px-6 gap-2.5 shadow-sm">
+            <span data-i18n="nav.contactCta">Liên hệ tư vấn dự án</span>
+            <span>→</span>
+          </a>
+        </div>
+      </nav>
+
+      <!-- Quick Contact Footer inside Mobile Drawer -->
+      <div class="drawer-footer-block pt-6 border-t border-hairline flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <p data-i18n="drawer.quickContact" class="text-[11px] font-bold uppercase tracking-[0.16em] text-neutral-400 mb-2">Kết nối nhanh</p>
+          <a href="mailto:hello@mkdigital.vn" class="block text-base font-semibold text-obsidian underline decoration-neutral-300 underline-offset-4">hello@mkdigital.vn</a>
+          <a href="tel:+842838996262" class="block text-sm text-neutral-600 mt-1">+84 28 3899 6262</a>
+        </div>
+        <div class="text-xs text-neutral-500">
+          <p>TP. Hồ Chí Minh • Hà Nội • Đà Nẵng • Singapore</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- =========================================================================
+         SECTION 1: HERO, 2-ROW ANIMATED SHOWCASE, INTRO & VIETNAMESE CLIENTS
+         ========================================================================= -->
+    <section id="home" class="hero-canvas pt-[var(--header-height)]">
+
+      <!-- 1A. Hero Canvas -->
+      <div class="max-w-[1320px] mx-auto px-4 sm:px-7 lg:px-12 pt-10 pb-12 sm:pt-16 sm:pb-20 lg:pt-24 lg:pb-24">
+        <div class="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-6">
+
+          <!-- Left Editorial Typography -->
+          <div class="lg:col-span-8 reveal">
+            <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-hairline mb-6 shadow-[0_2px_10px_rgba(17,17,17,0.03)]">
+              <span class="w-2 h-2 rounded-full bg-obsidian"></span>
+              <span data-i18n="hero.badge" class="text-[11px] sm:text-xs font-semibold tracking-wide uppercase text-neutral-600">Digital Design &amp; Engineering Studio — Việt Nam</span>
+            </div>
+
+            <h1 class="fluid-hero-h1 font-semibold text-obsidian">
+              <span data-i18n="hero.titleLine1" class="block">MK là agency thiết kế UX/UI</span>
+              <span class="block mt-1.5">
+                <span data-i18n="hero.titleLine2" class="clay-highlight">và phát triển website cao cấp</span>
+              </span>
+            </h1>
+
+            <p data-i18n="hero.subcopy" class="mt-6 max-w-2xl text-[15px] sm:text-lg text-neutral-600 leading-relaxed">
+              Chúng tôi kết hợp tư duy thẩm mỹ tinh giản, nghiên cứu trải nghiệm người dùng và công nghệ web hiệu năng cao giúp thương hiệu Việt dẫn đầu trên không gian số.
+            </p>
+
+            <div class="mt-8 flex flex-col sm:flex-row sm:items-center gap-3.5 sm:gap-4">
+              <a href="#contact" class="touch-pill px-7 py-3.5 rounded-full bg-obsidian text-white text-sm font-semibold hover:bg-neutral-800 transition-colors gap-2.5 w-full sm:w-auto">
+                <span data-i18n="hero.ctaPrimary">Bắt đầu dự án</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+              <a href="#case-studies" data-i18n="hero.ctaSecondary" class="touch-pill px-6 py-3.5 rounded-full bg-white border border-hairline text-obsidian text-sm font-semibold hover:border-obsidian transition-colors w-full sm:w-auto">
+                Xem dự án tiêu biểu
+              </a>
+            </div>
+          </div>
+
+          <!-- Right 3D Glossy Hemisphere Sphere (Neatly scaled & centered on mobile without blocking text) -->
+          <div class="lg:col-span-4 flex justify-end sm:justify-center lg:justify-end -mt-2 lg:mt-0 reveal reveal-delay-1">
+            <div class="orb-scene" aria-hidden="true">
+              <div class="pearl-sphere">
+                <div class="pearl-dimple"></div>
+              </div>
+              <div class="orbit-track">
+                <div class="orb-dot-violet"></div>
+              </div>
+              <div class="orbit-track reverse">
+                <div class="orb-dot-orange"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 1B. Multi-Row Opposing Horizontal Marquee Showcase (Hover / Touch to Pause) -->
+      <div class="bg-white">
+        <div class="max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-10">
+          <div id="showcaseStage" class="showcase-stage relative rounded-3xl bg-[#1A2D4A] py-7 sm:py-10 overflow-hidden shadow-[0_24px_64px_-20px_rgba(17,24,39,0.22)]">
+
+            <!-- Ambient glow accents -->
+            <div class="pointer-events-none absolute -top-24 left-1/4 w-80 h-80 rounded-full bg-blue-400/10 blur-3xl"></div>
+            <div class="pointer-events-none absolute -bottom-24 right-1/4 w-80 h-80 rounded-full bg-violet-400/10 blur-3xl"></div>
+
+            <!-- Showcase Header Bar + Mobile Touch Pause Toggle -->
+            <div class="px-5 sm:px-9 mb-6 flex flex-wrap items-center justify-between gap-3 relative z-10">
+              <div class="flex items-center gap-2.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+                <span data-i18n="showcase.label" class="text-[11px] sm:text-xs font-medium tracking-wider uppercase text-blue-100/85">Hệ sinh thái giao diện thiết kế bởi MK</span>
+              </div>
+              <button type="button" id="marqueePauseBtn" class="touch-pill px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-[11px] font-semibold text-blue-100 border border-white/15 transition-colors cursor-pointer">
+                <span data-i18n="showcase.pause">Tạm dừng chuyển động</span>
+              </button>
+            </div>
+
+            <!-- ROW 1: Gliding Left -->
+            <div class="marquee-wrapper relative z-10 mb-4 sm:mb-5">
+              <div class="marquee-track marquee-left" id="marqueeRow1">
+
+                <!-- UI Mockup 1: F&B Digital Ordering -->
+                <article class="showcase-card rounded-2xl bg-white p-4 sm:p-5 shadow-lg border border-white/10">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-amber-800">F&amp;B DIGITAL ORDERING</span>
+                    <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 font-semibold">Mobile Web</span>
+                  </div>
+                  <div class="rounded-xl bg-[#FAF6F1] p-3.5 border border-amber-900/10">
+                    <div class="flex items-center justify-between mb-2.5">
+                      <h4 class="text-xs sm:text-sm font-bold text-neutral-900">Signature Phin &amp; Tea</h4>
+                      <span class="px-2.5 py-1 rounded-full bg-obsidian text-white text-[10px] font-semibold">Đặt ngay</span>
+                    </div>
+                    <div class="grid grid-cols-4 gap-2">
+                      <div class="rounded-lg bg-white p-2 text-center shadow-sm">
+                        <div class="mx-auto w-6 h-8 rounded-t rounded-b-md bg-gradient-to-b from-amber-200 via-amber-700 to-amber-950 mb-1"></div>
+                        <p class="text-[9px] font-semibold text-neutral-800 truncate">Phin Sữa</p>
+                      </div>
+                      <div class="rounded-lg bg-white p-2 text-center shadow-sm">
+                        <div class="mx-auto w-6 h-8 rounded-t rounded-b-md bg-gradient-to-b from-emerald-100 via-emerald-500 to-emerald-800 mb-1"></div>
+                        <p class="text-[9px] font-semibold text-neutral-800 truncate">Matcha</p>
+                      </div>
+                      <div class="rounded-lg bg-white p-2 text-center shadow-sm">
+                        <div class="mx-auto w-6 h-8 rounded-t rounded-b-md bg-gradient-to-b from-rose-200 via-rose-400 to-rose-700 mb-1"></div>
+                        <p class="text-[9px] font-semibold text-neutral-800 truncate">Sen Vàng</p>
+                      </div>
+                      <div class="rounded-lg bg-white p-2 text-center shadow-sm">
+                        <div class="mx-auto w-6 h-8 rounded-t rounded-b-md bg-gradient-to-b from-orange-100 via-orange-400 to-amber-700 mb-1"></div>
+                        <p class="text-[9px] font-semibold text-neutral-800 truncate">Trà Đào</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-3 flex items-center justify-between text-[11px] text-neutral-500">
+                    <span class="font-medium text-neutral-800 truncate pr-2">Express Pickup &amp; Loyalty</span>
+                    <span class="font-bold text-emerald-600 shrink-0">+42% Orders</span>
+                  </div>
+                </article>
+
+                <!-- UI Mockup 2: Luxury Real Estate Portal -->
+                <article class="showcase-card rounded-2xl bg-[#0F172A] text-white p-4 sm:p-5 shadow-lg border border-white/10">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-sky-300">LUXURY REAL ESTATE</span>
+                    <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-white/10 text-sky-200 font-semibold">3D Portal</span>
+                  </div>
+                  <div class="rounded-xl bg-gradient-to-br from-[#1C2A44] to-[#0B1220] p-3.5 border border-white/10">
+                    <div class="flex justify-between items-start mb-3">
+                      <div>
+                        <p class="text-[9px] uppercase tracking-[0.2em] text-sky-300">Riverside Residences</p>
+                        <h4 class="text-xs sm:text-sm font-semibold mt-0.5">Mặt bằng phân khu 360°</h4>
+                      </div>
+                      <span class="text-[9px] px-2 py-0.5 rounded bg-sky-400/20 text-sky-200">Q.1, HCM</span>
+                    </div>
+                    <div class="h-14 rounded-lg bg-[#090F1C] border border-white/10 px-3 pt-2 flex items-end gap-1.5">
+                      <div class="w-1/4 h-6 rounded-t bg-slate-700/70"></div>
+                      <div class="w-1/4 h-11 rounded-t bg-gradient-to-t from-sky-500/40 to-sky-300/85"></div>
+                      <div class="w-1/4 h-9 rounded-t bg-slate-600/80"></div>
+                      <div class="w-1/4 h-7 rounded-t bg-slate-700/60"></div>
+                    </div>
+                  </div>
+                  <div class="mt-3 flex items-center justify-between text-[11px] text-slate-400">
+                    <span class="font-medium text-white truncate pr-2">Interactive Masterplan &amp; CRM</span>
+                    <span class="font-bold text-sky-300 shrink-0">+68% Leads</span>
+                  </div>
+                </article>
+
+                <!-- UI Mockup 3: High-Conversion E-Commerce Storefront -->
+                <article class="showcase-card rounded-2xl bg-white p-4 sm:p-5 shadow-lg border border-white/10">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-blue-600">E-COMMERCE STOREFRONT</span>
+                    <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 font-semibold">1-Tap Pay</span>
+                  </div>
+                  <div class="rounded-xl bg-[#F4F7FC] p-3.5 border border-blue-900/5">
+                    <div class="flex items-center gap-2 mb-2.5">
+                      <div class="flex-1 h-7 rounded-lg bg-white border border-neutral-200 px-2.5 flex items-center justify-between">
+                        <span class="text-[10px] text-neutral-400 truncate">Tìm kiếm sản phẩm bằng AI...</span>
+                        <span class="w-4 h-4 rounded bg-blue-600 text-white text-[9px] flex items-center justify-center shrink-0">→</span>
+                      </div>
+                      <span class="px-2 py-1 rounded-lg bg-blue-600 text-white text-[9px] font-bold shrink-0">NOW 2H</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                      <div class="rounded-lg bg-white p-2 border border-neutral-100">
+                        <p class="text-[10px] font-bold text-blue-700">SMART CART</p>
+                        <p class="text-[9px] text-neutral-500 mt-0.5">Tự động ghép mã giảm</p>
+                      </div>
+                      <div class="rounded-lg bg-obsidian text-white p-2">
+                        <p class="text-[10px] font-bold">CHECKOUT</p>
+                        <p class="text-[9px] text-neutral-300 mt-0.5">Hoàn tất trong 12 giây</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-3 flex items-center justify-between text-[11px] text-neutral-500">
+                    <span class="font-medium text-neutral-800 truncate pr-2">Frictionless Mobile Checkout</span>
+                    <span class="font-bold text-blue-600 shrink-0">-35% Drop-off</span>
+                  </div>
+                </article>
+
+              </div>
+            </div>
+
+            <!-- ROW 2: Gliding Right (Opposing Direction) -->
+            <div class="marquee-wrapper relative z-10">
+              <div class="marquee-track marquee-right" id="marqueeRow2">
+
+                <!-- UI Mockup 4: Electronics Comparison UI -->
+                <article class="showcase-card rounded-2xl bg-[#152540] text-white p-4 sm:p-5 shadow-lg border border-blue-200/15">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-emerald-300">ELECTRONICS COMPARISON UI</span>
+                    <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-white/10 text-white font-semibold">Headless</span>
+                  </div>
+                  <div class="rounded-xl bg-white/5 p-3.5 border border-white/10">
+                    <div class="flex items-center justify-between mb-2.5">
+                      <span class="text-xs font-semibold">So sánh cấu hình Flagship</span>
+                      <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 font-bold">LCP 0.8s</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 text-center">
+                      <div class="rounded-lg bg-white/10 p-2">
+                        <p class="text-[9px] text-blue-200/70">Chipset</p>
+                        <p class="text-[11px] font-bold mt-0.5">Pro A19</p>
+                      </div>
+                      <div class="rounded-lg bg-white/10 p-2">
+                        <p class="text-[9px] text-blue-200/70">Tồn kho</p>
+                        <p class="text-[11px] font-bold mt-0.5 text-emerald-300">640 Shop</p>
+                      </div>
+                      <div class="rounded-lg bg-white/10 p-2">
+                        <p class="text-[9px] text-blue-200/70">Trả góp</p>
+                        <p class="text-[11px] font-bold mt-0.5">0% Online</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-3 flex items-center justify-between text-[11px] text-blue-200/70">
+                    <span class="font-medium text-white truncate pr-2">Real-time Omnichannel Stock</span>
+                    <span class="font-bold text-emerald-300 shrink-0">99/100 Speed</span>
+                  </div>
+                </article>
+
+                <!-- UI Mockup 5: Enterprise SaaS Dashboard -->
+                <article class="showcase-card rounded-2xl bg-white p-4 sm:p-5 shadow-lg border border-white/10">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-violet-700">SAAS ANALYTICS DASHBOARD</span>
+                    <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-violet-50 text-violet-700 font-semibold">Design System</span>
+                  </div>
+                  <div class="rounded-xl bg-surface p-3.5 border border-hairline">
+                    <div class="flex items-center justify-between mb-2">
+                      <div>
+                        <p class="text-[9px] uppercase tracking-wider text-neutral-400">Conversion Velocity</p>
+                        <p class="text-sm font-extrabold text-obsidian">₫4.82 Tỷ <span class="text-[10px] text-emerald-600 font-bold">+28.4%</span></p>
+                      </div>
+                      <span class="text-[10px] font-semibold text-violet-700 bg-violet-100/70 px-2 py-0.5 rounded-full">Live CRM</span>
+                    </div>
+                    <div class="flex items-end gap-1.5 h-10 pt-1">
+                      <div class="flex-1 h-4 rounded-sm bg-neutral-200"></div>
+                      <div class="flex-1 h-6 rounded-sm bg-neutral-300"></div>
+                      <div class="flex-1 h-5 rounded-sm bg-neutral-200"></div>
+                      <div class="flex-1 h-7 rounded-sm bg-violet-300"></div>
+                      <div class="flex-1 h-9 rounded-sm bg-violet-600"></div>
+                      <div class="flex-1 h-10 rounded-sm bg-obsidian"></div>
+                    </div>
+                  </div>
+                  <div class="mt-3 flex items-center justify-between text-[11px] text-neutral-500">
+                    <span class="font-medium text-neutral-800 truncate pr-2">Unified Revenue &amp; Lead Funnel</span>
+                    <span class="font-bold text-violet-700 shrink-0">Real-time Sync</span>
+                  </div>
+                </article>
+
+                <!-- UI Mockup 6: Luxury Hospitality & Booking -->
+                <article class="showcase-card rounded-2xl bg-[#111111] text-white p-4 sm:p-5 shadow-lg border border-white/10">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-amber-200">BRAND FLAGSHIP WEB</span>
+                    <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-white/10 text-amber-100 font-semibold">Editorial UX</span>
+                  </div>
+                  <div class="rounded-xl bg-white/5 p-3.5 border border-white/10">
+                    <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400">Bespoke Digital Identity</p>
+                    <h4 class="text-xs sm:text-sm font-semibold mt-1 text-white">Kể chuyện thương hiệu bằng chuyển động vi tương tác</h4>
+                    <div class="mt-3 flex items-center gap-2">
+                      <span class="px-2.5 py-1 rounded-full bg-white text-obsidian text-[10px] font-bold">Mobile-First</span>
+                      <span class="px-2.5 py-1 rounded-full bg-white/10 text-white text-[10px] font-medium">Headless CMS</span>
+                    </div>
+                  </div>
+                  <div class="mt-3 flex items-center justify-between text-[11px] text-neutral-400">
+                    <span class="font-medium text-white truncate pr-2">Swiss Minimalism Design System</span>
+                    <span class="font-bold text-amber-200 shrink-0">4.9★ UX Score</span>
+                  </div>
+                </article>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 1C. Company Intro & Interactive 6-Service Accordion -->
+      <div id="intro" class="bg-white pt-16 pb-14 sm:pt-24 sm:pb-20 scroll-mt-20">
+        <div class="max-w-[1320px] mx-auto px-4 sm:px-7 lg:px-12">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+
+            <!-- Left Column: Positioning Copy -->
+            <div class="lg:col-span-6 reveal">
+              <p data-i18n="intro.eyebrow" class="text-xs font-semibold uppercase tracking-[0.16em] text-neutral-400 mb-4">01 / VỀ MK DIGITAL</p>
+              <h2 data-i18n="intro.headline" class="fluid-intro-h2 font-medium text-obsidian">
+                Chúng tôi kiến tạo những trải nghiệm số mang tính chuyển đổi cho các thương hiệu dẫn đầu Việt Nam bằng sự giao thoa giữa chiến lược, thiết kế UX/UI và công nghệ hiện đại.
+              </h2>
+              <p data-i18n="intro.body" class="mt-5 text-[15px] sm:text-base leading-relaxed text-neutral-600 max-w-xl">
+                Từ chuỗi F&amp;B nghìn điểm bán, sàn thương mại điện tử tốc độ cao đến các tập đoàn bất động sản và bán lẻ điện máy, MK đồng hành trọn vẹn từ tư vấn chiến lược đến vận hành tăng trưởng bền vững.
+              </p>
+
+              <!-- Metrics Bar -->
+              <div class="mt-9 pt-7 border-t border-hairline grid grid-cols-3 gap-4 sm:gap-6 max-w-md">
+                <div>
+                  <div class="text-2xl sm:text-3xl font-semibold tracking-tight text-obsidian">120+</div>
+                  <div data-i18n="intro.stat1" class="text-xs text-neutral-500 mt-1">Dự án doanh nghiệp</div>
+                </div>
+                <div>
+                  <div class="text-2xl sm:text-3xl font-semibold tracking-tight text-obsidian">98%</div>
+                  <div data-i18n="intro.stat2" class="text-xs text-neutral-500 mt-1">Khách hàng hài lòng</div>
+                </div>
+                <div>
+                  <div class="text-2xl sm:text-3xl font-semibold tracking-tight text-obsidian">&lt;1.0s</div>
+                  <div data-i18n="intro.stat3" class="text-xs text-neutral-500 mt-1">Tốc độ LCP trung bình</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: 6 Core Services Accordion (44px+ touch height per item) -->
+            <div class="lg:col-span-5 lg:col-start-8 reveal reveal-delay-1">
+              <div class="divide-y divide-hairline border-t border-b border-hairline" id="servicesAccordion">
+
+                <!-- 1. Branding -->
+                <div class="service-item active py-2.5">
+                  <button type="button" class="service-trigger w-full min-h-[48px] flex items-center justify-between text-left py-2 group cursor-pointer" aria-expanded="true">
+                    <span data-i18n="svc.t1" class="text-lg sm:text-[1.2rem] font-semibold text-obsidian group-hover:text-neutral-600 transition-colors">Thương hiệu số (Branding)</span>
+                    <svg class="chevron-icon w-4 h-4 text-neutral-400 shrink-0 ml-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  <div class="service-accordion-body">
+                    <div class="overflow-hidden">
+                      <p data-i18n="svc.d1" class="pt-1 pb-3 text-sm leading-relaxed text-neutral-600">
+                        Định vị thương hiệu số, ngôn ngữ thị giác và hệ thống nhận diện nhất quán giúp doanh nghiệp nổi bật khác biệt trên mọi điểm chạm khách hàng.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 2. Digital Products -->
+                <div class="service-item py-2.5">
+                  <button type="button" class="service-trigger w-full min-h-[48px] flex items-center justify-between text-left py-2 group cursor-pointer" aria-expanded="false">
+                    <span data-i18n="svc.t2" class="text-lg sm:text-[1.2rem] font-semibold text-obsidian group-hover:text-neutral-600 transition-colors">Sản phẩm số (Digital Products)</span>
+                    <svg class="chevron-icon w-4 h-4 text-neutral-400 shrink-0 ml-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  <div class="service-accordion-body">
+                    <div class="overflow-hidden">
+                      <p data-i18n="svc.d2" class="pt-1 pb-3 text-sm leading-relaxed text-neutral-600">
+                        Thiết kế Web App, ứng dụng đặt hàng F&amp;B, cổng thành viên và bộ Design System chuẩn hóa giúp đội ngũ sản phẩm mở rộng nhanh chóng.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 3. Websites -->
+                <div class="service-item py-2.5">
+                  <button type="button" class="service-trigger w-full min-h-[48px] flex items-center justify-between text-left py-2 group cursor-pointer" aria-expanded="false">
+                    <span data-i18n="svc.t3" class="text-lg sm:text-[1.2rem] font-semibold text-obsidian group-hover:text-neutral-600 transition-colors">Thiết kế Website (Websites)</span>
+                    <svg class="chevron-icon w-4 h-4 text-neutral-400 shrink-0 ml-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  <div class="service-accordion-body">
+                    <div class="overflow-hidden">
+                      <p data-i18n="svc.d3" class="pt-1 pb-3 text-sm leading-relaxed text-neutral-600">
+                        Website doanh nghiệp cao cấp, trang thương mại điện tử và cổng dự án bất động sản tối ưu tuyệt đối cho thiết bị di động và tỷ lệ chuyển đổi.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 4. Development -->
+                <div class="service-item py-2.5">
+                  <button type="button" class="service-trigger w-full min-h-[48px] flex items-center justify-between text-left py-2 group cursor-pointer" aria-expanded="false">
+                    <span data-i18n="svc.t4" class="text-lg sm:text-[1.2rem] font-semibold text-obsidian group-hover:text-neutral-600 transition-colors">Lập trình &amp; Hệ thống (Development)</span>
+                    <svg class="chevron-icon w-4 h-4 text-neutral-400 shrink-0 ml-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  <div class="service-accordion-body">
+                    <div class="overflow-hidden">
+                      <p data-i18n="svc.d4" class="pt-1 pb-3 text-sm leading-relaxed text-neutral-600">
+                        Kiến trúc Front-end hiệu năng cao, Headless CMS, tích hợp API thời gian thực với CRM/ERP/POS và bảo mật tiêu chuẩn doanh nghiệp.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 5. Content -->
+                <div class="service-item py-2.5">
+                  <button type="button" class="service-trigger w-full min-h-[48px] flex items-center justify-between text-left py-2 group cursor-pointer" aria-expanded="false">
+                    <span data-i18n="svc.t5" class="text-lg sm:text-[1.2rem] font-semibold text-obsidian group-hover:text-neutral-600 transition-colors">Nội dung &amp; Chuyển động (Content)</span>
+                    <svg class="chevron-icon w-4 h-4 text-neutral-400 shrink-0 ml-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  <div class="service-accordion-body">
+                    <div class="overflow-hidden">
+                      <p data-i18n="svc.d5" class="pt-1 pb-3 text-sm leading-relaxed text-neutral-600">
+                        UX Writing song ngữ, chuyển động vi tương tác (Micro-interactions), minh họa 3D sản phẩm và hệ thống nội dung chuẩn SEO kỹ thuật.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 6. Generative AI -->
+                <div class="service-item py-2.5">
+                  <button type="button" class="service-trigger w-full min-h-[48px] flex items-center justify-between text-left py-2 group cursor-pointer" aria-expanded="false">
+                    <span data-i18n="svc.t6" class="text-lg sm:text-[1.2rem] font-semibold text-obsidian group-hover:text-neutral-600 transition-colors">Ứng dụng AI (Generative AI)</span>
+                    <svg class="chevron-icon w-4 h-4 text-neutral-400 shrink-0 ml-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  <div class="service-accordion-body">
+                    <div class="overflow-hidden">
+                      <p data-i18n="svc.d6" class="pt-1 pb-3 text-sm leading-relaxed text-neutral-600">
+                        Tích hợp trợ lý tư vấn AI, tìm kiếm ngữ nghĩa thông minh và cá nhân hóa trải nghiệm mua sắm theo thời gian thực ngay trên website.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 1D. Vietnamese Major Brands Logo Grid (2x5 Desktop, 3-Col Tablet, 2-Col Mobile) -->
+      <div id="clients" class="bg-white pb-20 sm:pb-28 scroll-mt-20">
+        <div class="max-w-[1320px] mx-auto px-4 sm:px-7 lg:px-12">
+          <div class="border-t border-hairline pt-14 sm:pt-20">
+
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 reveal">
+              <div>
+                <p data-i18n="clients.eyebrow" class="text-xs font-semibold uppercase tracking-[0.16em] text-neutral-400 mb-2">KHÁCH HÀNG TIÊU BIỂU TẠI VIỆT NAM</p>
+                <p data-i18n="clients.sub" class="text-sm text-neutral-500">Đồng hành cùng các thương hiệu dẫn đầu ngành F&amp;B, Thương mại điện tử, Điện máy và Bất động sản.</p>
+              </div>
+            </div>
+
+            <!-- Interactive Industry Filter Panel (Toggled via "Xem tất cả khách hàng →") -->
+            <div id="clientFilterPanel" class="client-filter-panel">
+              <div class="overflow-hidden">
+                <div class="pb-8 flex flex-wrap items-center gap-2.5" id="clientFilterButtons">
+                  <button type="button" class="client-filter-btn toggle-pill selected" data-sector="all" data-i18n="clients.filterAll">Tất cả (10+)</button>
+                  <button type="button" class="client-filter-btn toggle-pill" data-sector="fnb">F&amp;B</button>
+                  <button type="button" class="client-filter-btn toggle-pill" data-sector="ecom" data-i18n="clients.filterEcom">Thương mại điện tử</button>
+                  <button type="button" class="client-filter-btn toggle-pill" data-sector="elec" data-i18n="clients.filterElec">Điện máy &amp; Bán lẻ</button>
+                  <button type="button" class="client-filter-btn toggle-pill" data-sector="re" data-i18n="clients.filterRE">Bất động sản</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Responsive Monochrome Logo Grid: 2 cols mobile | 3 cols tablet | 5 cols desktop -->
+            <div id="clientLogoGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-10 sm:gap-y-12 gap-x-4 sm:gap-x-8 items-center justify-items-center py-4 reveal">
+
+              <!-- 1. Highlands Coffee (F&B) -->
+              <div class="client-logo-card flex flex-col items-center text-center select-none px-2" data-sector="fnb" title="Highlands Coffee — F&B">
+                <svg class="h-8 sm:h-9 w-auto max-w-full" viewBox="0 0 180 42" fill="currentColor">
+                  <ellipse cx="22" cy="21" rx="15" ry="10.5" fill="none" stroke="currentColor" stroke-width="2.2"/>
+                  <path d="M13 24C16 17 20 15 22 15C24 15 28 17 31 24" fill="none" stroke="currentColor" stroke-width="2"/>
+                  <text x="45" y="19" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13.2" letter-spacing="0.8">HIGHLANDS</text>
+                  <text x="45" y="31" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="8.8" letter-spacing="2.8">COFFEE</text>
+                </svg>
+              </div>
+
+              <!-- 2. Phúc Long (F&B) -->
+              <div class="client-logo-card flex flex-col items-center text-center select-none px-2" data-sector="fnb" title="Phúc Long — F&B">
+                <svg class="h-8 sm:h-9 w-auto max-w-full" viewBox="0 0 165 42" fill="currentColor">
+                  <path d="M22 9C15 14 14 23 20 30C26 26 30 18 22 9Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                  <path d="M20 30L22 16" stroke="currentColor" stroke-width="1.6"/>
+                  <text x="38" y="21" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="13.8" letter-spacing="0.6">PHÚC LONG</text>
+                  <text x="38" y="32" font-family="'Plus Jakarta Sans', sans-serif" font-weight="500" font-size="8.2" letter-spacing="1.6">COFFEE &amp; TEA</text>
+                </svg>
+              </div>
+
+              <!-- 3. The Coffee House (F&B) -->
+              <div class="client-logo-card flex flex-col items-center text-center select-none px-2" data-sector="fnb" title="The Coffee House — F&B">
+                <svg class="h-8 sm:h-9 w-auto max-w-full" viewBox="0 0 185 42" fill="currentColor">
+                  <text x="92" y="18" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="10.2" letter-spacing="2.2">THE COFFEE</text>
+                  <text x="92" y="33" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="14.8" letter-spacing="3.5">HOUSE</text>
+                </svg>
+              </div>
+
+              <!-- 4. Golden Gate (F&B) -->
+              <div class="client-logo-card flex flex-col items-center text-center select-none px-2" data-sector="fnb" title="Golden Gate Group — F&B">
+                <svg class="h-8 sm:h-9 w-auto max-w-full" viewBox="0 0 185 42" fill="currentColor">
+                  <path d="M14 29V17C14 13 18 11 22 11C26 11 30 13 30 17V29" fill="none" stroke="currentColor" stroke-width="2.1"/>
+                  <line x1="10" y1="29" x2="34" y2="29" stroke="currentColor" stroke-width="2"/>
+                  <text x="42" y="20" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.6" letter-spacing="1.2">GOLDEN GATE</text>
+                  <text x="42" y="31" font-family="'Plus Jakarta Sans', sans-serif" font-weight="500" font-size="8" letter-spacing="2.2">RESTAURANT GROUP</text>
+                </svg>
+              </div>
+
+              <!-- 5. Tiki (E-Commerce) -->
+              <div class="client-logo-card flex flex-col items-center text-center select-none px-2" data-sector="ecom" title="Tiki — Thương mại điện tử">
+                <svg class="h-8 sm:h-9 w-auto max-w-full" viewBox="0 0 120 42" fill="currentColor">
+                  <text x="16" y="30" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="25" letter-spacing="-0.8">TIKI</text>
+                  <circle cx="86" cy="14" r="3.2" fill="currentColor"/>
+                  <path d="M75 27C80 32 90 32 95 27" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+                </svg>
+              </div>
+
+              <!-- 6. Thế Giới Di Động (Electronics) -->
+              <div class="client-logo-card flex flex-col items-center text-center select-none px-2" data-sector="elec" title="Thế Giới Di Động — Bán lẻ công nghệ">
+                <svg class="h-8 sm:h-9 w-auto max-w-full" viewBox="0 0 190 42" fill="currentColor">
+                  <circle cx="19" cy="21" r="10.5" fill="none" stroke="currentColor" stroke-width="2.2"/>
+                  <path d="M14 21L18 25L25 17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <text x="37" y="19" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12" letter-spacing="-0.2">thegioididong</text>
+                  <text x="37" y="30" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="8.3" letter-spacing="1.2">.COM RETAIL</text>
+                </svg>
+              </div>
+
+              <!-- 7. Điện Máy Xanh (Electronics) -->
+              <div class="client-logo-card flex flex-col items-center text-center select-none px-2" data-sector="elec" title="Điện Máy Xanh — Điện máy">
+                <svg class="h-8 sm:h-9 w-auto max-w-full" viewBox="0 0 180 42" fill="currentColor">
+                  <rect x="10" y="11" width="18" height="20" rx="4" fill="none" stroke="currentColor" stroke-width="2.2"/>
+                  <circle cx="19" cy="21" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                  <text x="36" y="20" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.8" letter-spacing="-0.3">Điện máy</text>
+                  <text x="36" y="32" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="12.2" letter-spacing="1.6">XANH</text>
+                </svg>
+              </div>
+
+              <!-- 8. FPT Shop (Electronics) -->
+              <div class="client-logo-card flex flex-col items-center text-center select-none px-2" data-sector="elec" title="FPT Shop — Bán lẻ kỹ thuật số">
+                <svg class="h-8 sm:h-9 w-auto max-w-full" viewBox="0 0 155 42" fill="currentColor">
+                  <text x="16" y="29" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="22" font-style="italic" letter-spacing="-0.5">FPT</text>
+                  <text x="64" y="29" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="19" letter-spacing="-0.3">Shop</text>
+                </svg>
+              </div>
+
+              <!-- 9. Vinhomes (Real Estate) -->
+              <div class="client-logo-card flex flex-col items-center text-center select-none px-2" data-sector="re" title="Vinhomes — Bất động sản">
+                <svg class="h-8 sm:h-9 w-auto max-w-full" viewBox="0 0 175 42" fill="currentColor">
+                  <path d="M16 12L25 30L34 12" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M21 12L25 20L29 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <text x="44" y="26" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="15.8" letter-spacing="2">VINHOMES</text>
+                </svg>
+              </div>
+
+              <!-- 10. Masterise Homes (Real Estate) -->
+              <div class="client-logo-card flex flex-col items-center text-center select-none px-2" data-sector="re" title="Masterise Homes — Bất động sản hạng sang">
+                <svg class="h-8 sm:h-9 w-auto max-w-full" viewBox="0 0 185 42" fill="currentColor">
+                  <text x="92" y="20" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="14.2" letter-spacing="2.8">MASTERISE</text>
+                  <text x="92" y="33" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-weight="500" font-size="9.2" letter-spacing="4.2">HOMES</text>
+                </svg>
+              </div>
+
+            </div>
+
+            <!-- Centered Toggle Button: "Xem tất cả khách hàng →" -->
+            <div class="mt-10 sm:mt-12 text-center reveal">
+              <button type="button" id="toggleClientsFilterBtn" class="touch-pill px-4 text-sm font-semibold text-obsidian group cursor-pointer bg-transparent border-0">
+                <span class="border-b border-obsidian/40 group-hover:border-obsidian pb-1 transition-colors inline-flex items-center gap-2">
+                  <span id="toggleClientsLabel" data-i18n="clients.viewAll">Xem tất cả khách hàng</span>
+                  <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 2: ĐIỂM ĐAU CỦA KHÁCH HÀNG (PAIN POINTS)
+         2x2 Desktop, 1-Column Mobile
+         ========================================================================= -->
+    <section id="pain-points" class="bg-canvas py-20 sm:py-28 lg:py-32 border-t border-hairline scroll-mt-20">
+      <div class="max-w-[1320px] mx-auto px-4 sm:px-7 lg:px-12">
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end mb-12 sm:mb-16 reveal">
+          <div class="lg:col-span-7">
+            <p data-i18n="pain.eyebrow" class="text-xs font-semibold uppercase tracking-[0.16em] text-neutral-400 mb-3.5">02 / ĐIỂM ĐAU KHI TRIỂN KHAI WEBSITE</p>
+            <h2 data-i18n="pain.heading" class="fluid-section-h2 font-semibold text-obsidian">
+              4 điểm nghẽn khiến website doanh nghiệp chưa tạo ra tăng trưởng
+            </h2>
+          </div>
+          <div class="lg:col-span-4 lg:col-start-9">
+            <p data-i18n="pain.subheading" class="text-[15px] leading-relaxed text-neutral-600">
+              Khi tìm đến MK, phần lớn doanh nghiệp đều gặp phải những rào cản quen thuộc làm thất thoát ngân sách marketing và giảm uy tín thương hiệu mỗi ngày.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-7 lg:gap-8">
+
+          <!-- Pain 01 -->
+          <article class="reveal rounded-3xl bg-white p-6 sm:p-9 lg:p-10 border border-hairline hover:border-neutral-300 transition-colors flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-6 sm:mb-8">
+                <span class="text-xs font-bold tracking-[0.18em] text-neutral-400">01</span>
+                <span data-i18n="pain.tag1" class="text-[11px] font-semibold px-3 py-1 rounded-full bg-canvas text-neutral-600">Thiếu bản sắc</span>
+              </div>
+              <h3 data-i18n="pain.p1Title" class="text-xl sm:text-2xl font-semibold tracking-tight text-obsidian leading-snug">
+                Giao diện đại trà, thiếu bản sắc thương hiệu
+              </h3>
+              <p data-i18n="pain.p1Desc" class="mt-3.5 text-[15px] leading-relaxed text-neutral-600">
+                Sử dụng giao diện mẫu rập khuôn khiến website giống hệt đối thủ, không thể hiện được đẳng cấp sản phẩm hay câu chuyện thương hiệu, làm giảm niềm tin ngay từ 3 giây đầu tiên.
+              </p>
+            </div>
+            <div class="mt-7 pt-5 border-t border-hairline flex flex-wrap items-center justify-between gap-2 text-xs text-neutral-500">
+              <span data-i18n="pain.impactLabel">Hệ quả trực tiếp</span>
+              <span data-i18n="pain.p1Impact" class="font-semibold text-obsidian">-38% mức độ ghi nhớ thương hiệu</span>
+            </div>
+          </article>
+
+          <!-- Pain 02 -->
+          <article class="reveal reveal-delay-1 rounded-3xl bg-white p-6 sm:p-9 lg:p-10 border border-hairline hover:border-neutral-300 transition-colors flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-6 sm:mb-8">
+                <span class="text-xs font-bold tracking-[0.18em] text-neutral-400">02</span>
+                <span data-i18n="pain.tag2" class="text-[11px] font-semibold px-3 py-1 rounded-full bg-canvas text-neutral-600">Di động &amp; Tốc độ</span>
+              </div>
+              <h3 data-i18n="pain.p2Title" class="text-xl sm:text-2xl font-semibold tracking-tight text-obsidian leading-snug">
+                Tốc độ tải chậm &amp; trải nghiệm di động kém gây mất khách
+              </h3>
+              <p data-i18n="pain.p2Desc" class="mt-3.5 text-[15px] leading-relaxed text-neutral-600">
+                Hơn 75% lưu lượng truy cập đến từ smartphone, nhưng trang tải chậm trên 4 giây, chữ nhỏ, nút khó bấm và tràn màn hình ngang khiến khách hàng thoát trang lập tức.
+              </p>
+            </div>
+            <div class="mt-7 pt-5 border-t border-hairline flex flex-wrap items-center justify-between gap-2 text-xs text-neutral-500">
+              <span data-i18n="pain.impactLabel">Hệ quả trực tiếp</span>
+              <span data-i18n="pain.p2Impact" class="font-semibold text-obsidian">Tỷ lệ thoát trên mobile &gt; 68%</span>
+            </div>
+          </article>
+
+          <!-- Pain 03 -->
+          <article class="reveal rounded-3xl bg-white p-6 sm:p-9 lg:p-10 border border-hairline hover:border-neutral-300 transition-colors flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-6 sm:mb-8">
+                <span class="text-xs font-bold tracking-[0.18em] text-neutral-400">03</span>
+                <span data-i18n="pain.tag3" class="text-[11px] font-semibold px-3 py-1 rounded-full bg-canvas text-neutral-600">Rò rỉ chuyển đổi</span>
+              </div>
+              <h3 data-i18n="pain.p3Title" class="text-xl sm:text-2xl font-semibold tracking-tight text-obsidian leading-snug">
+                Thiết kế đẹp nhưng không ra chuyển đổi (Lead/Đơn hàng)
+              </h3>
+              <p data-i18n="pain.p3Desc" class="mt-3.5 text-[15px] leading-relaxed text-neutral-600">
+                Thiếu nghiên cứu hành vi người dùng và luồng điều hướng CTA rõ ràng khiến khách truy cập xem xong rồi rời đi mà không để lại thông tin tư vấn hay hoàn tất thanh toán.
+              </p>
+            </div>
+            <div class="mt-7 pt-5 border-t border-hairline flex flex-wrap items-center justify-between gap-2 text-xs text-neutral-500">
+              <span data-i18n="pain.impactLabel">Hệ quả trực tiếp</span>
+              <span data-i18n="pain.p3Impact" class="font-semibold text-obsidian">Chi phí quảng cáo cao, ROI thấp</span>
+            </div>
+          </article>
+
+          <!-- Pain 04 -->
+          <article class="reveal reveal-delay-1 rounded-3xl bg-white p-6 sm:p-9 lg:p-10 border border-hairline hover:border-neutral-300 transition-colors flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-6 sm:mb-8">
+                <span class="text-xs font-bold tracking-[0.18em] text-neutral-400">04</span>
+                <span data-i18n="pain.tag4" class="text-[11px] font-semibold px-3 py-1 rounded-full bg-canvas text-neutral-600">Vận hành &amp; SEO</span>
+              </div>
+              <h3 data-i18n="pain.p4Title" class="text-xl sm:text-2xl font-semibold tracking-tight text-obsidian leading-snug">
+                Khó quản trị, thiếu chuẩn SEO và khó mở rộng hệ thống
+              </h3>
+              <p data-i18n="pain.p4Desc" class="mt-3.5 text-[15px] leading-relaxed text-neutral-600">
+                Cấu trúc mã nguồn thiếu chuẩn Google khiến website khó lên top tự nhiên; đội Marketing không thể tự cập nhật nội dung hay kết nối dữ liệu với CRM, ERP và cổng thanh toán.
+              </p>
+            </div>
+            <div class="mt-7 pt-5 border-t border-hairline flex flex-wrap items-center justify-between gap-2 text-xs text-neutral-500">
+              <span data-i18n="pain.impactLabel">Hệ quả trực tiếp</span>
+              <span data-i18n="pain.p4Impact" class="font-semibold text-obsidian">Phụ thuộc IT &amp; tốn phí bảo trì</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 3: GIẢI PHÁP TRIỂN KHAI (1-TO-1 SOLUTIONS + 4-STEP ROADMAP)
+         Desktop: Horizontal 4-Step Grid | Mobile: Vertical Sleek Timeline
+         ========================================================================= -->
+    <section id="solutions" class="bg-white py-20 sm:py-28 lg:py-32 border-t border-hairline scroll-mt-20">
+      <div class="max-w-[1320px] mx-auto px-4 sm:px-7 lg:px-12">
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end mb-12 sm:mb-16 reveal">
+          <div class="lg:col-span-7">
+            <p data-i18n="sol.eyebrow" class="text-xs font-semibold uppercase tracking-[0.16em] text-neutral-400 mb-3.5">03 / GIẢI PHÁP TỪ MK DIGITAL</p>
+            <h2 data-i18n="sol.heading" class="fluid-section-h2 font-semibold text-obsidian">
+              Giải pháp kiến trúc xử lý triệt để từng điểm đau của doanh nghiệp
+            </h2>
+          </div>
+          <div class="lg:col-span-4 lg:col-start-9">
+            <p data-i18n="sol.subheading" class="text-[15px] leading-relaxed text-neutral-600">
+              Mỗi hạng mục kỹ thuật và UX đều gắn chặt với mục tiêu kinh doanh — tạo nên nền tảng số sang trọng, tốc độ và đo lường được doanh thu.
+            </p>
+          </div>
+        </div>
+
+        <!-- 1-to-1 Architectural Solutions Grid (2-col on desktop, 1-col on mobile) -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-7">
+
+          <!-- Solution 01 -->
+          <div class="reveal rounded-3xl bg-canvas p-6 sm:p-9 border border-hairline flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full bg-obsidian text-white text-xs font-bold flex items-center justify-center shrink-0">01</span>
+                <span data-i18n="sol.s1Map" class="text-[11px] font-bold uppercase tracking-wider text-neutral-400">Giải quyết Điểm đau 01</span>
+              </div>
+              <h3 data-i18n="sol.s1Title" class="text-xl sm:text-2xl font-semibold tracking-tight text-obsidian">Hệ thống Design System độc bản</h3>
+              <p data-i18n="sol.s1Desc" class="mt-3 text-[15px] leading-relaxed text-neutral-600">
+                Thiết kế mới 100% theo bản sắc thương hiệu, nói không với template đại trà. Bàn giao đầy đủ thư viện UI Component và chuẩn nhận diện số đồng nhất trên mọi trang.
+              </p>
+            </div>
+            <div class="mt-6 flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full bg-white border border-hairline text-xs font-medium text-obsidian">Bespoke UI/UX</span>
+              <span class="px-3 py-1 rounded-full bg-white border border-hairline text-xs font-medium text-obsidian">Figma Design System</span>
+            </div>
+          </div>
+
+          <!-- Solution 02 -->
+          <div class="reveal reveal-delay-1 rounded-3xl bg-canvas p-6 sm:p-9 border border-hairline flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full bg-obsidian text-white text-xs font-bold flex items-center justify-center shrink-0">02</span>
+                <span data-i18n="sol.s2Map" class="text-[11px] font-bold uppercase tracking-wider text-neutral-400">Giải quyết Điểm đau 02</span>
+              </div>
+              <h3 data-i18n="sol.s2Title" class="text-xl sm:text-2xl font-semibold tracking-tight text-obsidian">Kỹ thuật Mobile-First &amp; Tốc độ dưới 1 giây</h3>
+              <p data-i18n="sol.s2Desc" class="mt-3 text-[15px] leading-relaxed text-neutral-600">
+                Tối ưu từng điểm chạm vùng ngón cái (Thumb-Zone), typography linh hoạt `clamp()`, nén ảnh thế hệ mới và Edge CDN giúp đạt điểm Core Web Vitals 95+ ngay trên mạng 4G.
+              </p>
+            </div>
+            <div class="mt-6 flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full bg-white border border-hairline text-xs font-medium text-obsidian">Core Web Vitals 95+</span>
+              <span class="px-3 py-1 rounded-full bg-white border border-hairline text-xs font-medium text-obsidian">Zero Overflow Mobile</span>
+            </div>
+          </div>
+
+          <!-- Solution 03 -->
+          <div class="reveal rounded-3xl bg-canvas p-6 sm:p-9 border border-hairline flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full bg-obsidian text-white text-xs font-bold flex items-center justify-center shrink-0">03</span>
+                <span data-i18n="sol.s3Map" class="text-[11px] font-bold uppercase tracking-wider text-neutral-400">Giải quyết Điểm đau 03</span>
+              </div>
+              <h3 data-i18n="sol.s3Title" class="text-xl sm:text-2xl font-semibold tracking-tight text-obsidian">Kiến trúc UX hướng chuyển đổi (CRO)</h3>
+              <p data-i18n="sol.s3Desc" class="mt-3 text-[15px] leading-relaxed text-neutral-600">
+                Thiết kế phễu nội dung thuyết phục, rút gọn quy trình đặt hàng hoặc đăng ký tư vấn xuống tối đa 3 thao tác, kết nối GA4/Heatmap để đo lường và tối ưu liên tục.
+              </p>
+            </div>
+            <div class="mt-6 flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full bg-white border border-hairline text-xs font-medium text-obsidian">Conversion Funnel</span>
+              <span class="px-3 py-1 rounded-full bg-white border border-hairline text-xs font-medium text-obsidian">A/B Testing Ready</span>
+            </div>
+          </div>
+
+          <!-- Solution 04 -->
+          <div class="reveal reveal-delay-1 rounded-3xl bg-canvas p-6 sm:p-9 border border-hairline flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-3 mb-5">
+                <span class="w-9 h-9 rounded-full bg-obsidian text-white text-xs font-bold flex items-center justify-center shrink-0">04</span>
+                <span data-i18n="sol.s4Map" class="text-[11px] font-bold uppercase tracking-wider text-neutral-400">Giải quyết Điểm đau 04</span>
+              </div>
+              <h3 data-i18n="sol.s4Title" class="text-xl sm:text-2xl font-semibold tracking-tight text-obsidian">Quản trị Headless CMS, Chuẩn SEO &amp; Mở rộng API</h3>
+              <p data-i18n="sol.s4Desc" class="mt-3 text-[15px] leading-relaxed text-neutral-600">
+                Đội Marketing tự tạo trang chiến dịch trong vài phút không cần viết code; cấu trúc Schema SEO chuẩn Google và tích hợp liền mạch với HubSpot, Salesforce, SAP ERP, POS.
+              </p>
+            </div>
+            <div class="mt-6 flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-full bg-white border border-hairline text-xs font-medium text-obsidian">Headless CMS</span>
+              <span class="px-3 py-1 rounded-full bg-white border border-hairline text-xs font-medium text-obsidian">CRM / ERP / SEO</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 4-Step Implementation Roadmap: Desktop Horizontal Grid / Mobile Sleek Vertical Timeline -->
+        <div class="mt-16 sm:mt-24 reveal">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-10">
+            <h3 data-i18n="workflow.title" class="text-xl sm:text-2xl font-semibold tracking-tight text-obsidian">Lộ trình triển khai 4 bước chuẩn mực</h3>
+            <span data-i18n="workflow.duration" class="text-xs font-semibold uppercase tracking-wider px-3.5 py-1.5 rounded-full bg-canvas border border-hairline text-neutral-600 w-fit">Thời gian trung bình: 4 – 8 tuần</span>
+          </div>
+
+          <div class="relative">
+            <!-- Mobile vertical timeline rail (hidden on lg+) -->
+            <div class="lg:hidden absolute left-[19px] top-6 bottom-6 w-px bg-hairline" aria-hidden="true"></div>
+            <!-- Desktop horizontal timeline rail (visible on lg+) -->
+            <div class="hidden lg:block absolute top-[20px] left-6 right-6 h-px bg-hairline" aria-hidden="true"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-6">
+
+              <!-- Step 1 -->
+              <div class="relative pl-14 lg:pl-0">
+                <div class="absolute left-0 top-0 lg:static w-10 h-10 rounded-full bg-obsidian text-white text-xs font-bold flex items-center justify-center z-10 ring-4 ring-white lg:mb-5">01</div>
+                <div class="rounded-2xl bg-canvas p-5 sm:p-6 border border-hairline/90 h-full">
+                  <h4 data-i18n="workflow.s1Title" class="text-base font-semibold text-obsidian">Khám phá &amp; Chiến lược</h4>
+                  <p data-i18n="workflow.s1Desc" class="mt-2 text-sm leading-relaxed text-neutral-600">Kiểm toán website hiện tại, phân tích hành vi khách hàng, định hình cấu trúc sitemap và chỉ số KPI mục tiêu.</p>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="relative pl-14 lg:pl-0">
+                <div class="absolute left-0 top-0 lg:static w-10 h-10 rounded-full bg-obsidian text-white text-xs font-bold flex items-center justify-center z-10 ring-4 ring-white lg:mb-5">02</div>
+                <div class="rounded-2xl bg-canvas p-5 sm:p-6 border border-hairline/90 h-full">
+                  <h4 data-i18n="workflow.s2Title" class="text-base font-semibold text-obsidian">Thiết kế UX/UI &amp; Prototype</h4>
+                  <p data-i18n="workflow.s2Desc" class="mt-2 text-sm leading-relaxed text-neutral-600">Hoàn thiện wireframe, giao diện mẫu tương tác trên mobile &amp; desktop cùng hệ thống Design System.</p>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="relative pl-14 lg:pl-0">
+                <div class="absolute left-0 top-0 lg:static w-10 h-10 rounded-full bg-obsidian text-white text-xs font-bold flex items-center justify-center z-10 ring-4 ring-white lg:mb-5">03</div>
+                <div class="rounded-2xl bg-canvas p-5 sm:p-6 border border-hairline/90 h-full">
+                  <h4 data-i18n="workflow.s3Title" class="text-base font-semibold text-obsidian">Lập trình chuẩn hiệu năng</h4>
+                  <p data-i18n="workflow.s3Desc" class="mt-2 text-sm leading-relaxed text-neutral-600">Phát triển mã nguồn sạch, tối ưu tốc độ tải dưới 1 giây, cấu trúc SEO kỹ thuật và tích hợp CMS/CRM.</p>
+                </div>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="relative pl-14 lg:pl-0">
+                <div class="absolute left-0 top-0 lg:static w-10 h-10 rounded-full bg-obsidian text-white text-xs font-bold flex items-center justify-center z-10 ring-4 ring-white lg:mb-5">04</div>
+                <div class="rounded-2xl bg-canvas p-5 sm:p-6 border border-hairline/90 h-full">
+                  <h4 data-i18n="workflow.s4Title" class="text-base font-semibold text-obsidian">Tối ưu, Bàn giao &amp; Đồng hành</h4>
+                  <p data-i18n="workflow.s4Desc" class="mt-2 text-sm leading-relaxed text-neutral-600">Kiểm thử đa thiết bị, đào tạo quản trị vận hành và đồng hành tối ưu chuyển đổi theo dữ liệu thực tế.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 4: CASE STUDIES (2x2 Desktop, 1-Column Mobile + Responsive Modal)
+         ========================================================================= -->
+    <section id="case-studies" class="bg-canvas py-20 sm:py-28 lg:py-32 border-t border-hairline scroll-mt-20">
+      <div class="max-w-[1320px] mx-auto px-4 sm:px-7 lg:px-12">
+
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-5 mb-12 sm:mb-16 reveal">
+          <div class="max-w-2xl">
+            <p data-i18n="cases.eyebrow" class="text-xs font-semibold uppercase tracking-[0.16em] text-neutral-400 mb-3.5">04 / DỰ ÁN TIÊU BIỂU (CASE STUDIES)</p>
+            <h2 data-i18n="cases.heading" class="fluid-section-h2 font-semibold text-obsidian">
+              Kết quả tăng trưởng thực tế từ các dự án tiêu biểu
+            </h2>
+          </div>
+          <p data-i18n="cases.subheading" class="text-sm sm:text-[15px] text-neutral-600 max-w-md leading-relaxed">
+            Chạm vào từng dự án để xem chi tiết khách hàng, thách thức, giải pháp triển khai và chỉ số KPI đạt được.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
+
+          <!-- CASE 1: F&B Chain Digital Ordering -->
+          <article class="case-card reveal group cursor-pointer rounded-3xl bg-white border border-hairline overflow-hidden hover:shadow-[0_24px_56px_-20px_rgba(17,17,17,0.12)] transition-all duration-500" data-case-id="fnb" tabindex="0" role="button">
+            <div class="h-56 sm:h-72 bg-gradient-to-br from-[#F3EAE0] via-[#EFE5D8] to-[#E5D5C3] p-5 sm:p-8 flex items-center justify-center overflow-hidden relative">
+              <div class="case-visual-inner w-full max-w-[380px] rounded-2xl bg-white shadow-[0_20px_45px_-12px_rgba(69,26,3,0.18)] border border-amber-950/5 p-4 sm:p-5">
+                <div class="flex items-center justify-between pb-3 border-b border-neutral-100">
+                  <div class="flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-full bg-[#B22830] text-white text-[10px] font-extrabold flex items-center justify-center">A</span>
+                    <span class="text-xs font-bold text-neutral-900">Artisan Tea &amp; Coffee</span>
+                  </div>
+                  <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold">Express 15m</span>
+                </div>
+                <div class="grid grid-cols-3 gap-2.5 mt-3.5">
+                  <div class="col-span-2 rounded-xl bg-[#FAF6F1] p-3">
+                    <p class="text-[9px] uppercase tracking-wider text-amber-800 font-semibold">Best Seller</p>
+                    <p class="text-xs font-bold text-neutral-900 mt-0.5">Combo Phin &amp; Ô Long</p>
+                    <div class="mt-2 flex items-center justify-between">
+                      <span class="text-xs font-extrabold text-[#B22830]">69.000₫</span>
+                      <span class="w-5 h-5 rounded-full bg-obsidian text-white text-xs flex items-center justify-center">+</span>
+                    </div>
+                  </div>
+                  <div class="rounded-xl bg-[#B22830] text-white p-3 flex flex-col justify-between">
+                    <span class="text-[9px] opacity-80">Loyalty</span>
+                    <span class="text-sm font-extrabold">1.250</span>
+                    <span class="text-[9px] underline">Đổi quà</span>
+                  </div>
+                </div>
+              </div>
+              <div class="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-obsidian text-white text-[11px] font-bold shadow-md">
+                +68% <span data-i18n="cases.c1Badge" class="font-normal opacity-80">Mobile UX</span>
+              </div>
+            </div>
+
+            <div class="p-6 sm:p-8 lg:p-9">
+              <div class="flex items-center justify-between gap-3 mb-2.5">
+                <span data-i18n="cases.c1Industry" class="text-xs font-semibold uppercase tracking-wider text-neutral-400">F&amp;B • Chuỗi trà &amp; cà phê</span>
+                <span data-i18n="cases.viewDetail" class="text-xs font-semibold text-obsidian group-hover:translate-x-1 transition-transform">Xem chi tiết →</span>
+              </div>
+              <h3 data-i18n="cases.c1Title" class="text-xl sm:text-2xl font-semibold tracking-tight text-obsidian">
+                Artisan Tea &amp; Coffee — Nền tảng đặt món &amp; Loyalty đa kênh
+              </h3>
+              <p data-i18n="cases.c1Summary" class="mt-2.5 text-sm sm:text-[15px] leading-relaxed text-neutral-600">
+                Tái thiết kế trải nghiệm đặt nước Mobile-First kết nối 500+ cửa hàng, tự động định vị chi nhánh và rút gọn thanh toán chỉ còn 2 chạm.
+              </p>
+              <div class="mt-5 pt-5 border-t border-hairline flex items-baseline gap-3">
+                <span class="text-2xl sm:text-3xl font-bold tracking-tight text-obsidian">+68%</span>
+                <span data-i18n="cases.c1Metric" class="text-xs sm:text-sm text-neutral-500">tỷ lệ chuyển đổi đơn hàng trên thiết bị di động</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- CASE 2: Luxury Real Estate Showcase -->
+          <article class="case-card reveal reveal-delay-1 group cursor-pointer rounded-3xl bg-white border border-hairline overflow-hidden hover:shadow-[0_24px_56px_-20px_rgba(17,17,17,0.12)] transition-all duration-500" data-case-id="realestate" tabindex="0" role="button">
+            <div class="h-56 sm:h-72 bg-gradient-to-br from-[#141E30] via-[#1C2A42] to-[#0F172A] p-5 sm:p-8 flex items-center justify-center overflow-hidden relative">
+              <div class="case-visual-inner w-full max-w-[380px] rounded-2xl bg-[#0D1424]/95 text-white shadow-2xl border border-white/10 p-4 sm:p-5">
+                <div class="flex items-center justify-between pb-3 border-b border-white/10">
+                  <span class="text-[10px] font-bold tracking-[0.2em] text-amber-200">RIVERSIDE RESIDENCES</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded-full bg-white/10 text-slate-200">3D Masterplan</span>
+                </div>
+                <div class="mt-3.5 grid grid-cols-5 gap-3 items-center">
+                  <div class="col-span-3">
+                    <p class="text-[10px] text-slate-400 uppercase tracking-wider">Thủ Thiêm, TP.HCM</p>
+                    <p class="text-xs sm:text-sm font-semibold mt-0.5 leading-snug">Khám phá căn hộ 360° &amp; đặt lịch tham quan</p>
+                    <span class="mt-2.5 inline-flex items-center gap-1 text-[10px] font-semibold text-amber-200">Xem mặt bằng →</span>
+                  </div>
+                  <div class="col-span-2 h-20 rounded-xl bg-gradient-to-t from-amber-300/20 via-sky-400/15 to-transparent border border-white/10 p-2 flex items-end justify-center gap-1">
+                    <div class="w-3 h-8 bg-white/30 rounded-t-sm"></div>
+                    <div class="w-4 h-14 bg-amber-200/80 rounded-t-sm"></div>
+                    <div class="w-3 h-10 bg-white/40 rounded-t-sm"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-white text-obsidian text-[11px] font-bold shadow-md">
+                +74% <span data-i18n="cases.c2Badge" class="font-normal text-neutral-500">Lead MQL</span>
+              </div>
+            </div>
+
+            <div class="p-6 sm:p-8 lg:p-9">
+              <div class="flex items-center justify-between gap-3 mb-2.5">
+                <span data-i18n="cases.c2Industry" class="text-xs font-semibold uppercase tracking-wider text-neutral-400">Bất động sản hạng sang</span>
+                <span data-i18n="cases.viewDetail" class="text-xs font-semibold text-obsidian group-hover:translate-x-1 transition-transform">Xem chi tiết →</span>
+              </div>
+              <h3 data-i18n="cases.c2Title" class="text-xl sm:text-2xl font-semibold tracking-tight text-obsidian">
+                Riverside Residences — Cổng trải nghiệm dự án &amp; Tư vấn CRM
+              </h3>
+              <p data-i18n="cases.c2Summary" class="mt-2.5 text-sm sm:text-[15px] leading-relaxed text-neutral-600">
+                Xây dựng không gian trưng bày bất động sản chuẩn thẩm mỹ tối giản với bản đồ phân khu tương tác, công cụ ước tính tài chính và đồng bộ Salesforce CRM.
+              </p>
+              <div class="mt-5 pt-5 border-t border-hairline flex items-baseline gap-3">
+                <span class="text-2xl sm:text-3xl font-bold tracking-tight text-obsidian">+74%</span>
+                <span data-i18n="cases.c2Metric" class="text-xs sm:text-sm text-neutral-500">khách hàng tiềm năng chất lượng gửi lịch hẹn tham quan</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- CASE 3: High-Conversion E-Commerce Platform -->
+          <article class="case-card reveal group cursor-pointer rounded-3xl bg-white border border-hairline overflow-hidden hover:shadow-[0_24px_56px_-20px_rgba(17,17,17,0.12)] transition-all duration-500" data-case-id="ecommerce" tabindex="0" role="button">
+            <div class="h-56 sm:h-72 bg-gradient-to-br from-[#EBF2FF] via-[#DCE8FF] to-[#D2E0FF] p-5 sm:p-8 flex items-center justify-center overflow-hidden relative">
+              <div class="case-visual-inner w-full max-w-[380px] rounded-2xl bg-white shadow-[0_20px_45px_-12px_rgba(37,99,235,0.16)] border border-blue-100 p-4 sm:p-5">
+                <div class="flex items-center justify-between pb-3 border-b border-neutral-100">
+                  <span class="text-xs font-extrabold text-blue-600">NOVA COMMERCE 2.0</span>
+                  <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 font-semibold">1-Tap Pay</span>
+                </div>
+                <div class="mt-3 space-y-2.5">
+                  <div class="flex items-center justify-between rounded-xl bg-canvas p-2.5">
+                    <div class="flex items-center gap-2.5">
+                      <div class="w-8 h-8 rounded-lg bg-blue-600/10 flex items-center justify-center text-blue-700 text-xs font-bold shrink-0">2H</div>
+                      <div>
+                        <p class="text-xs font-semibold text-neutral-900">Giao nhanh nội thành 2H</p>
+                        <p class="text-[10px] text-neutral-500">Tự động tối ưu mã Freeship</p>
+                      </div>
+                    </div>
+                    <span class="text-xs font-bold text-emerald-600 shrink-0">0₫</span>
+                  </div>
+                  <div class="flex items-center justify-between pt-0.5">
+                    <span class="text-[11px] text-neutral-500">Hoàn tất đơn hàng</span>
+                    <span class="px-3.5 py-1.5 rounded-full bg-blue-600 text-white text-[11px] font-semibold">Thanh toán ngay</span>
+                  </div>
+                </div>
+              </div>
+              <div class="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-obsidian text-white text-[11px] font-bold shadow-md">
+                -38% <span data-i18n="cases.c3Badge" class="font-normal opacity-80">Bỏ giỏ hàng</span>
+              </div>
+            </div>
+
+            <div class="p-6 sm:p-8 lg:p-9">
+              <div class="flex items-center justify-between gap-3 mb-2.5">
+                <span data-i18n="cases.c3Industry" class="text-xs font-semibold uppercase tracking-wider text-neutral-400">Thương mại điện tử</span>
+                <span data-i18n="cases.viewDetail" class="text-xs font-semibold text-obsidian group-hover:translate-x-1 transition-transform">Xem chi tiết →</span>
+              </div>
+              <h3 data-i18n="cases.c3Title" class="text-xl sm:text-2xl font-semibold tracking-tight text-obsidian">
+                Nền tảng E-Commerce — Tối ưu giỏ hàng &amp; Thanh toán một chạm
+              </h3>
+              <p data-i18n="cases.c3Summary" class="mt-2.5 text-sm sm:text-[15px] leading-relaxed text-neutral-600">
+                Thiết kế lại phễu mua sắm thông minh tự động áp mã giảm giá tốt nhất, tìm kiếm AI theo ngữ nghĩa và thanh toán mượt mà qua VNPay/MoMo trên mobile.
+              </p>
+              <div class="mt-5 pt-5 border-t border-hairline flex items-baseline gap-3">
+                <span class="text-2xl sm:text-3xl font-bold tracking-tight text-obsidian">-38%</span>
+                <span data-i18n="cases.c3Metric" class="text-xs sm:text-sm text-neutral-500">tỷ lệ bỏ giỏ hàng và tăng 24% giá trị đơn trung bình (AOV)</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- CASE 4: Electronics Omnichannel Retail Portal -->
+          <article class="case-card reveal reveal-delay-1 group cursor-pointer rounded-3xl bg-white border border-hairline overflow-hidden hover:shadow-[0_24px_56px_-20px_rgba(17,17,17,0.12)] transition-all duration-500" data-case-id="electronics" tabindex="0" role="button">
+            <div class="h-56 sm:h-72 bg-gradient-to-br from-[#F1F2F6] via-[#E5E7EB] to-[#D8DCE3] p-5 sm:p-8 flex items-center justify-center overflow-hidden relative">
+              <div class="case-visual-inner w-full max-w-[380px] rounded-2xl bg-white shadow-[0_20px_45px_-12px_rgba(17,17,17,0.14)] border border-neutral-200/80 p-4 sm:p-5">
+                <div class="flex items-center justify-between pb-3 border-b border-neutral-100">
+                  <span class="text-xs font-extrabold text-obsidian">OMNI RETAIL PORTAL</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold">99/100 Speed</span>
+                </div>
+                <div class="mt-3.5 grid grid-cols-3 gap-2">
+                  <div class="rounded-xl bg-canvas p-2.5 text-center">
+                    <p class="text-[9px] text-neutral-400 uppercase">LCP</p>
+                    <p class="text-base font-extrabold text-obsidian mt-0.5">0.9s</p>
+                  </div>
+                  <div class="rounded-xl bg-canvas p-2.5 text-center">
+                    <p class="text-[9px] text-neutral-400 uppercase">SKU</p>
+                    <p class="text-base font-extrabold text-obsidian mt-0.5">30K+</p>
+                  </div>
+                  <div class="rounded-xl bg-obsidian text-white p-2.5 text-center">
+                    <p class="text-[9px] text-neutral-300 uppercase">Uptime</p>
+                    <p class="text-base font-extrabold mt-0.5">99.99%</p>
+                  </div>
+                </div>
+                <div class="mt-3 flex items-center justify-between text-[10px] text-neutral-500">
+                  <span>Tra cứu tồn kho 640+ siêu thị</span>
+                  <span class="font-bold text-obsidian">Real-time</span>
+                </div>
+              </div>
+              <div class="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-obsidian text-white text-[11px] font-bold shadow-md">
+                &lt;1.0s <span data-i18n="cases.c4Badge" class="font-normal opacity-80">LCP Speed</span>
+              </div>
+            </div>
+
+            <div class="p-6 sm:p-8 lg:p-9">
+              <div class="flex items-center justify-between gap-3 mb-2.5">
+                <span data-i18n="cases.c4Industry" class="text-xs font-semibold uppercase tracking-wider text-neutral-400">Điện máy &amp; Bán lẻ công nghệ</span>
+                <span data-i18n="cases.viewDetail" class="text-xs font-semibold text-obsidian group-hover:translate-x-1 transition-transform">Xem chi tiết →</span>
+              </div>
+              <h3 data-i18n="cases.c4Title" class="text-xl sm:text-2xl font-semibold tracking-tight text-obsidian">
+                Cổng bán lẻ Điện máy Omnichannel — Headless Commerce siêu tốc
+              </h3>
+              <p data-i18n="cases.c4Summary" class="mt-2.5 text-sm sm:text-[15px] leading-relaxed text-neutral-600">
+                Kiến trúc lại hệ thống hơn 30.000 mã sản phẩm với bộ lọc so sánh thông số tức thì, kiểm tra tồn kho cửa hàng gần nhất và chịu tải cao điểm mùa mở bán.
+              </p>
+              <div class="mt-5 pt-5 border-t border-hairline flex items-baseline gap-3">
+                <span class="text-2xl sm:text-3xl font-bold tracking-tight text-obsidian">0.9s</span>
+                <span data-i18n="cases.c4Metric" class="text-xs sm:text-sm text-neutral-500">thời gian tải LCP trung bình trên mạng 4G di động</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 5: CALL TO ACTION FORM (anchor #contact)
+         Interactive Service Pills + Budget Pills + >=16px Inputs + Validation
+         ========================================================================= -->
+    <section id="contact" class="bg-white py-20 sm:py-28 lg:py-32 border-t border-hairline scroll-mt-20">
+      <div class="max-w-[1320px] mx-auto px-4 sm:px-7 lg:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+
+          <!-- Left Column -->
+          <div class="lg:col-span-5 reveal">
+            <p data-i18n="contact.eyebrow" class="text-xs font-semibold uppercase tracking-[0.16em] text-neutral-400 mb-3.5">05 / BẮT ĐẦU DỰ ÁN</p>
+            <h2 class="fluid-section-h2 font-semibold text-obsidian">
+              <span data-i18n="contact.heading1">Sẵn sàng nâng tầm</span>
+              <span class="block mt-1"><span data-i18n="contact.heading2" class="clay-highlight">website của bạn?</span></span>
+            </h2>
+            <p data-i18n="contact.desc" class="mt-5 text-[15px] sm:text-base leading-relaxed text-neutral-600">
+              Chia sẻ bài toán kinh doanh và kỳ vọng của bạn. Đội ngũ Giám đốc Thiết kế và Kỹ sư Giải pháp tại MK sẽ phản hồi đề xuất lộ trình chi tiết trong vòng 24 giờ làm việc.
+            </p>
+
+            <div class="mt-8 space-y-3.5 pt-7 border-t border-hairline">
+              <div class="flex items-start gap-3">
+                <span class="mt-0.5 w-5 h-5 rounded-full bg-canvas border border-hairline text-obsidian flex items-center justify-center text-[11px] font-bold shrink-0">✓</span>
+                <p data-i18n="contact.trust1" class="text-sm text-neutral-600">Kiểm toán UX/UI &amp; hiệu năng di động cho website hiện tại hoàn toàn miễn phí.</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="mt-0.5 w-5 h-5 rounded-full bg-canvas border border-hairline text-obsidian flex items-center justify-center text-[11px] font-bold shrink-0">✓</span>
+                <p data-i18n="contact.trust2" class="text-sm text-neutral-600">Cam kết bảo mật NDA tuyệt đối cho mọi dữ liệu và chiến lược sản phẩm.</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="mt-0.5 w-5 h-5 rounded-full bg-canvas border border-hairline text-obsidian flex items-center justify-center text-[11px] font-bold shrink-0">✓</span>
+                <p data-i18n="contact.trust3" class="text-sm text-neutral-600">Báo giá minh bạch theo từng giai đoạn bàn giao rõ ràng.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Minimalist Touch-Friendly Form -->
+          <div class="lg:col-span-7 reveal reveal-delay-1">
+            <div class="rounded-3xl bg-canvas border border-hairline p-6 sm:p-9 lg:p-12">
+
+              <form id="inquiryForm" novalidate>
+                <!-- 1. Multi-select Service Pills -->
+                <div class="mb-8">
+                  <label data-i18n="form.servicesLabel" class="block text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-3">
+                    Dịch vụ bạn quan tâm
+                  </label>
+                  <div class="flex flex-wrap gap-2.5" id="servicePills">
+                    <button type="button" class="service-pill toggle-pill selected" data-i18n="form.pillWeb">Thiết kế Website</button>
+                    <button type="button" class="service-pill toggle-pill" data-i18n="form.pillUx">UX/UI Product</button>
+                    <button type="button" class="service-pill toggle-pill" data-i18n="form.pillBrand">Rebranding</button>
+                    <button type="button" class="service-pill toggle-pill" data-i18n="form.pillEcom">E-Commerce</button>
+                    <button type="button" class="service-pill toggle-pill" data-i18n="form.pillSeo">Tối ưu tốc độ/SEO</button>
+                  </div>
+                </div>
+
+                <!-- 2. Single-select Budget Range Pills -->
+                <div class="mb-9">
+                  <label data-i18n="form.budgetLabel" class="block text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-3">
+                    Ngân sách dự kiến
+                  </label>
+                  <div class="flex flex-wrap gap-2.5" id="budgetPills">
+                    <button type="button" class="budget-pill toggle-pill" data-i18n="form.b1">&lt; 100 triệu</button>
+                    <button type="button" class="budget-pill toggle-pill selected" data-i18n="form.b2">100 – 300 triệu</button>
+                    <button type="button" class="budget-pill toggle-pill" data-i18n="form.b3">300 – 500 triệu</button>
+                    <button type="button" class="budget-pill toggle-pill" data-i18n="form.b4">&gt; 500 triệu</button>
+                  </div>
+                </div>
+
+                <!-- 3. Bottom-Bordered Inputs (font-size: 16px prevents iOS zoom) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+                  <div>
+                    <label for="fullName" data-i18n="form.nameLabel" class="block text-xs font-medium text-neutral-500">Họ tên *</label>
+                    <input type="text" id="fullName" name="fullName" autocomplete="name" required data-i18n-placeholder="form.namePh" placeholder="Nguyễn Minh Khang" class="minimal-input" />
+                    <p id="errName" class="hidden text-xs text-red-600 mt-1.5" data-i18n="form.errName">Vui lòng nhập họ và tên của bạn.</p>
+                  </div>
+
+                  <div>
+                    <label for="businessEmail" data-i18n="form.emailLabel" class="block text-xs font-medium text-neutral-500">Email *</label>
+                    <input type="email" id="businessEmail" name="businessEmail" autocomplete="email" required data-i18n-placeholder="form.emailPh" placeholder="khang@company.vn" class="minimal-input" />
+                    <p id="errEmail" class="hidden text-xs text-red-600 mt-1.5" data-i18n="form.errEmail">Vui lòng nhập địa chỉ email hợp lệ.</p>
+                  </div>
+
+                  <div class="sm:col-span-2">
+                    <label for="phone" data-i18n="form.phoneLabel" class="block text-xs font-medium text-neutral-500">Số điện thoại</label>
+                    <input type="tel" id="phone" name="phone" autocomplete="tel" data-i18n-placeholder="form.phonePh" placeholder="+84 90 123 4567" class="minimal-input" />
+                  </div>
+
+                  <div class="sm:col-span-2">
+                    <label for="brief" data-i18n="form.briefLabel" class="block text-xs font-medium text-neutral-500">Mô tả dự án</label>
+                    <textarea id="brief" name="brief" rows="3" data-i18n-placeholder="form.briefPh" placeholder="Chia sẻ mục tiêu website, ngành hàng hoặc thời gian dự kiến triển khai..." class="minimal-input resize-none"></textarea>
+                  </div>
+                </div>
+
+                <!-- Submit Row -->
+                <div class="mt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <p data-i18n="form.privacyNote" class="text-xs text-neutral-500 leading-relaxed">
+                    Thông tin được bảo mật tuyệt đối theo cam kết NDA của MK Digital.
+                  </p>
+                  <button type="submit" class="touch-pill w-full sm:w-auto px-8 py-3.5 rounded-full bg-obsidian text-white text-sm font-semibold hover:bg-neutral-800 transition-all duration-300 gap-2.5 group cursor-pointer shrink-0">
+                    <span data-i18n="form.submit">Gửi yêu cầu tư vấn</span>
+                    <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  </button>
+                </div>
+              </form>
+
+              <!-- Instant Animated Confirmation State (No alert()) -->
+              <div id="formConfirmation" class="hidden py-4 text-left">
+                <div class="w-12 h-12 rounded-full bg-obsidian text-white flex items-center justify-center mb-5">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 data-i18n="form.successTitle" class="text-2xl font-semibold tracking-tight text-obsidian">
+                  Cảm ơn bạn đã kết nối với MK Digital!
+                </h3>
+                <p id="confirmationSummary" class="mt-3 text-[15px] leading-relaxed text-neutral-600"></p>
+                <div class="mt-7 pt-6 border-t border-hairline flex flex-wrap items-center gap-4">
+                  <button type="button" id="resetFormBtn" data-i18n="form.sendAnother" class="touch-pill px-5 rounded-full border border-obsidian text-xs font-semibold text-obsidian hover:bg-obsidian hover:text-white transition-colors cursor-pointer">
+                    Gửi yêu cầu khác
+                  </button>
+                  <span data-i18n="form.slaBadge" class="text-xs text-neutral-500">Phản hồi cam kết trong 24 giờ làm việc</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       SECTION 6: CONTACT & FOOTER (STRICT CLAY.GLOBAL FORMAT)
+       #F2F3F5 Diagonal Stripes | Left Let's Talk | Right 2-Col Nav + Offices
+       ========================================================================= -->
+  <footer class="clay-footer-bg border-t border-hairline pt-16 pb-10 sm:pt-24 sm:pb-14">
+    <div class="max-w-[1320px] mx-auto px-4 sm:px-7 lg:px-12">
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 pb-16 sm:pb-24">
+
+        <!-- Top Left: Huge Bold "Let's Talk", Underlined Email, Phone -->
+        <div class="lg:col-span-5 flex flex-col justify-between">
+          <div>
+            <h2 class="fluid-footer-title font-semibold text-obsidian">
+              Let’s Talk
+            </h2>
+
+            <div class="mt-6 space-y-2.5">
+              <div>
+                <a href="mailto:hello@mkdigital.vn" class="text-xl sm:text-[1.45rem] font-normal text-obsidian footer-underline">
+                  hello@mkdigital.vn
+                </a>
+              </div>
+              <div>
+                <a href="tel:+842838996262" class="text-base sm:text-[1.05rem] font-normal text-neutral-700 hover:text-obsidian transition-colors inline-block py-1">
+                  +84 28 3899 6262
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Accessible Copy Email Button -->
+          <div class="mt-6">
+            <button type="button" id="copyEmailBtn" class="touch-pill px-0 text-xs font-medium text-neutral-500 hover:text-obsidian transition-colors cursor-pointer bg-transparent gap-2">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span id="copyEmailLabel" data-i18n="footer.copyEmail">Sao chép địa chỉ email</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: 2-Col Underlined Nav Links + Office Grid (3 cols desktop, 2 cols tablet/mobile) -->
+        <div class="lg:col-span-7 flex flex-col justify-between gap-12 sm:gap-16">
+
+          <!-- 2 Columns Underlined Navigation -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
+            <ul class="space-y-3">
+              <li><a href="#case-studies" data-i18n="footer.work" class="text-[16px] sm:text-[17px] text-obsidian footer-underline py-1">Sản phẩm</a></li>
+              <li><a href="#solutions" data-i18n="footer.services" class="text-[16px] sm:text-[17px] text-obsidian footer-underline py-1">Dịch vụ</a></li>
+              <li><a href="#intro" data-i18n="footer.about" class="text-[16px] sm:text-[17px] text-obsidian footer-underline py-1">Về chúng tôi</a></li>
+              <li><a href="#contact" data-i18n="footer.contact" class="text-[16px] sm:text-[17px] text-obsidian footer-underline py-1">Liên hệ</a></li>
+            </ul>
+
+            <ul class="space-y-3">
+              <li><a href="#clients" data-i18n="footer.clients" class="text-[16px] sm:text-[17px] text-obsidian footer-underline py-1">Khách hàng</a></li>
+              <li><a href="#pain-points" data-i18n="footer.industries" class="text-[16px] sm:text-[17px] text-obsidian footer-underline py-1">Ngành hàng</a></li>
+              <li><button type="button" id="openBlogFooterBtn" data-i18n="footer.blog" class="text-[16px] sm:text-[17px] text-obsidian footer-underline bg-transparent border-0 py-1 px-0 cursor-pointer">Blog</button></li>
+            </ul>
+          </div>
+
+          <!-- Responsive Office Grid: 2 cols mobile/tablet | 3 cols desktop -->
+          <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-7">
+            <div>
+              <h3 data-i18n="footer.cityHcm" class="text-sm font-semibold text-obsidian mb-1.5">TP. Hồ Chí Minh</h3>
+              <a href="#contact" class="text-xs leading-relaxed text-neutral-500 underline decoration-neutral-300 underline-offset-4 hover:text-obsidian hover:decoration-obsidian transition-colors">
+                Tầng 18, Lim Tower 3,<br />29A Nguyễn Đình Chiểu, Q.1
+              </a>
+            </div>
+
+            <div>
+              <h3 data-i18n="footer.cityHn" class="text-sm font-semibold text-obsidian mb-1.5">Hà Nội</h3>
+              <a href="#contact" class="text-xs leading-relaxed text-neutral-500 underline decoration-neutral-300 underline-offset-4 hover:text-obsidian hover:decoration-obsidian transition-colors">
+                Tầng 12, Capital Place,<br />29 Liễu Giai, Ba Đình
+              </a>
+            </div>
+
+            <div>
+              <h3 data-i18n="footer.cityDn" class="text-sm font-semibold text-obsidian mb-1.5">Đà Nẵng</h3>
+              <a href="#contact" class="text-xs leading-relaxed text-neutral-500 underline decoration-neutral-300 underline-offset-4 hover:text-obsidian hover:decoration-obsidian transition-colors">
+                Tầng 6, Indochina Riverside,<br />74 Bạch Đằng, Hải Châu
+              </a>
+            </div>
+
+            <div>
+              <h3 class="text-sm font-semibold text-obsidian mb-1.5">Singapore</h3>
+              <a href="#contact" class="text-xs leading-relaxed text-neutral-500 underline decoration-neutral-300 underline-offset-4 hover:text-obsidian hover:decoration-obsidian transition-colors">
+                8 Marina View, Level 39,<br />Asia Square Tower 1, 018960
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Bottom Bar: Monochrome Social Icons Left | Copyright & Legal Links Right -->
+      <div class="pt-6 border-t border-black/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+
+        <!-- Monochrome Minimalist Social Icons (44px accessible tap area) -->
+        <div class="flex items-center flex-wrap gap-1 -ml-2.5 text-obsidian">
+          <a href="#contact" aria-label="Dribbble" class="touch-target rounded-full hover:bg-black/5 transition-colors">
+            <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"></path>
+            </svg>
+          </a>
+          <a href="#contact" aria-label="Behance" class="touch-target rounded-full hover:bg-black/5 transition-colors">
+            <svg class="w-[21px] h-[18px]" viewBox="0 0 28 20" fill="currentColor">
+              <path d="M10.5 9.2C11.9 8.5 12.6 7.4 12.6 5.8C12.6 3.1 10.6 2 7.5 2H1V17.5H7.8C11.1 17.5 13.4 15.9 13.4 12.8C13.4 10.8 12.3 9.7 10.5 9.2ZM4.2 4.6H7.1C8.6 4.6 9.5 5.1 9.5 6.3C9.5 7.5 8.7 8.1 7.2 8.1H4.2V4.6ZM7.4 14.9H4.2V10.6H7.5C9.2 10.6 10.2 11.3 10.2 12.7C10.2 14.3 9.1 14.9 7.4 14.9ZM24.4 4.1H17.8V6H24.4V4.1ZM21.2 7.1C17.6 7.1 15.3 9.4 15.3 12.4C15.3 15.7 17.5 17.8 21.2 17.8C23.9 17.8 25.8 16.5 26.5 14.2H23.7C23.3 15 22.4 15.4 21.3 15.4C19.5 15.4 18.4 14.5 18.3 13H26.8C27 9.6 24.9 7.1 21.2 7.1ZM18.4 11.1C18.6 9.8 19.6 9.1 21.1 9.1C22.6 9.1 23.5 9.8 23.7 11.1H18.4Z"/>
+            </svg>
+          </a>
+          <a href="#contact" aria-label="Instagram" class="touch-target rounded-full hover:bg-black/5 transition-colors">
+            <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#contact" aria-label="LinkedIn" class="touch-target rounded-full hover:bg-black/5 transition-colors">
+            <svg class="w-[17px] h-[17px]" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-7.8c0-1.86-.03-4.25-2.59-4.25-2.6 0-3 2.03-3 4.12V23h-4V8z"/>
+            </svg>
+          </a>
+          <a href="#contact" aria-label="X" class="touch-target rounded-full hover:bg-black/5 transition-colors">
+            <svg class="w-[16px] h-[16px]" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <a href="#contact" aria-label="Facebook" class="touch-target rounded-full hover:bg-black/5 transition-colors">
+            <svg class="w-[17px] h-[17px]" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Copyright + Underlined Legal Links -->
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-neutral-500">
+          <span>© 2026 MK Digital</span>
+          <a href="#contact" data-i18n="footer.privacy" class="underline decoration-neutral-300 underline-offset-4 hover:text-obsidian hover:decoration-obsidian transition-colors py-1">Privacy</a>
+          <a href="#contact" data-i18n="footer.terms" class="underline decoration-neutral-300 underline-offset-4 hover:text-obsidian hover:decoration-obsidian transition-colors py-1">Terms</a>
+          <a href="#home" data-i18n="footer.sitemap" class="underline decoration-neutral-300 underline-offset-4 hover:text-obsidian hover:decoration-obsidian transition-colors py-1">Sitemap</a>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       RESPONSIVE MODAL (Bottom Sheet on Mobile / Centered Editorial Dialog Desktop)
+       ========================================================================= -->
+  <div id="editorialModal" class="modal-backdrop fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-panel w-full max-w-2xl max-h-[86vh] overflow-y-auto rounded-3xl bg-white p-6 sm:p-10 shadow-2xl border border-hairline relative">
+      <!-- Mobile bottom-sheet drag indicator -->
+      <div class="md:hidden w-10 h-1 rounded-full bg-neutral-300 mx-auto mb-5" aria-hidden="true"></div>
+
+      <!-- 44x44px Close Button -->
+      <button type="button" id="closeModalBtn" class="touch-target absolute top-4 right-4 sm:top-6 sm:right-6 rounded-full bg-canvas hover:bg-obsidian hover:text-white transition-colors cursor-pointer border-0" aria-label="Đóng hộp thoại">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       JAVASCRIPT: Bilingual Engine, Mobile Drawer + Scroll Lock, Marquee Touch,
+       Accordion, Client Filter, Case Study Sheet Modal, Form Validation
+       ========================================================================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* -----------------------------------------------------------------------
+         1. COMPLETE VI / EN BILINGUAL DICTIONARY
+         ----------------------------------------------------------------------- */
+      const i18n = {
+        vi: {
+          'nav.home': 'Trang chủ',
+          'nav.products': 'Sản phẩm',
+          'nav.clients': 'Khách hàng',
+          'nav.services': 'Dịch vụ',
+          'nav.about': 'Về chúng tôi',
+          'nav.blog': 'Blog',
+          'nav.contact': 'Contact',
+          'nav.contactCta': 'Liên hệ tư vấn dự án',
+          'drawer.quickContact': 'Kết nối nhanh',
+
+          'hero.badge': 'Digital Design & Engineering Studio — Việt Nam',
+          'hero.titleLine1': 'MK là agency thiết kế UX/UI',
+          'hero.titleLine2': 'và phát triển website cao cấp',
+          'hero.subcopy': 'Chúng tôi kết hợp tư duy thẩm mỹ tinh giản, nghiên cứu trải nghiệm người dùng và công nghệ web hiệu năng cao giúp thương hiệu Việt dẫn đầu trên không gian số.',
+          'hero.ctaPrimary': 'Bắt đầu dự án',
+          'hero.ctaSecondary': 'Xem dự án tiêu biểu',
+
+          'showcase.label': 'Hệ sinh thái giao diện thiết kế bởi MK',
+          'showcase.pause': 'Tạm dừng chuyển động',
+          'showcase.resume': 'Tiếp tục chuyển động',
+
+          'intro.eyebrow': '01 / VỀ MK DIGITAL',
+          'intro.headline': 'Chúng tôi kiến tạo những trải nghiệm số mang tính chuyển đổi cho các thương hiệu dẫn đầu Việt Nam bằng sự giao thoa giữa chiến lược, thiết kế UX/UI và công nghệ hiện đại.',
+          'intro.body': 'Từ chuỗi F&B nghìn điểm bán, sàn thương mại điện tử tốc độ cao đến các tập đoàn bất động sản và bán lẻ điện máy, MK đồng hành trọn vẹn từ tư vấn chiến lược đến vận hành tăng trưởng bền vững.',
+          'intro.stat1': 'Dự án doanh nghiệp',
+          'intro.stat2': 'Khách hàng hài lòng',
+          'intro.stat3': 'Tốc độ LCP trung bình',
+
+          'svc.t1': 'Thương hiệu số (Branding)',
+          'svc.d1': 'Định vị thương hiệu số, ngôn ngữ thị giác và hệ thống nhận diện nhất quán giúp doanh nghiệp nổi bật khác biệt trên mọi điểm chạm khách hàng.',
+          'svc.t2': 'Sản phẩm số (Digital Products)',
+          'svc.d2': 'Thiết kế Web App, ứng dụng đặt hàng F&B, cổng thành viên và bộ Design System chuẩn hóa giúp đội ngũ sản phẩm mở rộng nhanh chóng.',
+          'svc.t3': 'Thiết kế Website (Websites)',
+          'svc.d3': 'Website doanh nghiệp cao cấp, trang thương mại điện tử và cổng dự án bất động sản tối ưu tuyệt đối cho thiết bị di động và tỷ lệ chuyển đổi.',
+          'svc.t4': 'Lập trình & Hệ thống (Development)',
+          'svc.d4': 'Kiến trúc Front-end hiệu năng cao, Headless CMS, tích hợp API thời gian thực với CRM/ERP/POS và bảo mật tiêu chuẩn doanh nghiệp.',
+          'svc.t5': 'Nội dung & Chuyển động (Content)',
+          'svc.d5': 'UX Writing song ngữ, chuyển động vi tương tác (Micro-interactions), minh họa 3D sản phẩm và hệ thống nội dung chuẩn SEO kỹ thuật.',
+          'svc.t6': 'Ứng dụng AI (Generative AI)',
+          'svc.d6': 'Tích hợp trợ lý tư vấn AI, tìm kiếm ngữ nghĩa thông minh và cá nhân hóa trải nghiệm mua sắm theo thời gian thực ngay trên website.',
+
+          'clients.eyebrow': 'KHÁCH HÀNG TIÊU BIỂU TẠI VIỆT NAM',
+          'clients.sub': 'Đồng hành cùng các thương hiệu dẫn đầu ngành F&B, Thương mại điện tử, Điện máy và Bất động sản.',
+          'clients.filterAll': 'Tất cả (10+)',
+          'clients.filterEcom': 'Thương mại điện tử',
+          'clients.filterElec': 'Điện máy & Bán lẻ',
+          'clients.filterRE': 'Bất động sản',
+          'clients.viewAll': 'Xem tất cả khách hàng',
+          'clients.hideFilter': 'Thu gọn bộ lọc ngành',
+
+          'pain.eyebrow': '02 / ĐIỂM ĐAU KHI TRIỂN KHAI WEBSITE',
+          'pain.heading': '4 điểm nghẽn khiến website doanh nghiệp chưa tạo ra tăng trưởng',
+          'pain.subheading': 'Khi tìm đến MK, phần lớn doanh nghiệp đều gặp phải những rào cản quen thuộc làm thất thoát ngân sách marketing và giảm uy tín thương hiệu mỗi ngày.',
+          'pain.impactLabel': 'Hệ quả trực tiếp',
+          'pain.tag1': 'Thiếu bản sắc',
+          'pain.p1Title': 'Giao diện đại trà, thiếu bản sắc thương hiệu',
+          'pain.p1Desc': 'Sử dụng giao diện mẫu rập khuôn khiến website giống hệt đối thủ, không thể hiện được đẳng cấp sản phẩm hay câu chuyện thương hiệu, làm giảm niềm tin ngay từ 3 giây đầu tiên.',
+          'pain.p1Impact': '-38% mức độ ghi nhớ thương hiệu',
+          'pain.tag2': 'Di động & Tốc độ',
+          'pain.p2Title': 'Tốc độ tải chậm & trải nghiệm di động kém gây mất khách',
+          'pain.p2Desc': 'Hơn 75% lưu lượng truy cập đến từ smartphone, nhưng trang tải chậm trên 4 giây, chữ nhỏ, nút khó bấm và tràn màn hình ngang khiến khách hàng thoát trang lập tức.',
+          'pain.p2Impact': 'Tỷ lệ thoát trên mobile > 68%',
+          'pain.tag3': 'Rò rỉ chuyển đổi',
+          'pain.p3Title': 'Thiết kế đẹp nhưng không ra chuyển đổi (Lead/Đơn hàng)',
+          'pain.p3Desc': 'Thiếu nghiên cứu hành vi người dùng và luồng điều hướng CTA rõ ràng khiến khách truy cập xem xong rồi rời đi mà không để lại thông tin tư vấn hay hoàn tất thanh toán.',
+          'pain.p3Impact': 'Chi phí quảng cáo cao, ROI thấp',
+          'pain.tag4': 'Vận hành & SEO',
+          'pain.p4Title': 'Khó quản trị, thiếu chuẩn SEO và khó mở rộng hệ thống',
+          'pain.p4Desc': 'Cấu trúc mã nguồn thiếu chuẩn Google khiến website khó lên top tự nhiên; đội Marketing không thể tự cập nhật nội dung hay kết nối dữ liệu với CRM, ERP và cổng thanh toán.',
+          'pain.p4Impact': 'Phụ thuộc IT & tốn phí bảo trì',
+
+          'sol.eyebrow': '03 / GIẢI PHÁP TỪ MK DIGITAL',
+          'sol.heading': 'Giải pháp kiến trúc xử lý triệt để từng điểm đau của doanh nghiệp',
+          'sol.subheading': 'Mỗi hạng mục kỹ thuật và UX đều gắn chặt với mục tiêu kinh doanh — tạo nên nền tảng số sang trọng, tốc độ và đo lường được doanh thu.',
+          'sol.s1Map': 'Giải quyết Điểm đau 01',
+          'sol.s1Title': 'Hệ thống Design System độc bản',
+          'sol.s1Desc': 'Thiết kế mới 100% theo bản sắc thương hiệu, nói không với template đại trà. Bàn giao đầy đủ thư viện UI Component và chuẩn nhận diện số đồng nhất trên mọi trang.',
+          'sol.s2Map': 'Giải quyết Điểm đau 02',
+          'sol.s2Title': 'Kỹ thuật Mobile-First & Tốc độ dưới 1 giây',
+          'sol.s2Desc': 'Tối ưu từng điểm chạm vùng ngón cái (Thumb-Zone), typography linh hoạt clamp(), nén ảnh thế hệ mới và Edge CDN giúp đạt điểm Core Web Vitals 95+ ngay trên mạng 4G.',
+          'sol.s3Map': 'Giải quyết Điểm đau 03',
+          'sol.s3Title': 'Kiến trúc UX hướng chuyển đổi (CRO)',
+          'sol.s3Desc': 'Thiết kế phễu nội dung thuyết phục, rút gọn quy trình đặt hàng hoặc đăng ký tư vấn xuống tối đa 3 thao tác, kết nối GA4/Heatmap để đo lường và tối ưu liên tục.',
+          'sol.s4Map': 'Giải quyết Điểm đau 04',
+          'sol.s4Title': 'Quản trị Headless CMS, Chuẩn SEO & Mở rộng API',
+          'sol.s4Desc': 'Đội Marketing tự tạo trang chiến dịch trong vài phút không cần viết code; cấu trúc Schema SEO chuẩn Google và tích hợp liền mạch với HubSpot, Salesforce, SAP ERP, POS.',
+
+          'workflow.title': 'Lộ trình triển khai 4 bước chuẩn mực',
+          'workflow.duration': 'Thời gian trung bình: 4 – 8 tuần',
+          'workflow.s1Title': 'Khám phá & Chiến lược',
+          'workflow.s1Desc': 'Kiểm toán website hiện tại, phân tích hành vi khách hàng, định hình cấu trúc sitemap và chỉ số KPI mục tiêu.',
+          'workflow.s2Title': 'Thiết kế UX/UI & Prototype',
+          'workflow.s2Desc': 'Hoàn thiện wireframe, giao diện mẫu tương tác trên mobile & desktop cùng hệ thống Design System.',
+          'workflow.s3Title': 'Lập trình chuẩn hiệu năng',
+          'workflow.s3Desc': 'Phát triển mã nguồn sạch, tối ưu tốc độ tải dưới 1 giây, cấu trúc SEO kỹ thuật và tích hợp CMS/CRM.',
+          'workflow.s4Title': 'Tối ưu, Bàn giao & Đồng hành',
+          'workflow.s4Desc': 'Kiểm thử đa thiết bị, đào tạo quản trị vận hành và đồng hành tối ưu chuyển đổi theo dữ liệu thực tế.',
+
+          'cases.eyebrow': '04 / DỰ ÁN TIÊU BIỂU (CASE STUDIES)',
+          'cases.heading': 'Kết quả tăng trưởng thực tế từ các dự án tiêu biểu',
+          'cases.subheading': 'Chạm vào từng dự án để xem chi tiết khách hàng, thách thức, giải pháp triển khai và chỉ số KPI đạt được.',
+          'cases.viewDetail': 'Xem chi tiết →',
+          'cases.c1Badge': 'Mobile UX',
+          'cases.c1Industry': 'F&B • Chuỗi trà & cà phê',
+          'cases.c1Title': 'Artisan Tea & Coffee — Nền tảng đặt món & Loyalty đa kênh',
+          'cases.c1Summary': 'Tái thiết kế trải nghiệm đặt nước Mobile-First kết nối 500+ cửa hàng, tự động định vị chi nhánh và rút gọn thanh toán chỉ còn 2 chạm.',
+          'cases.c1Metric': 'tỷ lệ chuyển đổi đơn hàng trên thiết bị di động',
+          'cases.c2Badge': 'Lead MQL',
+          'cases.c2Industry': 'Bất động sản hạng sang',
+          'cases.c2Title': 'Riverside Residences — Cổng trải nghiệm dự án & Tư vấn CRM',
+          'cases.c2Summary': 'Xây dựng không gian trưng bày bất động sản chuẩn thẩm mỹ tối giản với bản đồ phân khu tương tác, công cụ ước tính tài chính và đồng bộ Salesforce CRM.',
+          'cases.c2Metric': 'khách hàng tiềm năng chất lượng gửi lịch hẹn tham quan',
+          'cases.c3Badge': 'Bỏ giỏ hàng',
+          'cases.c3Industry': 'Thương mại điện tử',
+          'cases.c3Title': 'Nền tảng E-Commerce — Tối ưu giỏ hàng & Thanh toán một chạm',
+          'cases.c3Summary': 'Thiết kế lại phễu mua sắm thông minh tự động áp mã giảm giá tốt nhất, tìm kiếm AI theo ngữ nghĩa và thanh toán mượt mà qua VNPay/MoMo trên mobile.',
+          'cases.c3Metric': 'tỷ lệ bỏ giỏ hàng và tăng 24% giá trị đơn trung bình (AOV)',
+          'cases.c4Badge': 'LCP Speed',
+          'cases.c4Industry': 'Điện máy & Bán lẻ công nghệ',
+          'cases.c4Title': 'Cổng bán lẻ Điện máy Omnichannel — Headless Commerce siêu tốc',
+          'cases.c4Summary': 'Kiến trúc lại hệ thống hơn 30.000 mã sản phẩm với bộ lọc so sánh thông số tức thì, kiểm tra tồn kho cửa hàng gần nhất và chịu tải cao điểm mùa mở bán.',
+          'cases.c4Metric': 'thời gian tải LCP trung bình trên mạng 4G di động',
+
+          'contact.eyebrow': '05 / BẮT ĐẦU DỰ ÁN',
+          'contact.heading1': 'Sẵn sàng nâng tầm',
+          'contact.heading2': 'website của bạn?',
+          'contact.desc': 'Chia sẻ bài toán kinh doanh và kỳ vọng của bạn. Đội ngũ Giám đốc Thiết kế và Kỹ sư Giải pháp tại MK sẽ phản hồi đề xuất lộ trình chi tiết trong vòng 24 giờ làm việc.',
+          'contact.trust1': 'Kiểm toán UX/UI & hiệu năng di động cho website hiện tại hoàn toàn miễn phí.',
+          'contact.trust2': 'Cam kết bảo mật NDA tuyệt đối cho mọi dữ liệu và chiến lược sản phẩm.',
+          'contact.trust3': 'Báo giá minh bạch theo từng giai đoạn bàn giao rõ ràng.',
+
+          'form.servicesLabel': 'Dịch vụ bạn quan tâm',
+          'form.pillWeb': 'Thiết kế Website',
+          'form.pillUx': 'UX/UI Product',
+          'form.pillBrand': 'Rebranding',
+          'form.pillEcom': 'E-Commerce',
+          'form.pillSeo': 'Tối ưu tốc độ/SEO',
+          'form.budgetLabel': 'Ngân sách dự kiến',
+          'form.b1': '< 100 triệu',
+          'form.b2': '100 – 300 triệu',
+          'form.b3': '300 – 500 triệu',
+          'form.b4': '> 500 triệu',
+          'form.nameLabel': 'Họ tên *',
+          'form.namePh': 'Nguyễn Minh Khang',
+          'form.errName': 'Vui lòng nhập họ và tên của bạn.',
+          'form.emailLabel': 'Email *',
+          'form.emailPh': 'khang@company.vn',
+          'form.errEmail': 'Vui lòng nhập địa chỉ email hợp lệ.',
+          'form.phoneLabel': 'Số điện thoại',
+          'form.phonePh': '+84 90 123 4567',
+          'form.briefLabel': 'Mô tả dự án',
+          'form.briefPh': 'Chia sẻ mục tiêu website, ngành hàng hoặc thời gian dự kiến triển khai...',
+          'form.privacyNote': 'Thông tin được bảo mật tuyệt đối theo cam kết NDA của MK Digital.',
+          'form.submit': 'Gửi yêu cầu tư vấn',
+          'form.successTitle': 'Cảm ơn bạn đã kết nối với MK Digital!',
+          'form.sendAnother': 'Gửi yêu cầu khác',
+          'form.slaBadge': 'Phản hồi cam kết trong 24 giờ làm việc',
+
+          'footer.copyEmail': 'Sao chép địa chỉ email',
+          'footer.copied': 'Đã sao chép: hello@mkdigital.vn',
+          'footer.work': 'Sản phẩm',
+          'footer.services': 'Dịch vụ',
+          'footer.about': 'Về chúng tôi',
+          'footer.contact': 'Liên hệ',
+          'footer.clients': 'Khách hàng',
+          'footer.industries': 'Ngành hàng',
+          'footer.blog': 'Blog',
+          'footer.cityHcm': 'TP. Hồ Chí Minh',
+          'footer.cityHn': 'Hà Nội',
+          'footer.cityDn': 'Đà Nẵng',
+          'footer.privacy': 'Privacy',
+          'footer.terms': 'Terms',
+          'footer.sitemap': 'Sitemap'
+        },
+
+        en: {
+          'nav.home': 'Home',
+          'nav.products': 'Work',
+          'nav.clients': 'Clients',
+          'nav.services': 'Services',
+          'nav.about': 'About',
+          'nav.blog': 'Blog',
+          'nav.contact': 'Contact',
+          'nav.contactCta': 'Start a project',
+          'drawer.quickContact': 'Quick Contact',
+
+          'hero.badge': 'Digital Design & Engineering Studio — Vietnam',
+          'hero.titleLine1': 'MK is a UX/UI design and',
+          'hero.titleLine2': 'luxury web development agency',
+          'hero.subcopy': 'We blend Swiss editorial minimalism, human-centered UX research, and high-velocity web engineering to help leading Vietnamese brands own their digital category.',
+          'hero.ctaPrimary': 'Start a project',
+          'hero.ctaSecondary': 'View case studies',
+
+          'showcase.label': 'Digital interfaces crafted by MK',
+          'showcase.pause': 'Pause motion',
+          'showcase.resume': 'Resume motion',
+
+          'intro.eyebrow': '01 / ABOUT MK DIGITAL',
+          'intro.headline': 'We build transformative digital experiences for Vietnam’s leading brands by blending strategy, refined UX/UI design, and modern web engineering.',
+          'intro.body': 'From nationwide F&B chains and high-conversion e-commerce platforms to luxury real estate developers and electronics retailers, MK partners from product discovery to measurable launch.',
+          'intro.stat1': 'Enterprise projects',
+          'intro.stat2': 'Client retention',
+          'intro.stat3': 'Average LCP speed',
+
+          'svc.t1': 'Branding',
+          'svc.d1': 'Digital brand positioning, visual identity systems, and editorial guidelines built to distinguish market leaders across every touchpoint.',
+          'svc.t2': 'Digital Products',
+          'svc.d2': 'Web apps, F&B ordering portals, loyalty ecosystems, and scalable Figma & code Design Systems engineered for internal product velocity.',
+          'svc.t3': 'Websites',
+          'svc.d3': 'Flagship corporate websites, high-converting e-commerce stores, and luxury real estate portals crafted mobile-first.',
+          'svc.t4': 'Development',
+          'svc.d4': 'High-performance front-end engineering, Headless CMS, real-time CRM/ERP/POS integrations, and enterprise-grade security.',
+          'svc.t5': 'Content',
+          'svc.d5': 'Bilingual UX writing, micro-interaction motion design, 3D visuals, and technically sound SEO content structures.',
+          'svc.t6': 'Generative AI',
+          'svc.d6': 'Conversational AI advisors, semantic search, and real-time shopping personalization embedded seamlessly into your platform.',
+
+          'clients.eyebrow': 'TRUSTED BY LEADING VIETNAMESE BRANDS',
+          'clients.sub': 'Partnering with category leaders across F&B, E-Commerce, Electronics Retail, and Luxury Real Estate.',
+          'clients.filterAll': 'All (10+)',
+          'clients.filterEcom': 'E-Commerce',
+          'clients.filterElec': 'Electronics & Retail',
+          'clients.filterRE': 'Real Estate',
+          'clients.viewAll': 'View all clients',
+          'clients.hideFilter': 'Hide industry filter',
+
+          'pain.eyebrow': '02 / CLIENT PAIN POINTS',
+          'pain.heading': '4 bottlenecks holding corporate websites back from real growth',
+          'pain.subheading': 'Before working with MK, most enterprises battle these four structural gaps that quietly drain marketing ROI and dilute brand equity.',
+          'pain.impactLabel': 'Direct impact',
+          'pain.tag1': 'Diluted Brand',
+          'pain.p1Title': 'Generic templates lacking distinctive brand identity',
+          'pain.p1Desc': 'Off-the-shelf themes make your business look indistinguishable from competitors, failing to convey product craft or earn trust within the first 3 seconds.',
+          'pain.p1Impact': '-38% brand recall & trust',
+          'pain.tag2': 'Speed & Mobile',
+          'pain.p2Title': 'Slow load times & poor mobile UX driving visitors away',
+          'pain.p2Desc': 'Over 75% of traffic arrives on smartphones, yet 4-second loads, tiny controls, and awkward layouts force prospective buyers to bounce immediately.',
+          'pain.p2Impact': 'Mobile bounce rate > 68%',
+          'pain.tag3': 'Low Conversion',
+          'pain.p3Title': 'Visually pleasing sites that fail to generate leads or sales',
+          'pain.p3Desc': 'Without user-journey architecture and focused CTA pathways, visitors browse passively and leave without submitting inquiries or completing checkout.',
+          'pain.p3Impact': 'High ad CPA, stagnant ROI',
+          'pain.tag4': 'SEO & Scalability',
+          'pain.p4Title': 'Hard to manage, weak technical SEO & rigid architecture',
+          'pain.p4Desc': 'Non-semantic code hurts organic rankings while marketing teams stay blocked waiting on developers for page updates or CRM/ERP integrations.',
+          'pain.p4Impact': 'IT bottlenecks & high upkeep',
+
+          'sol.eyebrow': '03 / IMPLEMENTATION SOLUTIONS',
+          'sol.heading': 'Precision architecture built to resolve every bottleneck 1-to-1',
+          'sol.subheading': 'Every design decision and engineering milestone aligns directly with business growth—luxury aesthetics, sub-second speed, and measurable conversion.',
+          'sol.s1Map': 'Solves Pain Point 01',
+          'sol.s1Title': 'Bespoke Design System',
+          'sol.s1Desc': '100% custom visual identity rooted in brand positioning—never recycled templates. Delivered with modular UI components for effortless consistency.',
+          'sol.s2Map': 'Solves Pain Point 02',
+          'sol.s2Title': 'Mobile-First Engineering & Sub-Second Speed',
+          'sol.s2Desc': 'Thumb-zone ergonomics, fluid clamp() typography, next-gen asset delivery, and edge caching achieving 95+ Core Web Vitals even on 4G mobile.',
+          'sol.s3Map': 'Solves Pain Point 03',
+          'sol.s3Title': 'Conversion-Focused UX (CRO)',
+          'sol.s3Desc': 'Persuasive storytelling funnels compressing checkout and lead capture to under 3 taps, wired to GA4 and heatmaps for continuous optimization.',
+          'sol.s4Map': 'Solves Pain Point 04',
+          'sol.s4Title': 'Headless CMS, Technical SEO & API Ecosystem',
+          'sol.s4Desc': 'Marketing teams launch campaign pages in minutes without code; built-in Google Schema SEO and seamless API sync with HubSpot, Salesforce, ERP & POS.',
+
+          'workflow.title': '4-Step Implementation Roadmap',
+          'workflow.duration': 'Typical timeline: 4 – 8 weeks',
+          'workflow.s1Title': 'Discovery & Strategy',
+          'workflow.s1Desc': 'UX/technical audit, customer journey mapping, sitemap architecture, and clear KPI alignment.',
+          'workflow.s2Title': 'UX/UI & Interactive Prototype',
+          'workflow.s2Desc': 'Mobile-first wireframes, high-fidelity interactive prototypes, and a scalable Design System.',
+          'workflow.s3Title': 'Performance Engineering',
+          'workflow.s3Desc': 'Clean production code, sub-second speed optimization, technical SEO, and CMS/CRM integration.',
+          'workflow.s4Title': 'Optimize, Launch & Partner',
+          'workflow.s4Desc': 'Cross-device QA testing, CMS training, and ongoing conversion rate optimization.',
+
+          'cases.eyebrow': '04 / SELECTED CASE STUDIES',
+          'cases.heading': 'Measurable outcomes across flagship Vietnamese industries',
+          'cases.subheading': 'Tap any project to inspect the client brief, strategic solution, deliverables, and verified KPI metrics.',
+          'cases.viewDetail': 'View case study →',
+          'cases.c1Badge': 'Mobile UX',
+          'cases.c1Industry': 'F&B • Coffee & Tea Chain',
+          'cases.c1Title': 'Artisan Tea & Coffee — Omnichannel Digital Ordering & Loyalty',
+          'cases.c1Summary': 'Rebuilt mobile web ordering across 500+ stores with GPS branch detection and a streamlined 2-tap e-wallet checkout.',
+          'cases.c1Metric': 'increase in mobile web ordering conversion rate',
+          'cases.c2Badge': 'Lead MQL',
+          'cases.c2Industry': 'Luxury Real Estate',
+          'cases.c2Title': 'Riverside Residences — Interactive Property Portal & CRM Engine',
+          'cases.c2Summary': 'Crafted a minimalist luxury showcase with interactive 360° masterplan views, mortgage tools, and live Salesforce CRM lead sync.',
+          'cases.c2Metric': 'growth in marketing-qualified private viewing bookings',
+          'cases.c3Badge': 'Drop-off',
+          'cases.c3Industry': 'E-Commerce',
+          'cases.c3Title': 'High-Conversion E-Commerce — Smart Cart & One-Tap Pay',
+          'cases.c3Summary': 'Redesigned shopping checkout with automatic voucher stacking, semantic AI search, and frictionless VNPay/MoMo mobile confirmation.',
+          'cases.c3Metric': 'reduction in mobile cart abandonment & +24% higher AOV',
+          'cases.c4Badge': 'LCP Speed',
+          'cases.c4Industry': 'Electronics Omnichannel Retail',
+          'cases.c4Title': 'Electronics Retail Portal — High-Velocity Headless Storefront',
+          'cases.c4Summary': 'Re-architected 30,000+ SKUs with instant spec comparison, live stock lookup across 640+ stores, and flagship launch resilience.',
+          'cases.c4Metric': 'average mobile LCP load speed on 4G networks',
+
+          'contact.eyebrow': '05 / START A PROJECT',
+          'contact.heading1': 'Ready to elevate',
+          'contact.heading2': 'your digital presence?',
+          'contact.desc': 'Share your goals and current website challenges. Our Design Director and Solutions Lead will reply with a tailored roadmap within 24 business hours.',
+          'contact.trust1': 'Complimentary mobile UX & speed audit of your existing website.',
+          'contact.trust2': 'Strict mutual NDA safeguarding all briefs and product strategies.',
+          'contact.trust3': 'Transparent milestone pricing and predictable weekly sprints.',
+
+          'form.servicesLabel': 'Services of interest',
+          'form.pillWeb': 'Website Design',
+          'form.pillUx': 'UX/UI Product',
+          'form.pillBrand': 'Rebranding',
+          'form.pillEcom': 'E-Commerce',
+          'form.pillSeo': 'Speed & SEO',
+          'form.budgetLabel': 'Estimated budget',
+          'form.b1': '< $5K',
+          'form.b2': '$5K – $15K',
+          'form.b3': '$15K – $25K',
+          'form.b4': '$25K+',
+          'form.nameLabel': 'Full Name *',
+          'form.namePh': 'Alex Nguyen',
+          'form.errName': 'Please enter your full name.',
+          'form.emailLabel': 'Email *',
+          'form.emailPh': 'alex@company.vn',
+          'form.errEmail': 'Please enter a valid email address.',
+          'form.phoneLabel': 'Phone Number',
+          'form.phonePh': '+84 90 123 4567',
+          'form.briefLabel': 'Project Brief',
+          'form.briefPh': 'Tell us about your website goals, industry, or target launch window...',
+          'form.privacyNote': 'Strictly protected under MK Digital’s standard mutual NDA.',
+          'form.submit': 'Send inquiry',
+          'form.successTitle': 'Thank you for connecting with MK Digital!',
+          'form.sendAnother': 'Send another inquiry',
+          'form.slaBadge': 'Guaranteed response within 24 business hours',
+
+          'footer.copyEmail': 'Copy email address',
+          'footer.copied': 'Copied: hello@mkdigital.vn',
+          'footer.work': 'Work',
+          'footer.services': 'Services',
+          'footer.about': 'About',
+          'footer.contact': 'Contact',
+          'footer.clients': 'Clients',
+          'footer.industries': 'Industries',
+          'footer.blog': 'Blog',
+          'footer.cityHcm': 'Ho Chi Minh City',
+          'footer.cityHn': 'Hanoi',
+          'footer.cityDn': 'Da Nang',
+          'footer.privacy': 'Privacy',
+          'footer.terms': 'Terms',
+          'footer.sitemap': 'Sitemap'
+        }
+      };
+
+      /* Case Study Modal Data */
+      const caseDetails = {
+        fnb: {
+          vi: {
+            client: 'Artisan Tea & Coffee Chain (500+ Cửa hàng)',
+            tag: 'F&B • DIGITAL ORDERING',
+            title: 'Nền tảng đặt món Mobile-First & Loyalty đa kênh',
+            kpis: [
+              { val: '+68%', label: 'Chuyển đổi Mobile' },
+              { val: '0.9s', label: 'Tốc độ LCP' },
+              { val: '2 chạm', label: 'Hoàn tất đơn' }
+            ],
+            challenge: 'Website đặt món cũ mất tới 6 bước nhập liệu, giao diện di động chật chội và không đồng bộ thực đơn theo từng chi nhánh khiến 31% khách hàng bỏ ngang giờ cao điểm.',
+            solution: 'MK thiết kế lại hoàn toàn giao diện ưu tiên vùng ngón cái (Thumb-Zone), tự động định vị cửa hàng gần nhất, gợi ý combo thông minh và tích hợp thanh toán ví điện tử 2 chạm.',
+            deliverables: ['UX Research & Mobile Journey', 'Bespoke Design System', 'Progressive Web Ordering App', 'POS & Loyalty API Sync']
+          },
+          en: {
+            client: 'Artisan Tea & Coffee Chain (500+ Outlets)',
+            tag: 'F&B • DIGITAL ORDERING',
+            title: 'Mobile-First Ordering & Omnichannel Loyalty Platform',
+            kpis: [
+              { val: '+68%', label: 'Mobile Conversion' },
+              { val: '0.9s', label: 'LCP Load Speed' },
+              { val: '2 taps', label: 'Checkout Flow' }
+            ],
+            challenge: 'The legacy web ordering flow required 6 form steps on cramped mobile screens without branch-level menu sync, causing a 31% rush-hour drop-off.',
+            solution: 'MK engineered a thumb-zone mobile-first ordering app with GPS store detection, smart drink pairing, and 2-tap e-wallet checkout.',
+            deliverables: ['UX Research & Mobile Journey', 'Bespoke Design System', 'Progressive Web Ordering App', 'POS & Loyalty API Sync']
+          }
+        },
+        realestate: {
+          vi: {
+            client: 'Riverside Residences — Thủ Thiêm, TP.HCM',
+            tag: 'BẤT ĐỘNG SẢN HẠNG SANG',
+            title: 'Cổng trải nghiệm dự án 360° & Tự động hóa Lead CRM',
+            kpis: [
+              { val: '+74%', label: 'Lead chất lượng' },
+              { val: '1.0s', label: 'Tốc độ tải 4G' },
+              { val: '3.4 phút', label: 'Thời gian ở lại' }
+            ],
+            challenge: 'Thông tin phân khu bị phân tán qua nhiều tài liệu PDF nặng nề, khó xem trên điện thoại và đội kinh doanh mất nhiều giờ phân loại khách hàng thủ công.',
+            solution: 'Xây dựng cổng dự án tối giản chuẩn thẩm mỹ biên tập, tích hợp bản đồ phân khu tương tác mượt trên mobile, bảng tính vay trực quan và đẩy lead tức thì về Salesforce CRM.',
+            deliverables: ['Digital Brand Direction', 'Interactive 3D Masterplan UI', 'Bilingual Headless CMS', 'Salesforce CRM Integration']
+          },
+          en: {
+            client: 'Riverside Residences — Thu Thiem, HCMC',
+            tag: 'LUXURY REAL ESTATE',
+            title: '360° Interactive Property Showcase & Automated CRM',
+            kpis: [
+              { val: '+74%', label: 'Qualified MQLs' },
+              { val: '1.0s', label: '4G Load Speed' },
+              { val: '3.4 min', label: 'Avg. Session' }
+            ],
+            challenge: 'Floor plans were locked in heavy PDF brochures unreadable on mobile, while sales teams manually sorted incoming inquiries.',
+            solution: 'Built a Swiss-minimalist flagship portal featuring touch-friendly masterplan exploration, live mortgage calculators, and instant Salesforce CRM routing.',
+            deliverables: ['Digital Brand Direction', 'Interactive 3D Masterplan UI', 'Bilingual Headless CMS', 'Salesforce CRM Integration']
+          }
+        },
+        ecommerce: {
+          vi: {
+            client: 'Nova Commerce — Sàn bán lẻ đa ngành Việt Nam',
+            tag: 'THƯƠNG MẠI ĐIỆN TỬ',
+            title: 'Tái thiết kế Smart Cart & Thanh toán một chạm',
+            kpis: [
+              { val: '-38%', label: 'Bỏ giỏ hàng' },
+              { val: '+24%', label: 'Giá trị đơn (AOV)' },
+              { val: '97/100', label: 'Mobile UX Score' }
+            ],
+            challenge: 'Khách hàng di động bối rối trước nhiều tầng voucher và biểu phí vận chuyển phức tạp, dẫn đến tỷ lệ rời bỏ cao ở màn hình thanh toán.',
+            solution: 'Thiết kế Smart Cart tự động chọn tổ hợp mã giảm giá tối ưu nhất, hiển thị rõ khung giờ giao nhanh 2H và hoàn tất thanh toán 1 chạm qua VNPay/MoMo.',
+            deliverables: ['CRO Funnel Audit', 'Mobile Checkout Redesign', 'AI Semantic Search UI', 'Payment Gateway Optimization']
+          },
+          en: {
+            client: 'Nova Commerce — Multi-Category Vietnamese Retailer',
+            tag: 'E-COMMERCE PLATFORM',
+            title: 'Smart Cart Redesign & One-Tap Mobile Checkout',
+            kpis: [
+              { val: '-38%', label: 'Cart Abandonment' },
+              { val: '+24%', label: 'Higher AOV' },
+              { val: '97/100', label: 'Mobile UX Score' }
+            ],
+            challenge: 'Mobile buyers struggled to stack layered vouchers and delivery tiers, causing sharp abandonment at the final payment screen.',
+            solution: 'Designed an intelligent cart that auto-applies maximum discounts, surfaces clear 2-hour delivery ETAs, and enables one-tap VNPay/MoMo checkout.',
+            deliverables: ['CRO Funnel Audit', 'Mobile Checkout Redesign', 'AI Semantic Search UI', 'Payment Gateway Optimization']
+          }
+        },
+        electronics: {
+          vi: {
+            client: 'Hệ thống bán lẻ Điện máy & Công nghệ (640+ Siêu thị)',
+            tag: 'ĐIỆN MÁY OMNICHANNEL',
+            title: 'Kiến trúc Headless Commerce chịu tải mùa cao điểm',
+            kpis: [
+              { val: '0.9s', label: 'LCP trên 4G' },
+              { val: '30K+', label: 'Sản phẩm SKU' },
+              { val: '99.99%', label: 'Uptime mở bán' }
+            ],
+            challenge: 'Lưu lượng tăng gấp 10 lần dịp mở bán flagship khiến website truyền thống quá tải, bộ lọc cấu hình phức tạp khó thao tác trên màn hình nhỏ.',
+            solution: 'Chuyển đổi sang Headless Commerce kết hợp Edge Caching, thanh so sánh thông số dạng trượt ngang tối ưu cho mobile và tra cứu tồn kho cửa hàng thời gian thực.',
+            deliverables: ['Headless Architecture', 'Mobile Spec Comparison UI', 'Real-time Store Stock API', 'Core Web Vitals 99/100']
+          },
+          en: {
+            client: 'Nationwide Electronics & Tech Retail (640+ Stores)',
+            tag: 'ELECTRONICS OMNICHANNEL',
+            title: 'High-Velocity Headless Commerce Storefront',
+            kpis: [
+              { val: '0.9s', label: '4G Mobile LCP' },
+              { val: '30K+', label: 'Active SKUs' },
+              { val: '99.99%', label: 'Peak Uptime' }
+            ],
+            challenge: '10x traffic surges during flagship smartphone pre-orders throttled legacy pages, while dense spec tables broke on smartphones.',
+            solution: 'Engineered an edge-cached headless platform with swipeable mobile spec comparisons and real-time branch inventory availability.',
+            deliverables: ['Headless Architecture', 'Mobile Spec Comparison UI', 'Real-time Store Stock API', 'Core Web Vitals 99/100']
+          }
+        }
+      };
+
+      let currentLang = 'vi';
+      let isClientFilterOpen = false;
+      let isMarqueePaused = false;
+
+      /* -----------------------------------------------------------------------
+         2. LANGUAGE ENGINE (FULL VI / EN SWITCHING)
+         ----------------------------------------------------------------------- */
+      function setLanguage(lang) {
+        try {
+          currentLang = lang;
+          document.documentElement.lang = lang;
+          const dict = i18n[lang];
+
+          document.querySelectorAll('[data-i18n]').forEach(function (el) {
+            const key = el.getAttribute('data-i18n');
+            if (dict[key] !== undefined) {
+              el.textContent = dict[key];
+            }
+          });
+
+          document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (dict[key] !== undefined) {
+              el.setAttribute('placeholder', dict[key]);
+            }
+          });
+
+          // Sync dynamic toggle button labels
+          const toggleClientsLabel = document.getElementById('toggleClientsLabel');
+          if (toggleClientsLabel) {
+            toggleClientsLabel.textContent = isClientFilterOpen ? dict['clients.hideFilter'] : dict['clients.viewAll'];
+          }
+
+          const pauseSpan = document.querySelector('#marqueePauseBtn span');
+          if (pauseSpan) {
+            pauseSpan.textContent = isMarqueePaused ? dict['showcase.resume'] : dict['showcase.pause'];
+          }
+
+          document.querySelectorAll('.lang-btn').forEach(function (btn) {
+            const active = btn.getAttribute('data-lang') === lang;
+            btn.classList.toggle('bg-obsidian', active);
+            btn.classList.toggle('text-white', active);
+            btn.classList.toggle('text-neutral-500', !active);
+          });
+        } catch (err) {
+          console.error('Language update error:', err);
+        }
+      }
+
+      /* -----------------------------------------------------------------------
+         3. MODAL ENGINE (BOTTOM SHEET ON MOBILE / DIALOG ON DESKTOP)
+         ----------------------------------------------------------------------- */
+      const modalBackdrop = document.getElementById('editorialModal');
+      const modalBody = document.getElementById('modalBody');
+
+      function openModal(html) {
+        modalBody.innerHTML = html;
+        modalBackdrop.classList.add('open');
+        modalBackdrop.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+      }
+
+      function closeModal() {
+        modalBackdrop.classList.remove('open');
+        modalBackdrop.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+      }
+
+      function openCaseStudyModal(caseId) {
+        const data = caseDetails[caseId] && caseDetails[caseId][currentLang];
+        if (!data) return;
+
+        const labels = currentLang === 'vi'
+          ? { client: 'Khách hàng', challenge: 'Thách thức', solution: 'Giải pháp từ MK', deliv: 'Hạng mục triển khai', cta: 'Trao đổi dự án tương tự →' }
+          : { client: 'Client', challenge: 'Challenge', solution: 'MK Solution', deliv: 'Deliverables', cta: 'Discuss a similar project →' };
+
+        const kpiHtml = data.kpis.map(function (k) {
+          return (
+            '<div class="rounded-2xl bg-canvas border border-hairline p-3.5 text-center">' +
+              '<div class="text-lg sm:text-xl font-bold text-obsidian">' + k.val + '</div>' +
+              '<div class="text-[11px] text-neutral-500 mt-0.5">' + k.label + '</div>' +
+            '</div>'
+          );
+        }).join('');
+
+        const delivHtml = data.deliverables.map(function (d) {
+          return '<span class="px-3.5 py-1.5 rounded-full bg-canvas border border-hairline text-xs font-medium text-obsidian">' + d + '</span>';
+        }).join('');
+
+        openModal(
+          '<p class="text-[11px] font-bold uppercase tracking-[0.16em] text-neutral-400 pr-10">' + data.tag + '</p>' +
+          '<h3 class="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight text-obsidian leading-snug pr-8">' + data.title + '</h3>' +
+          '<p class="mt-2 text-xs sm:text-sm font-medium text-neutral-500">' + labels.client + ': <span class="text-obsidian">' + data.client + '</span></p>' +
+          '<div class="mt-6 grid grid-cols-3 gap-2.5 sm:gap-3.5">' + kpiHtml + '</div>' +
+          '<div class="mt-6 space-y-5">' +
+            '<div>' +
+              '<h4 class="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-1.5">' + labels.challenge + '</h4>' +
+              '<p class="text-[15px] leading-relaxed text-neutral-700">' + data.challenge + '</p>' +
+            '</div>' +
+            '<div>' +
+              '<h4 class="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-1.5">' + labels.solution + '</h4>' +
+              '<p class="text-[15px] leading-relaxed text-neutral-700">' + data.solution + '</p>' +
+            '</div>' +
+            '<div>' +
+              '<h4 class="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-2.5">' + labels.deliv + '</h4>' +
+              '<div class="flex flex-wrap gap-2">' + delivHtml + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="mt-7 pt-5 border-t border-hairline">' +
+            '<a href="#contact" class="modal-cta-link touch-pill w-full sm:w-auto px-6 rounded-full bg-obsidian text-white text-sm font-semibold hover:bg-neutral-800 transition-colors">' + labels.cta + '</a>' +
+          '</div>'
+        );
+
+        const ctaEl = modalBody.querySelector('.modal-cta-link');
+        if (ctaEl) ctaEl.addEventListener('click', closeModal);
+      }
+
+      function openBlogModal() {
+        const isVi = currentLang === 'vi';
+        const posts = isVi
+          ? [
+              { date: '11/2026', tag: 'Mobile-First UX', title: 'Nguyên tắc thiết kế vùng ngón cái (Thumb-Zone) giúp tăng 40% chuyển đổi di động', read: '5 phút đọc' },
+              { date: '10/2026', tag: 'Web Performance', title: 'Đạt tốc độ LCP dưới 1 giây trên mạng 4G: Checklist kỹ thuật của MK Digital', read: '6 phút đọc' },
+              { date: '09/2026', tag: 'Swiss Minimalism', title: 'Tại sao phong cách tối giản biên tập giúp thương hiệu cao cấp bán hàng hiệu quả hơn?', read: '5 phút đọc' }
+            ]
+          : [
+              { date: 'Nov 2026', tag: 'Mobile-First UX', title: 'Thumb-Zone Ergonomics: How Mobile-First Design Lifts Conversion by 40%', read: '5 min read' },
+              { date: 'Oct 2026', tag: 'Web Performance', title: 'Engineering Sub-Second LCP on 4G Networks: MK Digital’s Technical Blueprint', read: '6 min read' },
+              { date: 'Sep 2026', tag: 'Swiss Minimalism', title: 'Why Editorial Minimalism Outperforms Cluttered Sites for Luxury Brands', read: '5 min read' }
+            ];
+
+        const htmlList = posts.map(function (p) {
+          return (
+            '<div class="py-4 border-b border-hairline last:border-b-0">' +
+              '<div class="flex items-center gap-2.5 text-xs text-neutral-400 mb-1">' +
+                '<span class="font-semibold text-obsidian">' + p.tag + '</span><span>•</span><span>' + p.date + '</span><span>•</span><span>' + p.read + '</span>' +
+              '</div>' +
+              '<h4 class="text-base sm:text-lg font-semibold text-obsidian leading-snug">' + p.title + '</h4>' +
+            '</div>'
+          );
+        }).join('');
+
+        openModal(
+          '<p class="text-[11px] font-bold uppercase tracking-[0.16em] text-neutral-400">MK JOURNAL</p>' +
+          '<h3 class="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight text-obsidian pr-8">' + (isVi ? 'Góc nhìn UX/UI &amp; Công nghệ Web' : 'UX/UI &amp; Web Engineering Insights') + '</h3>' +
+          '<div class="mt-5">' + htmlList + '</div>'
+        );
+      }
+
+      /* -----------------------------------------------------------------------
+         4. BOOTSTRAP ALL INTERACTIONS ON DOMContentLoaded
+         ----------------------------------------------------------------------- */
+      window.addEventListener('DOMContentLoaded', function () {
+        try {
+          // 4a. Duplicate both marquee rows for seamless infinite GPU loops
+          ['marqueeRow1', 'marqueeRow2'].forEach(function (id) {
+            const track = document.getElementById(id);
+            if (track) track.innerHTML = track.innerHTML + track.innerHTML;
+          });
+
+          // 4b. Showcase pause toggle + touch pause support
+          const showcaseStage = document.getElementById('showcaseStage');
+          const marqueePauseBtn = document.getElementById('marqueePauseBtn');
+          if (marqueePauseBtn && showcaseStage) {
+            marqueePauseBtn.addEventListener('click', function () {
+              isMarqueePaused = !isMarqueePaused;
+              showcaseStage.classList.toggle('is-paused', isMarqueePaused);
+              const span = marqueePauseBtn.querySelector('span');
+              if (span) {
+                span.textContent = isMarqueePaused ? i18n[currentLang]['showcase.resume'] : i18n[currentLang]['showcase.pause'];
+              }
+            });
+
+            // Temporary pause while finger holds on marquee cards
+            showcaseStage.addEventListener('touchstart', function (e) {
+              if (!e.target.closest('#marqueePauseBtn')) {
+                showcaseStage.classList.add('is-paused');
+              }
+            }, { passive: true });
+
+            showcaseStage.addEventListener('touchend', function () {
+              if (!isMarqueePaused) {
+                showcaseStage.classList.remove('is-paused');
+              }
+            }, { passive: true });
+          }
+
+          // 4c. Sticky Header Scroll Shadow
+          const header = document.getElementById('siteHeader');
+          window.addEventListener('scroll', function () {
+            header.classList.toggle('scrolled', window.scrollY > 18);
+          }, { passive: true });
+
+          // 4d. Full-Screen Mobile Drawer + Body Scroll Lock
+          const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+          const mobileDrawer = document.getElementById('mobileDrawer');
+
+          function setDrawerOpen(open) {
+            mobileDrawer.classList.toggle('is-open', open);
+            mobileDrawer.setAttribute('aria-hidden', String(!open));
+            mobileMenuBtn.classList.toggle('is-active', open);
+            mobileMenuBtn.setAttribute('aria-expanded', String(open));
+            document.body.classList.toggle('drawer-open', open);
+          }
+
+          if (mobileMenuBtn && mobileDrawer) {
+            mobileMenuBtn.addEventListener('click', function () {
+              setDrawerOpen(!mobileDrawer.classList.contains('is-open'));
+            });
+
+            document.querySelectorAll('.mobile-nav-link').forEach(function (link) {
+              link.addEventListener('click', function () {
+                setDrawerOpen(false);
+              });
+            });
+
+            window.addEventListener('resize', function () {
+              if (window.innerWidth >= 1024 && mobileDrawer.classList.contains('is-open')) {
+                setDrawerOpen(false);
+              }
+            });
+          }
+
+          // 4e. Bilingual VI/EN Switcher
+          document.querySelectorAll('.lang-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              setLanguage(btn.getAttribute('data-lang'));
+            });
+          });
+
+          // 4f. Interactive 6-Service Accordion (Section 1)
+          const serviceItems = document.querySelectorAll('#servicesAccordion .service-item');
+          serviceItems.forEach(function (item) {
+            const trigger = item.querySelector('.service-trigger');
+            if (!trigger) return;
+            trigger.addEventListener('click', function () {
+              const wasActive = item.classList.contains('active');
+              serviceItems.forEach(function (other) {
+                other.classList.remove('active');
+                const t = other.querySelector('.service-trigger');
+                if (t) t.setAttribute('aria-expanded', 'false');
+              });
+              if (!wasActive) {
+                item.classList.add('active');
+                trigger.setAttribute('aria-expanded', 'true');
+              }
+            });
+          });
+
+          // 4g. Client Industry Filter Expand/Collapse ("Xem tất cả khách hàng →")
+          const toggleClientsFilterBtn = document.getElementById('toggleClientsFilterBtn');
+          const clientFilterPanel = document.getElementById('clientFilterPanel');
+          const toggleClientsLabel = document.getElementById('toggleClientsLabel');
+
+          if (toggleClientsFilterBtn && clientFilterPanel) {
+            toggleClientsFilterBtn.addEventListener('click', function () {
+              isClientFilterOpen = !isClientFilterOpen;
+              clientFilterPanel.classList.toggle('open', isClientFilterOpen);
+              if (toggleClientsLabel) {
+                toggleClientsLabel.textContent = isClientFilterOpen
+                  ? i18n[currentLang]['clients.hideFilter']
+                  : i18n[currentLang]['clients.viewAll'];
+              }
+            });
+          }
+
+          const filterBtns = document.querySelectorAll('.client-filter-btn');
+          const logoCards = document.querySelectorAll('#clientLogoGrid .client-logo-card');
+
+          filterBtns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              const sector = btn.getAttribute('data-sector');
+              filterBtns.forEach(function (b) { b.classList.remove('selected'); });
+              btn.classList.add('selected');
+
+              logoCards.forEach(function (card) {
+                const match = sector === 'all' || card.getAttribute('data-sector') === sector;
+                card.style.display = match ? 'flex' : 'none';
+              });
+            });
+          });
+
+          // 4h. Case Study Cards + Blog Modals
+          document.querySelectorAll('.case-card').forEach(function (card) {
+            const openHandler = function () {
+              openCaseStudyModal(card.getAttribute('data-case-id'));
+            };
+            card.addEventListener('click', openHandler);
+            card.addEventListener('keydown', function (e) {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openHandler();
+              }
+            });
+          });
+
+          const openBlogBtn = document.getElementById('openBlogBtn');
+          const openBlogMobileBtn = document.getElementById('openBlogMobileBtn');
+          const openBlogFooterBtn = document.getElementById('openBlogFooterBtn');
+
+          if (openBlogBtn) openBlogBtn.addEventListener('click', openBlogModal);
+          if (openBlogFooterBtn) openBlogFooterBtn.addEventListener('click', openBlogModal);
+          if (openBlogMobileBtn) {
+            openBlogMobileBtn.addEventListener('click', function () {
+              setDrawerOpen(false);
+              setTimeout(openBlogModal, 180);
+            });
+          }
+
+          document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+          modalBackdrop.addEventListener('click', function (e) {
+            if (e.target === modalBackdrop) closeModal();
+          });
+          document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+              if (modalBackdrop.classList.contains('open')) closeModal();
+              if (mobileDrawer.classList.contains('is-open')) setDrawerOpen(false);
+            }
+          });
+
+          // 4i. Form Service Pills (Multi-Select) & Budget Pills (Single-Select)
+          document.querySelectorAll('#servicePills .service-pill').forEach(function (pill) {
+            pill.addEventListener('click', function () {
+              pill.classList.toggle('selected');
+            });
+          });
+
+          const budgetPills = document.querySelectorAll('#budgetPills .budget-pill');
+          budgetPills.forEach(function (pill) {
+            pill.addEventListener('click', function () {
+              budgetPills.forEach(function (b) { b.classList.remove('selected'); });
+              pill.classList.add('selected');
+            });
+          });
+
+          // 4j. Form Validation & Inline Confirmation
+          const inquiryForm = document.getElementById('inquiryForm');
+          const formConfirmation = document.getElementById('formConfirmation');
+          const confirmationSummary = document.getElementById('confirmationSummary');
+          const resetFormBtn = document.getElementById('resetFormBtn');
+
+          if (inquiryForm) {
+            inquiryForm.addEventListener('submit', function (e) {
+              e.preventDefault();
+
+              const nameEl = document.getElementById('fullName');
+              const emailEl = document.getElementById('businessEmail');
+              const errName = document.getElementById('errName');
+              const errEmail = document.getElementById('errEmail');
+
+              const nameVal = nameEl.value.trim();
+              const emailVal = emailEl.value.trim();
+              const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal);
+
+              let valid = true;
+
+              if (!nameVal) {
+                nameEl.classList.add('input-error');
+                errName.classList.remove('hidden');
+                valid = false;
+              } else {
+                nameEl.classList.remove('input-error');
+                errName.classList.add('hidden');
+              }
+
+              if (!emailOk) {
+                emailEl.classList.add('input-error');
+                errEmail.classList.remove('hidden');
+                valid = false;
+              } else {
+                emailEl.classList.remove('input-error');
+                errEmail.classList.add('hidden');
+              }
+
+              if (!valid) return;
+
+              const services = Array.from(document.querySelectorAll('#servicePills .service-pill.selected'))
+                .map(function (p) { return p.textContent.trim(); });
+              const budgetEl = document.querySelector('#budgetPills .budget-pill.selected');
+              const budgetText = budgetEl ? budgetEl.textContent.trim() : '';
+
+              const svcSummary = services.length
+                ? services.join(', ')
+                : (currentLang === 'vi' ? 'Tư vấn website' : 'Website Consultation');
+
+              if (currentLang === 'vi') {
+                confirmationSummary.textContent =
+                  'Chào ' + nameVal + ', MK đã tiếp nhận yêu cầu cho hạng mục (' + svcSummary + ')' +
+                  (budgetText ? ' với ngân sách dự kiến ' + budgetText : '') +
+                  ' và gửi xác nhận về ' + emailVal + '. Chuyên gia của chúng tôi sẽ liên hệ bạn trong 24 giờ làm việc.';
+              } else {
+                confirmationSummary.textContent =
+                  'Hi ' + nameVal + ', we have received your inquiry for (' + svcSummary + ')' +
+                  (budgetText ? ' with an estimated budget of ' + budgetText : '') +
+                  ' and sent a confirmation to ' + emailVal + '. Our team will reach out within 24 business hours.';
+              }
+
+              inquiryForm.classList.add('hidden');
+              formConfirmation.classList.remove('hidden');
+            });
+          }
+
+          if (resetFormBtn) {
+            resetFormBtn.addEventListener('click', function () {
+              inquiryForm.reset();
+              formConfirmation.classList.add('hidden');
+              inquiryForm.classList.remove('hidden');
+            });
+          }
+
+          // 4k. Copy Email Button (Safe execCommand fallback)
+          const copyEmailBtn = document.getElementById('copyEmailBtn');
+          const copyEmailLabel = document.getElementById('copyEmailLabel');
+          if (copyEmailBtn) {
+            copyEmailBtn.addEventListener('click', function () {
+              try {
+                const input = document.createElement('input');
+                input.value = 'hello@mkdigital.vn';
+                document.body.appendChild(input);
+                input.select();
+                document.execCommand('copy');
+                document.body.removeChild(input);
+
+                copyEmailLabel.textContent = i18n[currentLang]['footer.copied'];
+                setTimeout(function () {
+                  copyEmailLabel.textContent = i18n[currentLang]['footer.copyEmail'];
+                }, 2400);
+              } catch (copyErr) {
+                console.error('Copy error:', copyErr);
+              }
+            });
+          }
+
+          // 4l. Scroll Reveal via IntersectionObserver
+          const reveals = document.querySelectorAll('.reveal');
+          if ('IntersectionObserver' in window) {
+            const io = new IntersectionObserver(function (entries) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('visible');
+                  io.unobserve(entry.target);
+                }
+              });
+            }, { threshold: 0.1, rootMargin: '0px 0px -24px 0px' });
+
+            reveals.forEach(function (el) { io.observe(el); });
+          } else {
+            reveals.forEach(function (el) { el.classList.add('visible'); });
+          }
+
+        } catch (err) {
+          console.error('App initialization error:', err);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
