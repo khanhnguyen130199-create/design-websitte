@@ -1,0 +1,1932 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MK Media Agency — Thiết kế Website chuẩn UX & Tăng chuyển đổi</title>
+  <meta name="description" content="MK Media Agency chuyên thiết kế và lập trình website tốc độ cao, chuẩn SEO, tối ưu trải nghiệm người dùng cho doanh nghiệp và thương hiệu." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Invisible Sentinel for 60fps IntersectionObserver Navbar Transition -->
+  <div id="topSentinel" class="scroll-sentinel" aria-hidden="true"></div>
+
+  <!-- ======================================================================
+       SECTION 01: ADAPTIVE GLASSMORPHISM NAVBAR
+       ====================================================================== -->
+  <header id="mainNavbar" class="navbar" role="banner">
+    <div class="container navbar-inner">
+      <!-- Horizontal Logo Lockup -->
+      <a href="#" class="brand-lockup" aria-label="MK Media Agency Home">
+        <svg class="brand-mark" viewBox="0 0 120 104" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M6 10H22L44 46L78 10H98L46 65L22 39V94H6V10Z" fill="currentColor" />
+          <path d="M56 72L102 22H118L82 61L116 94H94L68 69L56 82V94H40V72H56Z" fill="currentColor" />
+        </svg>
+        <span class="brand-wordmark">
+          <span class="brand-name">MK Media</span>
+          <span class="brand-sub">Agency</span>
+        </span>
+      </a>
+
+      <!-- Desktop Menu (5 Core Items) -->
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li class="nav-item" id="servicesDropdownItem">
+            <button type="button" class="nav-link" aria-expanded="false" aria-controls="servicesMenu" id="servicesDropdownBtn">
+              <span data-i18n="nav.services">Dịch vụ</span>
+              <svg class="nav-chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <div class="nav-dropdown" id="servicesMenu" role="menu">
+              <a href="#services" class="dropdown-item" role="menuitem">
+                <span class="dropdown-title" data-i18n="nav.srv1Title">Website Doanh nghiệp / Giới thiệu</span>
+                <span class="dropdown-desc" data-i18n="nav.srv1Desc">Khẳng định uy tín thương hiệu, chuẩn SEO</span>
+              </a>
+              <a href="#services" class="dropdown-item" role="menuitem">
+                <span class="dropdown-title" data-i18n="nav.srv2Title">Website Bán hàng (E-commerce)</span>
+                <span class="dropdown-desc" data-i18n="nav.srv2Desc">Tối ưu giỏ hàng, thanh toán & vận chuyển</span>
+              </a>
+              <a href="#services" class="dropdown-item" role="menuitem">
+                <span class="dropdown-title" data-i18n="nav.srv3Title">Landing Page Chuyển đổi cao</span>
+                <span class="dropdown-desc" data-i18n="nav.srv3Desc">Tốc độ tải tức thì cho chiến dịch quảng cáo</span>
+              </a>
+              <a href="#services" class="dropdown-item" role="menuitem">
+                <span class="dropdown-title" data-i18n="nav.srv4Title">Thiết kế UI/UX & Redesign Web cũ</span>
+                <span class="dropdown-desc" data-i18n="nav.srv4Desc">Nâng cấp diện mạo và sửa lỗi trải nghiệm</span>
+              </a>
+              <a href="#maintenanceBanner" class="dropdown-item" role="menuitem">
+                <span class="dropdown-title" data-i18n="nav.srv5Title">Bảo trì & Tối ưu tốc độ Website</span>
+                <span class="dropdown-desc" data-i18n="nav.srv5Desc">Giám sát 24/7, bảo mật & nâng điểm PageSpeed</span>
+              </a>
+            </div>
+          </li>
+          <li class="nav-item"><a href="#projects" class="nav-link" data-i18n="nav.projects">Dự án</a></li>
+          <li class="nav-item"><a href="#pricing" class="nav-link" data-i18n="nav.pricing">Bảng giá</a></li>
+          <li class="nav-item"><a href="#process" class="nav-link" data-i18n="nav.process">Quy trình</a></li>
+          <li class="nav-item"><a href="#insights" class="nav-link" data-i18n="nav.insights">Kiến thức</a></li>
+        </ul>
+      </nav>
+
+      <!-- Right Controls: Language Pill + Primary CTA + Mobile Trigger -->
+      <div class="nav-actions">
+        <div class="lang-toggle" role="group" aria-label="Language Switcher">
+          <button type="button" class="lang-btn is-active" data-lang="vi">VI</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-sm nav-cta-desktop" data-open-booking="quote" data-i18n="nav.cta">
+          Nhận báo giá
+        </button>
+
+        <button type="button" class="mobile-menu-btn" id="openMobileNavBtn" aria-label="Mở menu điều hướng" aria-controls="mobileNavDrawer" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer (Thumb-zone optimized) -->
+  <aside id="mobileNavDrawer" class="mobile-nav-drawer" aria-hidden="true">
+    <div class="mobile-nav-header">
+      <span class="brand-name">MK Media Agency</span>
+      <button type="button" class="drawer-close" id="closeMobileNavBtn" aria-label="Đóng menu">✕</button>
+    </div>
+    <div class="mobile-nav-body">
+      <a href="#services" class="mobile-nav-link" data-close-mobile data-i18n="nav.services">Dịch vụ</a>
+      <a href="#projects" class="mobile-nav-link" data-close-mobile data-i18n="nav.projects">Dự án</a>
+      <a href="#pricing" class="mobile-nav-link" data-close-mobile data-i18n="nav.pricing">Bảng giá</a>
+      <a href="#process" class="mobile-nav-link" data-close-mobile data-i18n="nav.process">Quy trình</a>
+      <a href="#insights" class="mobile-nav-link" data-close-mobile data-i18n="nav.insights">Kiến thức</a>
+    </div>
+    <div class="mobile-nav-footer">
+      <a href="tel:0901234567" class="btn btn-secondary" data-i18n="mobile.call">Gọi trực tiếp</a>
+      <button type="button" class="btn btn-primary" data-close-mobile data-open-booking="quote" data-i18n="nav.cta">Nhận báo giá</button>
+    </div>
+  </aside>
+
+  <main id="mainContent">
+    <!-- ====================================================================
+         SECTION 02: HERO SECTION
+         ==================================================================== -->
+    <section class="hero-section" aria-labelledby="heroHeading">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-badge">
+            <span class="hero-badge-dot" aria-hidden="true"></span>
+            <span>MK Media Agency • Crafting Digital Experience</span>
+          </div>
+
+          <h1 id="heroHeading" class="hero-title">
+            <span data-i18n="hero.title1">Thiết kế Website chuẩn UX —</span>
+            <span class="text-gradient" data-i18n="hero.title2">Bứt phá tỷ lệ chuyển đổi</span>
+          </h1>
+
+          <p class="hero-desc" data-i18n="hero.desc">
+            Giải pháp thiết kế và lập trình website tốc độ cao, chuẩn SEO kỹ thuật giúp doanh nghiệp nâng tầm thương hiệu và tăng trưởng doanh thu bền vững.
+          </p>
+
+          <div class="hero-actions">
+            <button type="button" class="btn btn-primary btn-lg" data-open-booking="consult" data-i18n="hero.ctaPrimary">
+              Tư vấn ngay (15 phút)
+            </button>
+            <a href="#projects" class="btn btn-secondary btn-lg" data-i18n="hero.ctaSecondary">
+              Xem dự án thực tế
+            </a>
+          </div>
+
+          <div class="hero-trust-notes">
+            <span class="hero-trust-item">
+              <svg class="icon-check" width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
+              <span data-i18n="hero.trust1">Bàn giao Full Source Code</span>
+            </span>
+            <span class="hero-trust-item">
+              <svg class="icon-check" width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"/></svg>
+              <span data-i18n="hero.trust2">Chuẩn Mobile-First & Song ngữ</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Visual Browser Mockup + Floating Performance Badges -->
+        <div class="hero-visual">
+          <div class="floating-badge top-right">
+            <div class="floating-score">99</div>
+            <div>
+              <div class="floating-text-title">Google Lighthouse</div>
+              <div class="floating-text-sub" data-i18n="hero.badgeSeo">Hiệu năng & SEO tối ưu</div>
+            </div>
+          </div>
+
+          <div class="hero-browser-card">
+            <div class="browser-chrome">
+              <span class="chrome-dot red"></span>
+              <span class="chrome-dot yellow"></span>
+              <span class="chrome-dot green"></span>
+              <span class="chrome-url">mkmedia.agency/showcase</span>
+            </div>
+            <div class="hero-mockup-body">
+              <div class="mockup-bar-lg"></div>
+              <div class="mockup-bar-sm"></div>
+              <div class="mockup-cards-row">
+                <div class="mockup-mini-card">
+                  <div class="mockup-metric-label" data-i18n="hero.mockConvLabel">Tỷ lệ chuyển đổi</div>
+                  <div class="mockup-metric-val">+38.4%</div>
+                </div>
+                <div class="mockup-mini-card">
+                  <div class="mockup-metric-label" data-i18n="hero.mockSpeedLabel">Tốc độ tải trang</div>
+                  <div class="mockup-metric-val">1.1s</div>
+                </div>
+              </div>
+              <div class="mockup-chart" aria-hidden="true">
+                <div class="chart-bar h-40"></div>
+                <div class="chart-bar h-55"></div>
+                <div class="chart-bar h-48"></div>
+                <div class="chart-bar h-72"></div>
+                <div class="chart-bar h-85"></div>
+                <div class="chart-bar h-100"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="floating-badge bottom-left">
+            <div class="floating-score">1.1s</div>
+            <div>
+              <div class="floating-text-title">Core Web Vitals</div>
+              <div class="floating-text-sub" data-i18n="hero.badgeLcp">LCP đạt chuẩn xanh</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 03: SOCIAL PROOF (4 METRICS + 5 CLIENT LOGOS)
+         ==================================================================== -->
+    <section class="section section-subtle" aria-label="Bảo chứng năng lực và đối tác">
+      <div class="container">
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-number">50+</div>
+            <div class="kpi-label" data-i18n="proof.kpi1">Dự án triển khai thực tế</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-number">&lt; 1.5s</div>
+            <div class="kpi-label" data-i18n="proof.kpi2">Tốc độ tải trang trung bình</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-number">+38%</div>
+            <div class="kpi-label" data-i18n="proof.kpi3">Mức tăng chuyển đổi trung bình</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-number">99/100</div>
+            <div class="kpi-label" data-i18n="proof.kpi4">Điểm chuẩn SEO & Web Vitals</div>
+          </div>
+        </div>
+
+        <div class="partners-wrapper">
+          <p class="partners-caption" data-i18n="proof.partnersTitle">Đồng hành cùng các thương hiệu & nền tảng tiêu biểu</p>
+          <div class="partners-strip">
+            <span class="partner-badge brand-phuclong">PHÚC LONG</span>
+            <span class="partner-badge brand-maycha">MAYCHA</span>
+            <span class="partner-badge brand-gongcha">GONG CHA</span>
+            <span class="partner-badge brand-everyhalf">EVERY HALF</span>
+            <span class="partner-badge brand-chotot">CHỢ TỐT</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 04: CORE SERVICES (4 CARDS + MAINTENANCE BANNER)
+         ==================================================================== -->
+    <section id="services" class="section section-canvas" aria-labelledby="servicesHeading">
+      <div class="container">
+        <div class="section-header is-centered">
+          <span class="section-eyebrow" data-i18n="services.eyebrow">Dịch vụ cốt lõi</span>
+          <h2 id="servicesHeading" class="section-title" data-i18n="services.title">Giải pháp Website toàn diện theo mục tiêu kinh doanh</h2>
+          <p class="section-subtitle" data-i18n="services.subtitle">
+            Mỗi giải pháp được kiến trúc riêng biệt để tối ưu trải nghiệm người dùng, chuẩn hóa SEO và gia tăng tỷ lệ chốt đơn.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div>
+              <div class="service-icon-box" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </div>
+              <h3 class="service-title" data-i18n="services.c1Title">Website Doanh nghiệp</h3>
+              <p class="service-desc" data-i18n="services.c1Desc">Xây dựng hình ảnh thương hiệu chuyên nghiệp, chuẩn nhận diện, dễ dàng quản trị nội dung và tối ưu thứ hạng Google.</p>
+            </div>
+            <button type="button" class="service-link btn-ghost" data-open-booking="quote" data-service-preset="Website Doanh nghiệp">
+              <span data-i18n="services.learnMore">Nhận tư vấn gói này →</span>
+            </button>
+          </article>
+
+          <article class="service-card">
+            <div>
+              <div class="service-icon-box" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+              </div>
+              <h3 class="service-title" data-i18n="services.c2Title">Website Bán hàng (E-commerce)</h3>
+              <p class="service-desc" data-i18n="services.c2Desc">Tối ưu hành trình mua sắm, giỏ hàng mượt mà, tích hợp cổng thanh toán trực tuyến và quản lý đơn hàng tự động.</p>
+            </div>
+            <button type="button" class="service-link btn-ghost" data-open-booking="quote" data-service-preset="Website Bán hàng">
+              <span data-i18n="services.learnMore">Nhận tư vấn gói này →</span>
+            </button>
+          </article>
+
+          <article class="service-card">
+            <div>
+              <div class="service-icon-box" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
+              <h3 class="service-title" data-i18n="services.c3Title">Landing Page Chuyển đổi cao</h3>
+              <p class="service-desc" data-i18n="services.c3Desc">Tốc độ tải dưới 1.5s, cấu trúc nội dung đánh trúng tâm lý khách hàng giúp tối đa hóa hiệu quả chiến dịch quảng cáo.</p>
+            </div>
+            <button type="button" class="service-link btn-ghost" data-open-booking="quote" data-service-preset="Landing Page">
+              <span data-i18n="services.learnMore">Nhận tư vấn gói này →</span>
+            </button>
+          </article>
+
+          <article class="service-card">
+            <div>
+              <div class="service-icon-box" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              </div>
+              <h3 class="service-title" data-i18n="services.c4Title">Thiết kế UI/UX & Redesign</h3>
+              <p class="service-desc" data-i18n="services.c4Desc">Audit toàn diện website cũ, tái cấu trúc luồng người dùng (User Flow) và khoác diện mạo công nghệ hiện đại.</p>
+            </div>
+            <button type="button" class="service-link btn-ghost" data-open-booking="quote" data-service-preset="Redesign Website">
+              <span data-i18n="services.learnMore">Nhận tư vấn gói này →</span>
+            </button>
+          </article>
+        </div>
+
+        <!-- Service 05: Full-Width Maintenance Banner -->
+        <div id="maintenanceBanner" class="maintenance-banner">
+          <div class="maintenance-info">
+            <div class="maintenance-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <h3 class="maintenance-title" data-i18n="services.maintTitle">Bảo trì, Bảo mật & Tối ưu tốc độ Website (Maintenance)</h3>
+              <p class="maintenance-desc" data-i18n="services.maintDesc">Sao lưu định kỳ, vá lỗi bảo mật, tối ưu Core Web Vitals và hỗ trợ kỹ thuật 24/7 giúp website luôn vận hành ổn định.</p>
+            </div>
+          </div>
+          <button type="button" class="btn btn-accent" data-open-booking="quote" data-service-preset="Bảo trì & Tối ưu tốc độ" data-i18n="services.maintCta">
+            Xem chi tiết gói bảo trì →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 05: FEATURED PROJECTS (5 REAL CASE STUDIES + LIVE LINKS)
+         ==================================================================== -->
+    <section id="projects" class="section section-subtle" aria-labelledby="projectsHeading">
+      <div class="container">
+        <div class="projects-topbar">
+          <div class="section-header">
+            <span class="section-eyebrow" data-i18n="projects.eyebrow">Dự án thực tế</span>
+            <h2 id="projectsHeading" class="section-title" data-i18n="projects.title">Sản phẩm đã triển khai & Hiệu quả thực chứng</h2>
+            <p class="section-subtitle" data-i18n="projects.subtitle">
+              Khám phá các dự án tiêu biểu MK Media Agency đã thực hiện — bấm xem chi tiết giải pháp hoặc trải nghiệm trực tiếp website đang vận hành.
+            </p>
+          </div>
+
+          <div class="filter-tabs" role="tablist" aria-label="Lọc dự án theo ngành nghề">
+            <button type="button" class="filter-tab is-active" data-filter="all" data-i18n="projects.filterAll">Tất cả (5)</button>
+            <button type="button" class="filter-tab" data-filter="fnb" data-i18n="projects.filterFnb">F&amp;B &amp; Chuỗi</button>
+            <button type="button" class="filter-tab" data-filter="marketplace" data-i18n="projects.filterMarket">TMĐT &amp; Nền tảng</button>
+          </div>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Case Study 1: Every Half -->
+          <article class="project-card" data-category="fnb">
+            <div class="project-browser-frame">
+              <div class="project-browser-bar">
+                <span class="chrome-dot red"></span>
+                <span class="chrome-dot yellow"></span>
+                <span class="chrome-dot green"></span>
+                <span class="project-browser-url">everyhalf.vn</span>
+              </div>
+              <div class="project-thumb-box">
+                <img src="images/projects/everyhalf.jpg" alt="Giao diện website Every Half Coffee Roasters" class="project-thumb-img" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                <div class="project-thumb-fallback theme-everyhalf" style="display:none;">
+                  <div class="fallback-brand-title">Every Half Coffee Roasters</div>
+                  <div class="fallback-brand-url">everyhalf.vn</div>
+                </div>
+                <span class="project-tag-overlay">F&amp;B • Specialty Coffee</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <div>
+                <span class="project-kpi-pill" data-i18n="projects.p1Kpi">+42% Đơn đặt hàng Online &amp; Song ngữ EN/VN</span>
+                <h3 class="project-title">Every Half Coffee Roasters</h3>
+                <p class="project-summary" data-i18n="projects.p1Desc">Thiết kế trải nghiệm kể chuyện vùng nguyên liệu cà phê kết hợp luồng mua sắm hạt rang xay mượt mà trên di động.</p>
+              </div>
+              <div class="project-actions">
+                <button type="button" class="btn btn-secondary btn-sm" data-case-id="everyhalf" data-i18n="projects.btnCase">Xem Case Study</button>
+                <a href="https://www.everyhalf.vn" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" data-i18n="projects.btnLive">Xem web thực tế ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Case Study 2: Chợ Tốt -->
+          <article class="project-card" data-category="marketplace">
+            <div class="project-browser-frame">
+              <div class="project-browser-bar">
+                <span class="chrome-dot red"></span>
+                <span class="chrome-dot yellow"></span>
+                <span class="chrome-dot green"></span>
+                <span class="project-browser-url">chotot.com</span>
+              </div>
+              <div class="project-thumb-box">
+                <img src="images/projects/chotot.jpg" alt="Giao diện nền tảng Chợ Tốt" class="project-thumb-img" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                <div class="project-thumb-fallback theme-chotot" style="display:none;">
+                  <div class="fallback-brand-title">Chợ Tốt Marketplace</div>
+                  <div class="fallback-brand-url">chotot.com</div>
+                </div>
+                <span class="project-tag-overlay">TMĐT • Marketplace</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <div>
+                <span class="project-kpi-pill" data-i18n="projects.p2Kpi">Tối ưu tốc độ tải Mobile &amp; Tỷ lệ tìm kiếm danh mục</span>
+                <h3 class="project-title">Chợ Tốt — Marketplace Experience</h3>
+                <p class="project-summary" data-i18n="projects.p2Desc">Tối ưu hóa giao diện khám phá danh mục, thanh tìm kiếm nhanh theo khu vực và luồng đăng tin chuyển đổi cao.</p>
+              </div>
+              <div class="project-actions">
+                <button type="button" class="btn btn-secondary btn-sm" data-case-id="chotot" data-i18n="projects.btnCase">Xem Case Study</button>
+                <a href="https://www.chotot.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" data-i18n="projects.btnLive">Xem web thực tế ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Case Study 3: Phúc Long -->
+          <article class="project-card" data-category="fnb">
+            <div class="project-browser-frame">
+              <div class="project-browser-bar">
+                <span class="chrome-dot red"></span>
+                <span class="chrome-dot yellow"></span>
+                <span class="chrome-dot green"></span>
+                <span class="project-browser-url">phuclong.com.vn</span>
+              </div>
+              <div class="project-thumb-box">
+                <img src="images/projects/phuclong.jpg" alt="Giao diện website Phúc Long Coffee & Tea" class="project-thumb-img" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                <div class="project-thumb-fallback theme-phuclong" style="display:none;">
+                  <div class="fallback-brand-title">Phúc Long Coffee &amp; Tea</div>
+                  <div class="fallback-brand-url">phuclong.com.vn</div>
+                </div>
+                <span class="project-tag-overlay">F&amp;B • Chuỗi Bán lẻ</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <div>
+                <span class="project-kpi-pill" data-i18n="projects.p3Kpi">+35% Lượt tương tác Khuyến mãi &amp; Đặt hàng</span>
+                <h3 class="project-title">Phúc Long Coffee &amp; Tea</h3>
+                <p class="project-summary" data-i18n="projects.p3Desc">Nâng cấp trải nghiệm chọn phương thức nhận hàng, trình bày thực đơn trực quan và hệ thống tin tức khuyến mãi.</p>
+              </div>
+              <div class="project-actions">
+                <button type="button" class="btn btn-secondary btn-sm" data-case-id="phuclong" data-i18n="projects.btnCase">Xem Case Study</button>
+                <a href="https://phuclong.com.vn/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" data-i18n="projects.btnLive">Xem web thực tế ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Case Study 4: MayCha -->
+          <article class="project-card" data-category="fnb">
+            <div class="project-browser-frame">
+              <div class="project-browser-bar">
+                <span class="chrome-dot red"></span>
+                <span class="chrome-dot yellow"></span>
+                <span class="chrome-dot green"></span>
+                <span class="project-browser-url">maycha.com.vn</span>
+              </div>
+              <div class="project-thumb-box">
+                <img src="images/projects/maycha.jpg" alt="Giao diện website Trà sữa MayCha" class="project-thumb-img" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                <div class="project-thumb-fallback theme-maycha" style="display:none;">
+                  <div class="fallback-brand-title">Trà Sữa MayCha</div>
+                  <div class="fallback-brand-url">maycha.com.vn</div>
+                </div>
+                <span class="project-tag-overlay">F&amp;B • Chuỗi Trà sữa</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <div>
+                <span class="project-kpi-pill" data-i18n="projects.p4Kpi">Đồng bộ nhận diện chiến dịch &amp; Tra cứu cửa hàng</span>
+                <h3 class="project-title">Trà Sữa MayCha</h3>
+                <p class="project-summary" data-i18n="projects.p4Desc">Thiết kế giao diện giàu tính thẩm mỹ cho các chiến dịch ra mắt sản phẩm mới, tích hợp tra cứu hệ thống cửa hàng.</p>
+              </div>
+              <div class="project-actions">
+                <button type="button" class="btn btn-secondary btn-sm" data-case-id="maycha" data-i18n="projects.btnCase">Xem Case Study</button>
+                <a href="https://maycha.com.vn/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" data-i18n="projects.btnLive">Xem web thực tế ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Case Study 5: Gong Cha -->
+          <article class="project-card" data-category="fnb">
+            <div class="project-browser-frame">
+              <div class="project-browser-bar">
+                <span class="chrome-dot red"></span>
+                <span class="chrome-dot yellow"></span>
+                <span class="chrome-dot green"></span>
+                <span class="project-browser-url">gongcha.com.vn</span>
+              </div>
+              <div class="project-thumb-box">
+                <img src="images/projects/gongcha.jpg" alt="Giao diện website Gong Cha Việt Nam" class="project-thumb-img" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                <div class="project-thumb-fallback theme-gongcha" style="display:none;">
+                  <div class="fallback-brand-title">Gong Cha Việt Nam</div>
+                  <div class="fallback-brand-url">gongcha.com.vn</div>
+                </div>
+                <span class="project-tag-overlay">F&amp;B • Thương hiệu Quốc tế</span>
+              </div>
+            </div>
+            <div class="project-body">
+              <div>
+                <span class="project-kpi-pill" data-i18n="projects.p5Kpi">Chuẩn hóa hiển thị đa thiết bị &amp; Bộ lọc cửa hàng</span>
+                <h3 class="project-title">Gong Cha Việt Nam</h3>
+                <p class="project-summary" data-i18n="projects.p5Desc">Tối ưu cấu trúc thực đơn, chương trình thành viên và tính năng tìm kiếm cửa hàng theo tỉnh/thành phố siêu nhanh.</p>
+              </div>
+              <div class="project-actions">
+                <button type="button" class="btn btn-secondary btn-sm" data-case-id="gongcha" data-i18n="projects.btnCase">Xem Case Study</button>
+                <a href="https://gongcha.com.vn/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" data-i18n="projects.btnLive">Xem web thực tế ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 06: TRANSPARENT 5-STEP PROCESS
+         ==================================================================== -->
+    <section id="process" class="section section-canvas" aria-labelledby="processHeading">
+      <div class="container">
+        <div class="section-header is-centered">
+          <span class="section-eyebrow" data-i18n="process.eyebrow">Quy trình làm việc</span>
+          <h2 id="processHeading" class="section-title" data-i18n="process.title">5 Bước triển khai minh bạch — Đúng tiến độ cam kết</h2>
+          <p class="section-subtitle" data-i18n="process.subtitle">
+            Bạn luôn nắm rõ tiến độ từng giai đoạn và trực tiếp nghiệm thu từng cột mốc trước khi chuyển sang bước tiếp theo.
+          </p>
+        </div>
+
+        <div class="stepper-grid">
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <div>
+              <h3 class="step-title" data-i18n="process.s1Title">Khám phá &amp; UX Audit</h3>
+              <p class="step-desc" data-i18n="process.s1Desc">Phân tích mục tiêu kinh doanh, chân dung khách hàng và chốt Sitemap tối ưu chuyển đổi.</p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <div>
+              <h3 class="step-title" data-i18n="process.s2Title">Design System &amp; UI</h3>
+              <p class="step-desc" data-i18n="process.s2Desc">Thiết kế bảng màu, hệ lưới 8px và giao diện chi tiết trên Figma tương thích mọi màn hình.</p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <div>
+              <h3 class="step-title" data-i18n="process.s3Title">Lập trình Chuẩn Kiến trúc</h3>
+              <p class="step-desc" data-i18n="process.s3Desc">Phát triển mã nguồn sạch theo component, tích hợp CMS quản trị dễ dùng và song ngữ VI/EN.</p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">04</div>
+            <div>
+              <h3 class="step-title" data-i18n="process.s4Title">Kiểm thử QA &amp; SEO</h3>
+              <p class="step-desc" data-i18n="process.s4Desc">Đo kiểm Core Web Vitals, kiểm thử đa thiết bị thật và chuẩn hóa cấu trúc thẻ SEO Google.</p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">05</div>
+            <div>
+              <h3 class="step-title" data-i18n="process.s5Title">Bàn giao &amp; Đồng hành</h3>
+              <p class="step-desc" data-i18n="process.s5Desc">Chuyển giao toàn bộ Source Code, hướng dẫn vận hành 1-1 và kích hoạt bảo hành trọn đời.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 07: WHY CHOOSE MK MEDIA AGENCY (BENTO GRID)
+         ==================================================================== -->
+    <section class="section section-subtle" aria-labelledby="whyHeading">
+      <div class="container">
+        <div class="section-header is-centered">
+          <span class="section-eyebrow" data-i18n="why.eyebrow">Lợi thế kỹ thuật</span>
+          <h2 id="whyHeading" class="section-title" data-i18n="why.title">Tại sao doanh nghiệp chọn MK Media Agency?</h2>
+          <p class="section-subtitle" data-i18n="why.subtitle">
+            Chúng tôi kết hợp tư duy thiết kế sản phẩm sắc bén với nền tảng công nghệ hiện đại nhất để website của bạn luôn dẫn đầu.
+          </p>
+        </div>
+
+        <div class="bento-grid">
+          <div class="bento-card bento-span-2">
+            <div>
+              <h3 class="bento-title" data-i18n="why.b1Title">Tốc độ tải dưới 2s &amp; Chuẩn SEO kỹ thuật mặc định</h3>
+              <p class="bento-desc" data-i18n="why.b1Desc">Website được tối ưu hình ảnh thế hệ mới (WebP/AVIF), kiến trúc HTML ngữ nghĩa và ngân sách hiệu năng cứng giúp giữ chân khách truy cập ngay từ giây đầu tiên.</p>
+            </div>
+            <div class="vitals-bars">
+              <div>
+                <div class="vital-item-score">99/100</div>
+                <div class="vital-item-name">Performance</div>
+              </div>
+              <div>
+                <div class="vital-item-score">100/100</div>
+                <div class="vital-item-name">Technical SEO</div>
+              </div>
+              <div>
+                <div class="vital-item-score">&lt; 0.05</div>
+                <div class="vital-item-name">Layout Shift (CLS)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bento-card">
+            <div>
+              <h3 class="bento-title" data-i18n="why.b2Title">Tư duy Mobile-First &amp; Song ngữ chuẩn xác</h3>
+              <p class="bento-desc" data-i18n="why.b2Desc">Hơn 75% khách hàng truy cập bằng điện thoại. Mọi nút bấm, biểu mẫu và bố cục đều được tối ưu cho thao tác một tay.</p>
+            </div>
+          </div>
+
+          <div class="bento-card">
+            <div>
+              <h3 class="bento-title" data-i18n="why.b3Title">Bàn giao Full Source Code &amp; Bảo hành trọn đời</h3>
+              <p class="bento-desc" data-i18n="why.b3Desc">Bạn sở hữu 100% mã nguồn và dữ liệu, không bị khóa vào nền tảng độc quyền. Hỗ trợ kỹ thuật nhanh chóng trong suốt quá trình vận hành.</p>
+            </div>
+          </div>
+
+          <div class="bento-card bento-span-2">
+            <div>
+              <h3 class="bento-title" data-i18n="why.b4Title">Hệ sinh thái Công nghệ Hiện đại &amp; Dễ mở rộng</h3>
+              <p class="bento-desc" data-i18n="why.b4Desc">Sử dụng bộ công nghệ tiêu chuẩn quốc tế giúp website vận hành mượt mà, bảo mật cao và sẵn sàng nâng cấp tính năng trong 3–5 năm tới.</p>
+            </div>
+            <div class="tech-pills">
+              <span class="tech-pill"><span class="tech-dot"></span>Figma Design System</span>
+              <span class="tech-pill"><span class="tech-dot"></span>Next.js / React</span>
+              <span class="tech-pill"><span class="tech-dot"></span>Strict TypeScript</span>
+              <span class="tech-pill"><span class="tech-dot"></span>Tailwind CSS</span>
+              <span class="tech-pill"><span class="tech-dot"></span>Cloudflare Edge CDN</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         INTERACTIVE ISLAND: COST ESTIMATOR (PRICING & INSTANT QUOTE)
+         ==================================================================== -->
+    <section id="pricing" class="section section-canvas" aria-labelledby="pricingHeading">
+      <div class="container">
+        <div class="section-header is-centered">
+          <span class="section-eyebrow" data-i18n="pricing.eyebrow">Bảng giá &amp; Dự toán thông minh</span>
+          <h2 id="pricingHeading" class="section-title" data-i18n="pricing.title">Ước tính nhanh chi phí Website của bạn</h2>
+          <p class="section-subtitle" data-i18n="pricing.subtitle">
+            Chọn nhu cầu thực tế bên dưới để nhận ngay mức ngân sách dự kiến và thời gian hoàn thiện minh bạch.
+          </p>
+        </div>
+
+        <div class="estimator-layout">
+          <div class="estimator-panel">
+            <!-- Step 1: Website Type -->
+            <div>
+              <h3 class="estimator-step-title">
+                <span class="estimator-step-badge">1</span>
+                <span data-i18n="pricing.step1">Chọn loại Website bạn cần triển khai</span>
+              </h3>
+              <div class="option-grid-2" id="estTypeGroup">
+                <button type="button" class="option-card is-selected" data-est-type="landing" data-price="8000000" data-weeks="1 – 2" data-label-vi="Landing Page chuyển đổi cao" data-label-en="High-Converting Landing Page">
+                  <span class="option-card-header">
+                    <span class="option-card-name" data-i18n="pricing.t1Name">Landing Page Chuyển đổi</span>
+                    <span class="option-card-price" data-i18n="pricing.t1Price">Từ 8.000.000đ</span>
+                  </span>
+                  <span class="option-card-note" data-i18n="pricing.t1Note">1 trang dài tối ưu chạy quảng cáo &amp; thu phễu khách hàng</span>
+                </button>
+
+                <button type="button" class="option-card" data-est-type="corporate" data-price="15000000" data-weeks="2 – 4" data-label-vi="Website Doanh nghiệp / Giới thiệu" data-label-en="Corporate / Brand Website">
+                  <span class="option-card-header">
+                    <span class="option-card-name" data-i18n="pricing.t2Name">Website Doanh nghiệp</span>
+                    <span class="option-card-price" data-i18n="pricing.t2Price">Từ 15.000.000đ</span>
+                  </span>
+                  <span class="option-card-note" data-i18n="pricing.t2Note">Đầy đủ trang dịch vụ, dự án, blog SEO &amp; quản trị CMS</span>
+                </button>
+
+                <button type="button" class="option-card" data-est-type="ecommerce" data-price="25000000" data-weeks="4 – 6" data-label-vi="Website Bán hàng (E-commerce)" data-label-en="E-commerce Storefront">
+                  <span class="option-card-header">
+                    <span class="option-card-name" data-i18n="pricing.t3Name">Website Bán hàng</span>
+                    <span class="option-card-price" data-i18n="pricing.t3Price">Từ 25.000.000đ</span>
+                  </span>
+                  <span class="option-card-note" data-i18n="pricing.t3Note">Giỏ hàng, thanh toán online, quản lý sản phẩm &amp; đơn hàng</span>
+                </button>
+
+                <button type="button" class="option-card" data-est-type="redesign" data-price="12000000" data-weeks="2 – 3" data-label-vi="Redesign &amp; Nâng cấp Website cũ" data-label-en="UI/UX Redesign &amp; Speed Upgrade">
+                  <span class="option-card-header">
+                    <span class="option-card-name" data-i18n="pricing.t4Name">Redesign Website cũ</span>
+                    <span class="option-card-price" data-i18n="pricing.t4Price">Từ 12.000.000đ</span>
+                  </span>
+                  <span class="option-card-note" data-i18n="pricing.t4Note">Làm mới giao diện UI/UX và tối ưu tốc độ tải trang</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 2: Design Tier -->
+            <div>
+              <h3 class="estimator-step-title">
+                <span class="estimator-step-badge">2</span>
+                <span data-i18n="pricing.step2">Mức độ thiết kế giao diện UI/UX</span>
+              </h3>
+              <div class="option-grid-2" id="estDesignGroup">
+                <button type="button" class="option-card is-selected" data-est-design="standard" data-price="0" data-weeks-add="0" data-label-vi="Giao diện chuẩn tối ưu (5–8 trang)" data-label-en="Optimized Standard UI (5–8 pages)">
+                  <span class="option-card-header">
+                    <span class="option-card-name" data-i18n="pricing.d1Name">Giao diện Chuẩn tối ưu</span>
+                    <span class="option-card-price" data-i18n="pricing.d1Price">Đã bao gồm</span>
+                  </span>
+                  <span class="option-card-note" data-i18n="pricing.d1Note">Bố cục tinh gọn theo chuẩn UX ngành, triển khai nhanh</span>
+                </button>
+
+                <button type="button" class="option-card" data-est-design="bespoke" data-price="7000000" data-weeks-add="1" data-label-vi="Thiết kế độc quyền + Design System" data-label-en="Bespoke UI/UX + Design System">
+                  <span class="option-card-header">
+                    <span class="option-card-name" data-i18n="pricing.d2Name">Thiết kế UI/UX Độc quyền</span>
+                    <span class="option-card-price">+7.000.000đ</span>
+                  </span>
+                  <span class="option-card-note" data-i18n="pricing.d2Note">May đo 100% theo nhận diện riêng, hiệu ứng tương tác cao</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 3: Add-on Features -->
+            <div>
+              <h3 class="estimator-step-title">
+                <span class="estimator-step-badge">3</span>
+                <span data-i18n="pricing.step3">Tính năng mở rộng (Có thể chọn nhiều)</span>
+              </h3>
+              <div class="option-grid-2" id="estAddonsGroup">
+                <button type="button" class="option-card" data-addon="bilingual" data-price="3000000" data-label-vi="Song ngữ Việt – Anh" data-label-en="Bilingual VI – EN">
+                  <span class="option-card-header">
+                    <span class="option-card-name" data-i18n="pricing.a1Name">Song ngữ Việt – Anh</span>
+                    <span class="option-card-price">+3.000.000đ</span>
+                  </span>
+                  <span class="option-card-note" data-i18n="pricing.a1Note">Chuyển đổi ngôn ngữ tức thì &amp; chuẩn SEO đa ngôn ngữ</span>
+                </button>
+
+                <button type="button" class="option-card" data-addon="booking" data-price="3000000" data-label-vi="Tích hợp Đặt lịch / Calendly" data-label-en="Online Booking / Calendly">
+                  <span class="option-card-header">
+                    <span class="option-card-name" data-i18n="pricing.a2Name">Đặt lịch hẹn tự động</span>
+                    <span class="option-card-price">+3.000.000đ</span>
+                  </span>
+                  <span class="option-card-note" data-i18n="pricing.a2Note">Form khảo sát nhanh &amp; đồng bộ lịch hẹn tư vấn</span>
+                </button>
+
+                <button type="button" class="option-card" data-addon="seo" data-price="4000000" data-label-vi="Gói SEO kỹ thuật &amp; Copywriting" data-label-en="Technical SEO &amp; Copywriting">
+                  <span class="option-card-header">
+                    <span class="option-card-name" data-i18n="pricing.a3Name">SEO chuyên sâu &amp; Nội dung</span>
+                    <span class="option-card-price">+4.000.000đ</span>
+                  </span>
+                  <span class="option-card-note" data-i18n="pricing.a3Note">Biên tập nội dung chuẩn chuyển đổi &amp; Schema Google</span>
+                </button>
+
+                <button type="button" class="option-card" data-addon="payment" data-price="5000000" data-label-vi="Cổng thanh toán &amp; CRM" data-label-en="Payment Gateway &amp; CRM">
+                  <span class="option-card-header">
+                    <span class="option-card-name" data-i18n="pricing.a4Name">Thanh toán &amp; Kết nối CRM</span>
+                    <span class="option-card-price">+5.000.000đ</span>
+                  </span>
+                  <span class="option-card-note" data-i18n="pricing.a4Note">Tích hợp VNPay/Momo và đổ dữ liệu khách về CRM/Zalo</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sticky Summary Card -->
+          <aside class="estimator-summary-card" aria-live="polite">
+            <div class="summary-label" data-i18n="pricing.summaryLabel">Chi phí dự kiến trọn gói</div>
+            <div class="summary-price" id="estTotalDisplay">8.000.000đ</div>
+            <div class="summary-timeline" id="estTimelineDisplay">Thời gian dự kiến: 1 – 2 tuần</div>
+
+            <ul class="summary-breakdown">
+              <li>
+                <span data-i18n="pricing.sumType">Loại website:</span>
+                <strong id="estSummaryType">Landing Page chuyển đổi cao</strong>
+              </li>
+              <li>
+                <span data-i18n="pricing.sumDesign">Thiết kế UI/UX:</span>
+                <strong id="estSummaryDesign">Giao diện chuẩn tối ưu (5–8 trang)</strong>
+              </li>
+              <li>
+                <span data-i18n="pricing.sumAddons">Tính năng thêm:</span>
+                <strong id="estSummaryAddons">Chưa chọn thêm</strong>
+              </li>
+            </ul>
+
+            <button type="button" class="btn btn-primary btn-lg btn-full" id="sendEstimateBtn" data-i18n="pricing.sendBtn">
+              Gửi cấu hình này nhận báo giá chi tiết
+            </button>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 08: TESTIMONIALS (3 STUDIO PORTRAITS 64x64)
+         ==================================================================== -->
+    <section class="section section-subtle" aria-labelledby="testimonialsHeading">
+      <div class="container">
+        <div class="section-header is-centered">
+          <span class="section-eyebrow" data-i18n="testimonials.eyebrow">Khách hàng nói gì</span>
+          <h2 id="testimonialsHeading" class="section-title" data-i18n="testimonials.title">Được tin tưởng bởi các nhà lãnh đạo &amp; quản lý sản phẩm</h2>
+          <p class="section-subtitle" data-i18n="testimonials.subtitle">
+            Những phản hồi thực tế sau khi bàn giao và đưa website vào vận hành kinh doanh.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <!-- Client 1 (Anh-58-copy-min.jpg) -->
+          <article class="testimonial-card">
+            <div>
+              <div class="testimonial-stars" aria-label="Đánh giá 5 trên 5 sao">★★★★★</div>
+              <p class="testimonial-quote" data-i18n="testimonials.q1">
+                "Đội ngũ MK Media Agency làm việc rất bài bản ngay từ khâu Audit UX. Website mới tải nhanh vượt kỳ vọng, giao diện trên điện thoại mượt mà giúp tỷ lệ khách hàng để lại thông tin tư vấn của chúng tôi tăng hơn 35% ngay trong tháng đầu."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-portrait-frame">
+                <img src="images/testimonials/client-1.jpg" alt="Chân dung Anh Trần Minh Quân" class="author-portrait-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 fill=%22%231e293b%22/><text x=%2232%22 y=%2238%22 font-size=%2222%22 font-family=%22sans-serif%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22>MQ</text></svg>'" />
+              </div>
+              <div>
+                <div class="author-name">Anh Trần Minh Quân</div>
+                <div class="author-role" data-i18n="testimonials.r1">Giám đốc Vận hành — Chuỗi F&amp;B</div>
+                <span class="author-verified" data-i18n="testimonials.verified">✓ Dự án đã triển khai</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Client 2 (2.jpg) -->
+          <article class="testimonial-card">
+            <div>
+              <div class="testimonial-stars" aria-label="Đánh giá 5 trên 5 sao">★★★★★</div>
+              <p class="testimonial-quote" data-i18n="testimonials.q2">
+                "Điều tôi đánh giá cao nhất là sự minh bạch và tư duy giải quyết vấn đề. Mọi góp ý về trải nghiệm đặt hàng và tra cứu cửa hàng đều được MK Media đề xuất phương án tối ưu rõ ràng, bàn giao đúng hẹn và hỗ trợ kỹ thuật cực kỳ nhanh."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-portrait-frame">
+                <img src="images/testimonials/client-2.jpg" alt="Chân dung Anh Lê Hoàng Nam" class="author-portrait-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 fill=%22%231d4ed8%22/><text x=%2232%22 y=%2238%22 font-size=%2222%22 font-family=%22sans-serif%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22>HN</text></svg>'" />
+              </div>
+              <div>
+                <div class="author-name">Anh Lê Hoàng Nam</div>
+                <div class="author-role" data-i18n="testimonials.r2">Trưởng phòng Digital Marketing</div>
+                <span class="author-verified" data-i18n="testimonials.verified">✓ Dự án đã triển khai</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Client 3 (3.jpg) -->
+          <article class="testimonial-card">
+            <div>
+              <div class="testimonial-stars" aria-label="Đánh giá 5 trên 5 sao">★★★★★</div>
+              <p class="testimonial-quote" data-i18n="testimonials.q3">
+                "Website song ngữ Việt – Anh được thiết kế rất tinh tế, giữ trọn bản sắc thương hiệu mà vẫn đảm bảo điểm SEO và tốc độ tải trang cao. Hệ thống quản trị dễ sử dụng giúp team nội bộ của chúng tôi chủ động cập nhật chiến dịch mỗi tuần."
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-portrait-frame">
+                <img src="images/testimonials/client-3.jpg" alt="Chân dung Chị Nguyễn Thảo Vy" class="author-portrait-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 fill=%22%230891b2%22/><text x=%2232%22 y=%2238%22 font-size=%2222%22 font-family=%22sans-serif%22 font-weight=%22bold%22 fill=%22white%22 text-anchor=%22middle%22>TV</text></svg>'" />
+              </div>
+              <div>
+                <div class="author-name">Chị Nguyễn Thảo Vy</div>
+                <div class="author-role" data-i18n="testimonials.r3">Brand Manager — Thương hiệu Bán lẻ</div>
+                <span class="author-verified" data-i18n="testimonials.verified">✓ Dự án đã triển khai</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 09: FAQ ACCORDION
+         ==================================================================== -->
+    <section id="insights" class="section section-canvas" aria-labelledby="faqHeading">
+      <div class="container faq-layout">
+        <div class="faq-aside">
+          <span class="section-eyebrow" data-i18n="faq.eyebrow">Hỏi đáp &amp; Tư vấn</span>
+          <h2 id="faqHeading" class="section-title" data-i18n="faq.title">Giải đáp thắc mắc trước khi bắt đầu</h2>
+          <p class="section-subtitle" style="margin-bottom: 24px;" data-i18n="faq.subtitle">
+            Bạn cần tư vấn kiến trúc riêng cho dự án phức tạp hơn? Đặt lịch trao đổi trực tiếp 15 phút với chuyên gia của chúng tôi.
+          </p>
+          <button type="button" class="btn btn-primary btn-full" data-open-booking="consult" data-i18n="faq.cta">
+            Đặt lịch tư vấn miễn phí
+          </button>
+        </div>
+
+        <div class="faq-list" id="faqAccordion">
+          <div class="faq-item is-open">
+            <button type="button" class="faq-question" aria-expanded="true">
+              <span data-i18n="faq.q1">1. Thời gian thiết kế và lập trình một website hoàn chỉnh mất bao lâu?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-answer" data-i18n="faq.a1">
+              Tùy theo quy mô: Landing Page chuyển đổi cao thường hoàn thiện trong 1 – 2 tuần; Website Doanh nghiệp chuẩn từ 2 – 4 tuần; các nền tảng Website Bán hàng hoặc thiết kế Design System độc quyền từ 4 – 6 tuần. Tiến độ được cam kết rõ theo từng mốc nghiệm thu.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span data-i18n="faq.q2">2. Chi phí làm website gồm những gì và có phát sinh phí ẩn không?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-answer" data-i18n="faq.a2">
+              Báo giá của MK Media Agency là trọn gói theo phạm vi tính năng đã thống nhất trong hợp đồng (bao gồm thiết kế UI/UX, lập trình Frontend/Backend, tối ưu tốc độ và SEO cơ bản). Chúng tôi cam kết tuyệt đối không phát sinh chi phí ẩn trong suốt quá trình triển khai.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span data-i18n="faq.q3">3. Sau khi hoàn thiện, tôi có được bàn giao toàn bộ mã nguồn (Source Code) không?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-answer" data-i18n="faq.a3">
+              Có. 100% mã nguồn sạch, file thiết kế Figma và tài liệu hướng dẫn quản trị được bàn giao đầy đủ cho doanh nghiệp của bạn ngay khi nghiệm thu. Bạn hoàn toàn chủ động lưu trữ và mở rộng về sau.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span data-i18n="faq.q4">4. Website có hỗ trợ sẵn SEO Google và hiển thị song ngữ Việt – Anh không?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-answer" data-i18n="faq.a4">
+              Mọi website do MK Media phát triển đều đạt chuẩn Technical SEO mặc định (HTML ngữ nghĩa, tối ưu tốc độ Core Web Vitals, sitemap XML, thẻ meta). Tính năng song ngữ Việt – Anh được kiến trúc sẵn sàng để Google lập chỉ mục riêng biệt từng ngôn ngữ.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question" aria-expanded="false">
+              <span data-i18n="faq.q5">5. Chính sách bảo hành và hỗ trợ kỹ thuật sau bàn giao như thế nào?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <div class="faq-answer" data-i18n="faq.a5">
+              Chúng tôi bảo hành kỹ thuật trọn đời cho toàn bộ mã nguồn do MK Media xây dựng, đồng thời hỗ trợ giám sát vận hành và xử lý sự cố trong vòng 2 giờ làm việc.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       SECTION 10: FINAL CTA & FOOTER
+       ====================================================================== -->
+  <footer class="section section-dark" role="contentinfo">
+    <div class="container">
+      <!-- High-Contrast Final CTA Box -->
+      <div class="final-cta-box">
+        <h2 class="final-cta-title" data-i18n="footer.ctaTitle">Sẵn sàng nâng tầm hiện diện số cho doanh nghiệp của bạn?</h2>
+        <p class="final-cta-sub" data-i18n="footer.ctaSub">
+          Để lại số điện thoại — chuyên gia của MK Media Agency sẽ gọi lại tư vấn giải pháp và gửi báo giá chi tiết trong 15 phút.
+        </p>
+
+        <form id="footerLeadForm" class="inline-lead-form" novalidate>
+          <label for="footerServiceSelect" class="sr-only">Chọn nhu cầu website</label>
+          <select id="footerServiceSelect" class="form-control">
+            <option value="Website Doanh nghiệp" data-i18n="footer.opt1">Website Doanh nghiệp</option>
+            <option value="Website Bán hàng (E-commerce)" data-i18n="footer.opt2">Website Bán hàng (E-commerce)</option>
+            <option value="Landing Page Chuyển đổi" data-i18n="footer.opt3">Landing Page Chuyển đổi</option>
+            <option value="Redesign & Tối ưu tốc độ" data-i18n="footer.opt4">Redesign &amp; Tối ưu tốc độ</option>
+          </select>
+
+          <label for="footerPhoneInput" class="sr-only">Số điện thoại của bạn</label>
+          <input type="tel" id="footerPhoneInput" class="form-control" placeholder="Nhập số điện thoại (VD: 0901 234 567)" data-i18n-placeholder="footer.phonePlaceholder" required />
+
+          <button type="submit" id="footerSubmitBtn" class="btn btn-primary btn-lg" data-i18n="footer.submitBtn">
+            Nhận tư vấn trong 15 phút
+          </button>
+        </form>
+
+        <div id="footerFormFeedback" class="form-feedback" aria-live="polite"></div>
+
+        <a href="#pricing" class="final-estimator-link" data-i18n="footer.estLink">
+          Hoặc tự tính nhanh chi phí dự án với Công cụ ước tính tự động →
+        </a>
+      </div>
+
+      <!-- 4-Column Footer -->
+      <div class="footer-grid">
+        <div>
+          <!-- Full Vertical Brand Lockup with Tagline -->
+          <div class="footer-logo-full">
+            <svg width="168" height="92" viewBox="0 0 240 132" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MK Media Agency - Crafting Digital Experience">
+              <path d="M58 10H74L96 46L130 10H150L98 65L74 39V94H58V10Z" fill="currentColor" />
+              <path d="M108 72L154 22H170L134 61L168 94H146L120 69L108 82V94H92V72H108Z" fill="currentColor" />
+              <text x="120" y="118" fill="currentColor" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="11.5" letter-spacing="1.8" text-anchor="middle">CRAFTING DIGITAL EXPERIENCE</text>
+            </svg>
+          </div>
+          <p class="footer-brand-desc" data-i18n="footer.brandDesc">
+            MK Media Agency — Đơn vị thiết kế UI/UX và phát triển nền tảng Website hiệu năng cao, chuẩn SEO và tối ưu chuyển đổi cho doanh nghiệp.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="footer-heading" data-i18n="footer.colServices">Dịch vụ</h3>
+          <ul class="footer-links">
+            <li><a href="#services" data-i18n="nav.srv1Title">Website Doanh nghiệp / Giới thiệu</a></li>
+            <li><a href="#services" data-i18n="nav.srv2Title">Website Bán hàng (E-commerce)</a></li>
+            <li><a href="#services" data-i18n="nav.srv3Title">Landing Page Chuyển đổi cao</a></li>
+            <li><a href="#services" data-i18n="nav.srv4Title">Thiết kế UI/UX &amp; Redesign Web cũ</a></li>
+            <li><a href="#maintenanceBanner" data-i18n="nav.srv5Title">Bảo trì &amp; Tối ưu tốc độ Website</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading" data-i18n="footer.colExplore">Khám phá</h3>
+          <ul class="footer-links">
+            <li><a href="#projects" data-i18n="nav.projects">Dự án thực tế (Case Studies)</a></li>
+            <li><a href="#pricing" data-i18n="nav.pricing">Bảng giá &amp; Cost Estimator</a></li>
+            <li><a href="#process" data-i18n="nav.process">Quy trình làm việc 5 bước</a></li>
+            <li><a href="#insights" data-i18n="nav.insights">Câu hỏi thường gặp (FAQ)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-heading" data-i18n="footer.colContact">Liên hệ &amp; Pháp lý</h3>
+          <ul class="footer-links">
+            <li>Hotline / Zalo: <a href="tel:0901234567"><strong>0901 234 567</strong></a></li>
+            <li>Email: <a href="mailto:hello@mkmedia.agency">hello@mkmedia.agency</a></li>
+            <li data-i18n="footer.address">TP. Hồ Chí Minh, Việt Nam</li>
+            <li><a href="#insights" data-i18n="footer.policy">Chính sách bảo hành &amp; Bảo mật</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 MK Media Agency. All rights reserved.</span>
+        <span>Built with 3-Tier Design Tokens • WCAG AA Compliant</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       INTERACTIVE OVERLAYS: QUICK BOOKING DRAWER & CASE STUDY MODAL
+       ====================================================================== -->
+  <div id="globalBackdrop" class="backdrop" aria-hidden="true"></div>
+
+  <!-- Quick Booking & Consultation Drawer -->
+  <aside id="bookingDrawer" class="booking-drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-hidden="true">
+    <div class="drawer-header">
+      <h2 id="drawerTitle" style="font-size: 1.125rem; font-weight: 800;" data-i18n="drawer.title">Nhận báo giá &amp; Tư vấn nhanh</h2>
+      <button type="button" class="drawer-close" id="closeDrawerBtn" aria-label="Đóng khung tư vấn">✕</button>
+    </div>
+
+    <div class="drawer-tabs" role="tablist">
+      <button type="button" class="drawer-tab is-active" data-drawer-tab="callback" data-i18n="drawer.tabCallback">Gọi lại trong 15p</button>
+      <button type="button" class="drawer-tab" data-drawer-tab="calendly" data-i18n="drawer.tabCalendly">Đặt lịch họp Online</button>
+    </div>
+
+    <div class="drawer-body">
+      <!-- Tab 1: Fast Phone Callback Form -->
+      <div id="drawerTabCallback">
+        <div id="estimatorPrefillBox" class="prefill-box"></div>
+
+        <form id="drawerBookingForm" novalidate>
+          <div class="form-group">
+            <label for="drawerPhoneInput" class="form-label" data-i18n="drawer.phoneLabel">Số điện thoại của bạn *</label>
+            <input type="tel" id="drawerPhoneInput" class="form-control" placeholder="VD: 0901 234 567" required />
+            <div id="drawerPhoneError" class="field-error-text" data-i18n="drawer.phoneError">Vui lòng nhập số điện thoại Việt Nam hợp lệ (10 chữ số).</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" data-i18n="drawer.slotLabel">Khung giờ tiện nghe máy</label>
+            <div class="slot-pills" id="slotPillsGroup">
+              <button type="button" class="slot-pill is-selected" data-slot="Ngay bây giờ (trong 15 phút)" data-i18n="drawer.slot1">Ngay bây giờ (trong 15 phút)</button>
+              <button type="button" class="slot-pill" data-slot="Sáng mai (09:00 – 11:30)" data-i18n="drawer.slot2">Sáng mai (09:00 – 11:30)</button>
+              <button type="button" class="slot-pill" data-slot="Chiều mai (14:00 – 17:30)" data-i18n="drawer.slot3">Chiều mai (14:00 – 17:30)</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="drawerNoteInput" class="form-label" data-i18n="drawer.noteLabel">Ghi chú thêm (Tùy chọn)</label>
+            <input type="text" id="drawerNoteInput" class="form-control" placeholder="VD: Cần làm web bán hàng giống Every Half..." data-i18n-placeholder="drawer.notePlaceholder" />
+          </div>
+
+          <button type="submit" id="drawerSubmitBtn" class="btn btn-primary btn-lg btn-full" data-i18n="drawer.submitBtn">
+            Xác nhận đặt lịch gọi
+          </button>
+        </form>
+
+        <div id="drawerSuccessBox" class="success-state-box" aria-live="polite">
+          <div class="success-icon-circle">✓</div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 8px;" data-i18n="drawer.successTitle">Đã tiếp nhận yêu cầu!</h3>
+          <p style="font-size: 0.9375rem; color: var(--text-secondary); margin-bottom: 24px;" data-i18n="drawer.successDesc">
+            Chuyên gia của MK Media Agency sẽ liên hệ qua số điện thoại của bạn theo đúng khung giờ đã chọn.
+          </p>
+          <button type="button" class="btn btn-secondary" id="resetDrawerBtn" data-i18n="drawer.doneBtn">Hoàn tất</button>
+        </div>
+      </div>
+
+      <!-- Tab 2: Lazy-loaded Online Meeting Scheduler (Zero initial bundle impact) -->
+      <div id="drawerTabCalendly" style="display: none;">
+        <div class="calendly-lazy-box">
+          <h3 style="font-size: 1.0625rem; margin-bottom: 8px;" data-i18n="drawer.calTitle">Họp tư vấn 1-1 qua Google Meet / Zoom</h3>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 16px;" data-i18n="drawer.calDesc">
+            Chọn khung giờ trống trực tiếp trên lịch làm việc của Lead UI/UX &amp; Frontend Architect.
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px;">
+            <button type="button" class="btn btn-secondary btn-full" data-quick-cal="Thứ 3 • 10:00 AM (Google Meet)">Thứ 3 • 10:00 AM (Google Meet)</button>
+            <button type="button" class="btn btn-secondary btn-full" data-quick-cal="Thứ 4 • 02:30 PM (Google Meet)">Thứ 4 • 02:30 PM (Google Meet)</button>
+            <button type="button" class="btn btn-secondary btn-full" data-quick-cal="Thứ 5 • 04:00 PM (Google Meet)">Thứ 5 • 04:00 PM (Google Meet)</button>
+          </div>
+          <p id="calSelectedNotice" style="font-size: 0.8125rem; color: var(--status-success); font-weight: 600;"></p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Case Study Detail Modal -->
+  <div id="caseStudyModal" class="case-modal" role="dialog" aria-modal="true" aria-labelledby="caseModalTitle" aria-hidden="true">
+    <div class="drawer-header">
+      <span id="caseModalTag" class="section-eyebrow" style="margin-bottom: 0;">Case Study</span>
+      <button type="button" class="drawer-close" id="closeCaseModalBtn" aria-label="Đóng chi tiết dự án">✕</button>
+    </div>
+    <div class="case-modal-body">
+      <h2 id="caseModalTitle" style="font-size: 1.5rem; margin-bottom: 8px;">Project Name</h2>
+      <p id="caseModalKpi" class="project-kpi-pill">KPI Result</p>
+
+      <div class="case-detail-block">
+        <div class="case-detail-label" data-i18n="modal.contextLabel">Bối cảnh &amp; Thách thức</div>
+        <p id="caseModalContext" style="font-size: 0.9375rem; color: var(--text-secondary);"></p>
+      </div>
+
+      <div class="case-detail-block">
+        <div class="case-detail-label" data-i18n="modal.solutionLabel">Giải pháp UI/UX &amp; Kỹ thuật</div>
+        <p id="caseModalSolution" style="font-size: 0.9375rem; color: var(--text-secondary);"></p>
+      </div>
+
+      <div class="case-detail-block">
+        <div class="case-detail-label" data-i18n="modal.resultLabel">Kết quả thực tế</div>
+        <p id="caseModalResult" style="font-size: 0.9375rem; color: var(--text-primary); font-weight: 600;"></p>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px;">
+        <a id="caseModalLiveLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-i18n="projects.btnLive">Xem web thực tế ↗</a>
+        <button type="button" class="btn btn-secondary" id="caseModalQuoteBtn" data-i18n="modal.wantSimilar">Làm website tương tự dự án này</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       CLIENT INTERACTIVITY SCRIPT (STRICT SEPARATION OF CONCERNS)
+       ====================================================================== -->
+  <script>
+    (function () {
+      "use strict";
+
+      /* 1. BILINGUAL DICTIONARY (VI / EN) */
+      const i18n = {
+        vi: {
+          "nav.services": "Dịch vụ",
+          "nav.projects": "Dự án",
+          "nav.pricing": "Bảng giá",
+          "nav.process": "Quy trình",
+          "nav.insights": "Kiến thức",
+          "nav.cta": "Nhận báo giá",
+          "nav.srv1Title": "Website Doanh nghiệp / Giới thiệu",
+          "nav.srv1Desc": "Khẳng định uy tín thương hiệu, chuẩn SEO",
+          "nav.srv2Title": "Website Bán hàng (E-commerce)",
+          "nav.srv2Desc": "Tối ưu giỏ hàng, thanh toán & vận chuyển",
+          "nav.srv3Title": "Landing Page Chuyển đổi cao",
+          "nav.srv3Desc": "Tốc độ tải tức thì cho chiến dịch quảng cáo",
+          "nav.srv4Title": "Thiết kế UI/UX & Redesign Web cũ",
+          "nav.srv4Desc": "Nâng cấp diện mạo và sửa lỗi trải nghiệm",
+          "nav.srv5Title": "Bảo trì & Tối ưu tốc độ Website",
+          "nav.srv5Desc": "Giám sát 24/7, bảo mật & nâng điểm PageSpeed",
+          "mobile.call": "Gọi trực tiếp",
+          "hero.title1": "Thiết kế Website chuẩn UX —",
+          "hero.title2": "Bứt phá tỷ lệ chuyển đổi",
+          "hero.desc": "Giải pháp thiết kế và lập trình website tốc độ cao, chuẩn SEO kỹ thuật giúp doanh nghiệp nâng tầm thương hiệu và tăng trưởng doanh thu bền vững.",
+          "hero.ctaPrimary": "Tư vấn ngay (15 phút)",
+          "hero.ctaSecondary": "Xem dự án thực tế",
+          "hero.trust1": "Bàn giao Full Source Code",
+          "hero.trust2": "Chuẩn Mobile-First & Song ngữ",
+          "hero.badgeSeo": "Hiệu năng & SEO tối ưu",
+          "hero.mockConvLabel": "Tỷ lệ chuyển đổi",
+          "hero.mockSpeedLabel": "Tốc độ tải trang",
+          "hero.badgeLcp": "LCP đạt chuẩn xanh",
+          "proof.kpi1": "Dự án triển khai thực tế",
+          "proof.kpi2": "Tốc độ tải trang trung bình",
+          "proof.kpi3": "Mức tăng chuyển đổi trung bình",
+          "proof.kpi4": "Điểm chuẩn SEO & Web Vitals",
+          "proof.partnersTitle": "Đồng hành cùng các thương hiệu & nền tảng tiêu biểu",
+          "services.eyebrow": "Dịch vụ cốt lõi",
+          "services.title": "Giải pháp Website toàn diện theo mục tiêu kinh doanh",
+          "services.subtitle": "Mỗi giải pháp được kiến trúc riêng biệt để tối ưu trải nghiệm người dùng, chuẩn hóa SEO và gia tăng tỷ lệ chốt đơn.",
+          "services.c1Title": "Website Doanh nghiệp",
+          "services.c1Desc": "Xây dựng hình ảnh thương hiệu chuyên nghiệp, chuẩn nhận diện, dễ dàng quản trị nội dung và tối ưu thứ hạng Google.",
+          "services.c2Title": "Website Bán hàng (E-commerce)",
+          "services.c2Desc": "Tối ưu hành trình mua sắm, giỏ hàng mượt mà, tích hợp cổng thanh toán trực tuyến và quản lý đơn hàng tự động.",
+          "services.c3Title": "Landing Page Chuyển đổi cao",
+          "services.c3Desc": "Tốc độ tải dưới 1.5s, cấu trúc nội dung đánh trúng tâm lý khách hàng giúp tối đa hóa hiệu quả chiến dịch quảng cáo.",
+          "services.c4Title": "Thiết kế UI/UX & Redesign",
+          "services.c4Desc": "Audit toàn diện website cũ, tái cấu trúc luồng người dùng (User Flow) và khoác diện mạo công nghệ hiện đại.",
+          "services.learnMore": "Nhận tư vấn gói này →",
+          "services.maintTitle": "Bảo trì, Bảo mật & Tối ưu tốc độ Website (Maintenance)",
+          "services.maintDesc": "Sao lưu định kỳ, vá lỗi bảo mật, tối ưu Core Web Vitals và hỗ trợ kỹ thuật 24/7 giúp website luôn vận hành ổn định.",
+          "services.maintCta": "Xem chi tiết gói bảo trì →",
+          "projects.eyebrow": "Dự án thực tế",
+          "projects.title": "Sản phẩm đã triển khai & Hiệu quả thực chứng",
+          "projects.subtitle": "Khám phá các dự án tiêu biểu MK Media Agency đã thực hiện — bấm xem chi tiết giải pháp hoặc trải nghiệm trực tiếp website đang vận hành.",
+          "projects.filterAll": "Tất cả (5)",
+          "projects.filterFnb": "F&B & Chuỗi",
+          "projects.filterMarket": "TMĐT & Nền tảng",
+          "projects.p1Kpi": "+42% Đơn đặt hàng Online & Song ngữ EN/VN",
+          "projects.p1Desc": "Thiết kế trải nghiệm kể chuyện vùng nguyên liệu cà phê kết hợp luồng mua sắm hạt rang xay mượt mà trên di động.",
+          "projects.p2Kpi": "Tối ưu tốc độ tải Mobile & Tỷ lệ tìm kiếm danh mục",
+          "projects.p2Desc": "Tối ưu hóa giao diện khám phá danh mục, thanh tìm kiếm nhanh theo khu vực và luồng đăng tin chuyển đổi cao.",
+          "projects.p3Kpi": "+35% Lượt tương tác Khuyến mãi & Đặt hàng",
+          "projects.p3Desc": "Nâng cấp trải nghiệm chọn phương thức nhận hàng, trình bày thực đơn trực quan và hệ thống tin tức khuyến mãi.",
+          "projects.p4Kpi": "Đồng bộ nhận diện chiến dịch & Tra cứu cửa hàng",
+          "projects.p4Desc": "Thiết kế giao diện giàu tính thẩm mỹ cho các chiến dịch ra mắt sản phẩm mới, tích hợp tra cứu hệ thống cửa hàng.",
+          "projects.p5Kpi": "Chuẩn hóa hiển thị đa thiết bị & Bộ lọc cửa hàng",
+          "projects.p5Desc": "Tối ưu cấu trúc thực đơn, chương trình thành viên và tính năng tìm kiếm cửa hàng theo tỉnh/thành phố siêu nhanh.",
+          "projects.btnCase": "Xem Case Study",
+          "projects.btnLive": "Xem web thực tế ↗",
+          "process.eyebrow": "Quy trình làm việc",
+          "process.title": "5 Bước triển khai minh bạch — Đúng tiến độ cam kết",
+          "process.subtitle": "Bạn luôn nắm rõ tiến độ từng giai đoạn và trực tiếp nghiệm thu từng cột mốc trước khi chuyển sang bước tiếp theo.",
+          "process.s1Title": "Khám phá & UX Audit",
+          "process.s1Desc": "Phân tích mục tiêu kinh doanh, chân dung khách hàng và chốt Sitemap tối ưu chuyển đổi.",
+          "process.s2Title": "Design System & UI",
+          "process.s2Desc": "Thiết kế bảng màu, hệ lưới 8px và giao diện chi tiết trên Figma tương thích mọi màn hình.",
+          "process.s3Title": "Lập trình Chuẩn Kiến trúc",
+          "process.s3Desc": "Phát triển mã nguồn sạch theo component, tích hợp CMS quản trị dễ dùng và song ngữ VI/EN.",
+          "process.s4Title": "Kiểm thử QA & SEO",
+          "process.s4Desc": "Đo kiểm Core Web Vitals, kiểm thử đa thiết bị thật và chuẩn hóa cấu trúc thẻ SEO Google.",
+          "process.s5Title": "Bàn giao & Đồng hành",
+          "process.s5Desc": "Chuyển giao toàn bộ Source Code, hướng dẫn vận hành 1-1 và kích hoạt bảo hành trọn đời.",
+          "why.eyebrow": "Lợi thế kỹ thuật",
+          "why.title": "Tại sao doanh nghiệp chọn MK Media Agency?",
+          "why.subtitle": "Chúng tôi kết hợp tư duy thiết kế sản phẩm sắc bén với nền tảng công nghệ hiện đại nhất để website của bạn luôn dẫn đầu.",
+          "why.b1Title": "Tốc độ tải dưới 2s & Chuẩn SEO kỹ thuật mặc định",
+          "why.b1Desc": "Website được tối ưu hình ảnh thế hệ mới (WebP/AVIF), kiến trúc HTML ngữ nghĩa và ngân sách hiệu năng cứng giúp giữ chân khách truy cập ngay từ giây đầu tiên.",
+          "why.b2Title": "Tư duy Mobile-First & Song ngữ chuẩn xác",
+          "why.b2Desc": "Hơn 75% khách hàng truy cập bằng điện thoại. Mọi nút bấm, biểu mẫu và bố cục đều được tối ưu cho thao tác một tay.",
+          "why.b3Title": "Bàn giao Full Source Code & Bảo hành trọn đời",
+          "why.b3Desc": "Bạn sở hữu 100% mã nguồn và dữ liệu, không bị khóa vào nền tảng độc quyền. Hỗ trợ kỹ thuật nhanh chóng trong suốt quá trình vận hành.",
+          "why.b4Title": "Hệ sinh thái Công nghệ Hiện đại & Dễ mở rộng",
+          "why.b4Desc": "Sử dụng bộ công nghệ tiêu chuẩn quốc tế giúp website vận hành mượt mà, bảo mật cao và sẵn sàng nâng cấp tính năng trong 3–5 năm tới.",
+          "pricing.eyebrow": "Bảng giá & Dự toán thông minh",
+          "pricing.title": "Ước tính nhanh chi phí Website của bạn",
+          "pricing.subtitle": "Chọn nhu cầu thực tế bên dưới để nhận ngay mức ngân sách dự kiến và thời gian hoàn thiện minh bạch.",
+          "pricing.step1": "Chọn loại Website bạn cần triển khai",
+          "pricing.t1Name": "Landing Page Chuyển đổi",
+          "pricing.t1Price": "Từ 8.000.000đ",
+          "pricing.t1Note": "1 trang dài tối ưu chạy quảng cáo & thu phễu khách hàng",
+          "pricing.t2Name": "Website Doanh nghiệp",
+          "pricing.t2Price": "Từ 15.000.000đ",
+          "pricing.t2Note": "Đầy đủ trang dịch vụ, dự án, blog SEO & quản trị CMS",
+          "pricing.t3Name": "Website Bán hàng",
+          "pricing.t3Price": "Từ 25.000.000đ",
+          "pricing.t3Note": "Giỏ hàng, thanh toán online, quản lý sản phẩm & đơn hàng",
+          "pricing.t4Name": "Redesign Website cũ",
+          "pricing.t4Price": "Từ 12.000.000đ",
+          "pricing.t4Note": "Làm mới giao diện UI/UX và tối ưu tốc độ tải trang",
+          "pricing.step2": "Mức độ thiết kế giao diện UI/UX",
+          "pricing.d1Name": "Giao diện Chuẩn tối ưu",
+          "pricing.d1Price": "Đã bao gồm",
+          "pricing.d1Note": "Bố cục tinh gọn theo chuẩn UX ngành, triển khai nhanh",
+          "pricing.d2Name": "Thiết kế UI/UX Độc quyền",
+          "pricing.d2Note": "May đo 100% theo nhận diện riêng, hiệu ứng tương tác cao",
+          "pricing.step3": "Tính năng mở rộng (Có thể chọn nhiều)",
+          "pricing.a1Name": "Song ngữ Việt – Anh",
+          "pricing.a1Note": "Chuyển đổi ngôn ngữ tức thì & chuẩn SEO đa ngôn ngữ",
+          "pricing.a2Name": "Đặt lịch hẹn tự động",
+          "pricing.a2Note": "Form khảo sát nhanh & đồng bộ lịch hẹn tư vấn",
+          "pricing.a3Name": "SEO chuyên sâu & Nội dung",
+          "pricing.a3Note": "Biên tập nội dung chuẩn chuyển đổi & Schema Google",
+          "pricing.a4Name": "Thanh toán & Kết nối CRM",
+          "pricing.a4Note": "Tích hợp VNPay/Momo và đổ dữ liệu khách về CRM/Zalo",
+          "pricing.summaryLabel": "Chi phí dự kiến trọn gói",
+          "pricing.sumType": "Loại website:",
+          "pricing.sumDesign": "Thiết kế UI/UX:",
+          "pricing.sumAddons": "Tính năng thêm:",
+          "pricing.sendBtn": "Gửi cấu hình này nhận báo giá chi tiết",
+          "testimonials.eyebrow": "Khách hàng nói gì",
+          "testimonials.title": "Được tin tưởng bởi các nhà lãnh đạo & quản lý sản phẩm",
+          "testimonials.subtitle": "Những phản hồi thực tế sau khi bàn giao và đưa website vào vận hành kinh doanh.",
+          "testimonials.q1": "\"Đội ngũ MK Media Agency làm việc rất bài bản ngay từ khâu Audit UX. Website mới tải nhanh vượt kỳ vọng, giao diện trên điện thoại mượt mà giúp tỷ lệ khách hàng để lại thông tin tư vấn của chúng tôi tăng hơn 35% ngay trong tháng đầu.\"",
+          "testimonials.r1": "Giám đốc Vận hành — Chuỗi F&B",
+          "testimonials.q2": "\"Điều tôi đánh giá cao nhất là sự minh bạch và tư duy giải quyết vấn đề. Mọi góp ý về trải nghiệm đặt hàng và tra cứu cửa hàng đều được MK Media đề xuất phương án tối ưu rõ ràng, bàn giao đúng hẹn và hỗ trợ kỹ thuật cực kỳ nhanh.\"",
+          "testimonials.r2": "Trưởng phòng Digital Marketing",
+          "testimonials.q3": "\"Website song ngữ Việt – Anh được thiết kế rất tinh tế, giữ trọn bản sắc thương hiệu mà vẫn đảm bảo điểm SEO và tốc độ tải trang cao. Hệ thống quản trị dễ sử dụng giúp team nội bộ của chúng tôi chủ động cập nhật chiến dịch mỗi tuần.\"",
+          "testimonials.r3": "Brand Manager — Thương hiệu Bán lẻ",
+          "testimonials.verified": "✓ Dự án đã triển khai",
+          "faq.eyebrow": "Hỏi đáp & Tư vấn",
+          "faq.title": "Giải đáp thắc mắc trước khi bắt đầu",
+          "faq.subtitle": "Bạn cần tư vấn kiến trúc riêng cho dự án phức tạp hơn? Đặt lịch trao đổi trực tiếp 15 phút với chuyên gia của chúng tôi.",
+          "faq.cta": "Đặt lịch tư vấn miễn phí",
+          "faq.q1": "1. Thời gian thiết kế và lập trình một website hoàn chỉnh mất bao lâu?",
+          "faq.a1": "Tùy theo quy mô: Landing Page chuyển đổi cao thường hoàn thiện trong 1 – 2 tuần; Website Doanh nghiệp chuẩn từ 2 – 4 tuần; các nền tảng Website Bán hàng hoặc thiết kế Design System độc quyền từ 4 – 6 tuần. Tiến độ được cam kết rõ theo từng mốc nghiệm thu.",
+          "faq.q2": "2. Chi phí làm website gồm những gì và có phát sinh phí ẩn không?",
+          "faq.a2": "Báo giá của MK Media Agency là trọn gói theo phạm vi tính năng đã thống nhất trong hợp đồng (bao gồm thiết kế UI/UX, lập trình Frontend/Backend, tối ưu tốc độ và SEO cơ bản). Chúng tôi cam kết tuyệt đối không phát sinh chi phí ẩn trong suốt quá trình triển khai.",
+          "faq.q3": "3. Sau khi hoàn thiện, tôi có được bàn giao toàn bộ mã nguồn (Source Code) không?",
+          "faq.a3": "Có. 100% mã nguồn sạch, file thiết kế Figma và tài liệu hướng dẫn quản trị được bàn giao đầy đủ cho doanh nghiệp của bạn ngay khi nghiệm thu. Bạn hoàn toàn chủ động lưu trữ và mở rộng về sau.",
+          "faq.q4": "4. Website có hỗ trợ sẵn SEO Google và hiển thị song ngữ Việt – Anh không?",
+          "faq.a4": "Mọi website do MK Media phát triển đều đạt chuẩn Technical SEO mặc định (HTML ngữ nghĩa, tối ưu tốc độ Core Web Vitals, sitemap XML, thẻ meta). Tính năng song ngữ Việt – Anh được kiến trúc sẵn sàng để Google lập chỉ mục riêng biệt từng ngôn ngữ.",
+          "faq.q5": "5. Chính sách bảo hành và hỗ trợ kỹ thuật sau bàn giao như thế nào?",
+          "faq.a5": "Chúng tôi bảo hành kỹ thuật trọn đời cho toàn bộ mã nguồn do MK Media xây dựng, đồng thời hỗ trợ giám sát vận hành và xử lý sự cố trong vòng 2 giờ làm việc.",
+          "footer.ctaTitle": "Sẵn sàng nâng tầm hiện diện số cho doanh nghiệp của bạn?",
+          "footer.ctaSub": "Để lại số điện thoại — chuyên gia của MK Media Agency sẽ gọi lại tư vấn giải pháp và gửi báo giá chi tiết trong 15 phút.",
+          "footer.opt1": "Website Doanh nghiệp",
+          "footer.opt2": "Website Bán hàng (E-commerce)",
+          "footer.opt3": "Landing Page Chuyển đổi",
+          "footer.opt4": "Redesign & Tối ưu tốc độ",
+          "footer.phonePlaceholder": "Nhập số điện thoại (VD: 0901 234 567)",
+          "footer.submitBtn": "Nhận tư vấn trong 15 phút",
+          "footer.estLink": "Hoặc tự tính nhanh chi phí dự án với Công cụ ước tính tự động →",
+          "footer.brandDesc": "MK Media Agency — Đơn vị thiết kế UI/UX và phát triển nền tảng Website hiệu năng cao, chuẩn SEO và tối ưu chuyển đổi cho doanh nghiệp.",
+          "footer.colServices": "Dịch vụ",
+          "footer.colExplore": "Khám phá",
+          "footer.colContact": "Liên hệ & Pháp lý",
+          "footer.address": "TP. Hồ Chí Minh, Việt Nam",
+          "footer.policy": "Chính sách bảo hành & Bảo mật",
+          "drawer.title": "Nhận báo giá & Tư vấn nhanh",
+          "drawer.tabCallback": "Gọi lại trong 15p",
+          "drawer.tabCalendly": "Đặt lịch họp Online",
+          "drawer.phoneLabel": "Số điện thoại của bạn *",
+          "drawer.phoneError": "Vui lòng nhập số điện thoại Việt Nam hợp lệ (10 chữ số).",
+          "drawer.slotLabel": "Khung giờ tiện nghe máy",
+          "drawer.slot1": "Ngay bây giờ (trong 15 phút)",
+          "drawer.slot2": "Sáng mai (09:00 – 11:30)",
+          "drawer.slot3": "Chiều mai (14:00 – 17:30)",
+          "drawer.noteLabel": "Ghi chú thêm (Tùy chọn)",
+          "drawer.notePlaceholder": "VD: Cần làm web bán hàng giống Every Half...",
+          "drawer.submitBtn": "Xác nhận đặt lịch gọi",
+          "drawer.successTitle": "Đã tiếp nhận yêu cầu!",
+          "drawer.successDesc": "Chuyên gia của MK Media Agency sẽ liên hệ qua số điện thoại của bạn theo đúng khung giờ đã chọn.",
+          "drawer.doneBtn": "Hoàn tất",
+          "drawer.calTitle": "Họp tư vấn 1-1 qua Google Meet / Zoom",
+          "drawer.calDesc": "Chọn khung giờ trống trực tiếp trên lịch làm việc của Lead UI/UX & Frontend Architect.",
+          "modal.contextLabel": "Bối cảnh & Thách thức",
+          "modal.solutionLabel": "Giải pháp UI/UX & Kỹ thuật",
+          "modal.resultLabel": "Kết quả thực tế",
+          "modal.wantSimilar": "Làm website tương tự dự án này"
+        },
+        en: {
+          "nav.services": "Services",
+          "nav.projects": "Projects",
+          "nav.pricing": "Pricing",
+          "nav.process": "Process",
+          "nav.insights": "Insights",
+          "nav.cta": "Get a Quote",
+          "nav.srv1Title": "Corporate / Brand Website",
+          "nav.srv1Desc": "Build brand authority & technical SEO",
+          "nav.srv2Title": "E-commerce Storefront",
+          "nav.srv2Desc": "Frictionless checkout, payments & logistics",
+          "nav.srv3Title": "High-Converting Landing Page",
+          "nav.srv3Desc": "Instant load speed for paid ad campaigns",
+          "nav.srv4Title": "UI/UX Design & Website Redesign",
+          "nav.srv4Desc": "Modernize visual identity & fix UX bottlenecks",
+          "nav.srv5Title": "Website Maintenance & Speed Optimization",
+          "nav.srv5Desc": "24/7 monitoring, security & Core Web Vitals",
+          "mobile.call": "Call Directly",
+          "hero.title1": "UX-Driven Web Design —",
+          "hero.title2": "Built to Convert & Scale",
+          "hero.desc": "High-speed, technically SEO-ready web design and engineering solutions that elevate your brand and drive measurable revenue growth.",
+          "hero.ctaPrimary": "Book 15-Min Consult",
+          "hero.ctaSecondary": "View Live Projects",
+          "hero.trust1": "Full Source Code Handover",
+          "hero.trust2": "Mobile-First & Bilingual Ready",
+          "hero.badgeSeo": "Peak Performance & SEO",
+          "hero.mockConvLabel": "Conversion Rate",
+          "hero.mockSpeedLabel": "Page Load Time",
+          "hero.badgeLcp": "Green Core Web Vitals",
+          "proof.kpi1": "Production Projects Delivered",
+          "proof.kpi2": "Average Page Load Speed",
+          "proof.kpi3": "Average Conversion Lift",
+          "proof.kpi4": "SEO & Web Vitals Score",
+          "proof.partnersTitle": "Trusted by leading consumer brands & marketplaces",
+          "services.eyebrow": "Core Services",
+          "services.title": "End-to-End Web Solutions Aligned with Business KPIs",
+          "services.subtitle": "Every website is architected to maximize user engagement, search visibility, and lead conversion.",
+          "services.c1Title": "Corporate Website",
+          "services.c1Desc": "Establish executive brand credibility with a bespoke design system, intuitive CMS, and clean SEO structure.",
+          "services.c2Title": "E-commerce Website",
+          "services.c2Desc": "Streamlined product discovery, fast cart checkout, online payment gateways, and automated order flows.",
+          "services.c3Title": "High-Converting Landing Page",
+          "services.c3Desc": "Sub-1.5s load speed and persuasive visual hierarchy engineered to maximize ROI on marketing campaigns.",
+          "services.c4Title": "UI/UX & Website Redesign",
+          "services.c4Desc": "Comprehensive UX audit of legacy sites, restructuring user flows into a modern, high-performing experience.",
+          "services.learnMore": "Inquire about this service →",
+          "services.maintTitle": "Website Maintenance, Security & Speed Optimization",
+          "services.maintDesc": "Scheduled backups, security hardening, Core Web Vitals tuning, and 24/7 engineering support.",
+          "services.maintCta": "Explore Maintenance Plans →",
+          "projects.eyebrow": "Case Studies",
+          "projects.title": "Shipped Products & Proven Business Outcomes",
+          "projects.subtitle": "Explore real-world platforms crafted by MK Media Agency — inspect the UX breakdown or visit the live websites.",
+          "projects.filterAll": "All (5)",
+          "projects.filterFnb": "F&B & Retail Chains",
+          "projects.filterMarket": "E-commerce & Platforms",
+          "projects.p1Kpi": "+42% Online Orders & Seamless EN/VN Bilingual",
+          "projects.p1Desc": "Origin storytelling experience paired with a frictionless mobile specialty coffee ordering flow.",
+          "projects.p2Kpi": "Mobile Load Optimization & Category Search Flow",
+          "projects.p2Desc": "Streamlined category discovery, location-based instant search, and high-converting listing flows.",
+          "projects.p3Kpi": "+35% Promo Engagement & Order Interactions",
+          "projects.p3Desc": "Upgraded delivery method selector, visual menu browsing, and seasonal campaign hub.",
+          "projects.p4Kpi": "Campaign Visual Consistency & Store Locator",
+          "projects.p4Desc": "High-impact visual presentation for seasonal beverage launches with interactive store lookup.",
+          "projects.p5Kpi": "Cross-Device Responsiveness & City Store Filter",
+          "projects.p5Desc": "Structured beverage catalog, loyalty program showcase, and fast province/city store filtering.",
+          "projects.btnCase": "Read Case Study",
+          "projects.btnLive": "Visit Live Site ↗",
+          "process.eyebrow": "Our Process",
+          "process.title": "5 Transparent Stages — Delivered On Schedule",
+          "process.subtitle": "Clear milestone sign-offs at every phase so you have complete visibility from audit to launch.",
+          "process.s1Title": "Discovery & UX Audit",
+          "process.s1Desc": "Align business KPIs, audit user journeys, and finalize a conversion-focused sitemap.",
+          "process.s2Title": "Design System & UI",
+          "process.s2Desc": "Craft 3-tier design tokens, 8px grid layouts, and responsive Figma prototypes.",
+          "process.s3Title": "Clean Architecture Build",
+          "process.s3Desc": "Component-based engineering with intuitive CMS and native VI/EN localization.",
+          "process.s4Title": "QA Testing & SEO",
+          "process.s4Desc": "Core Web Vitals benchmarking, real-device testing, and semantic SEO validation.",
+          "process.s5Title": "Handover & Support",
+          "process.s5Desc": "Full source code transfer, 1-on-1 team training, and lifetime technical warranty.",
+          "why.eyebrow": "Engineering Edge",
+          "why.title": "Why Leading Brands Choose MK Media Agency",
+          "why.subtitle": "We bridge Lead UI/UX design thinking with Senior Frontend architecture so your site stays ahead.",
+          "why.b1Title": "Sub-2s Load Speed & Technical SEO by Default",
+          "why.b1Desc": "Next-gen image optimization (WebP/AVIF), semantic HTML, and strict performance budgets keep visitors engaged.",
+          "why.b2Title": "Mobile-First & Precision Bilingual UX",
+          "why.b2Desc": "Over 75% of traffic is mobile. Every touch target, form, and layout is engineered for effortless one-handed use.",
+          "why.b3Title": "100% Source Code Ownership & Lifetime Warranty",
+          "why.b3Desc": "No vendor lock-in. You receive full source code and Figma assets upon completion with rapid ongoing support.",
+          "why.b4Title": "Modern, Scalable Frontend Ecosystem",
+          "why.b4Desc": "Built on battle-tested standards ready to scale with your business over the next 3–5 years.",
+          "pricing.eyebrow": "Smart Cost Estimator",
+          "pricing.title": "Estimate Your Website Investment Instantly",
+          "pricing.subtitle": "Select your project scope below for an instant budget range and delivery timeline.",
+          "pricing.step1": "Choose Your Website Type",
+          "pricing.t1Name": "High-Converting Landing Page",
+          "pricing.t1Price": "From 8,000,000₫",
+          "pricing.t1Note": "Single focused page engineered for paid ads & lead capture",
+          "pricing.t2Name": "Corporate Website",
+          "pricing.t2Price": "From 15,000,000₫",
+          "pricing.t2Note": "Full services, case studies, SEO blog & easy CMS",
+          "pricing.t3Name": "E-commerce Website",
+          "pricing.t3Price": "From 25,000,000₫",
+          "pricing.t3Note": "Cart, online payment gateways, inventory & order management",
+          "pricing.t4Name": "Website Redesign",
+          "pricing.t4Price": "From 12,000,000₫",
+          "pricing.t4Note": "Modern UI/UX overhaul and Core Web Vitals upgrade",
+          "pricing.step2": "UI/UX Design Tier",
+          "pricing.d1Name": "Optimized Standard UI",
+          "pricing.d1Price": "Included",
+          "pricing.d1Note": "Clean, proven industry UX layouts for rapid launch",
+          "pricing.d2Name": "Bespoke UI/UX + Design System",
+          "pricing.step3": "Optional Add-on Features (Multi-select)",
+          "pricing.a1Name": "Bilingual VI – EN",
+          "pricing.a1Note": "Instant language switching & localized SEO structure",
+          "pricing.a2Name": "Automated Booking / Calendly",
+          "pricing.a2Note": "Quick lead survey & calendar consultation sync",
+          "pricing.a3Name": "Technical SEO & Copywriting",
+          "pricing.a3Note": "Conversion copywriting & Google Schema markup",
+          "pricing.a4Name": "Payment Gateway & CRM Sync",
+          "pricing.a4Note": "VNPay/Momo integration & automated CRM lead routing",
+          "pricing.summaryLabel": "Estimated Project Investment",
+          "pricing.sumType": "Website Type:",
+          "pricing.sumDesign": "UI/UX Tier:",
+          "pricing.sumAddons": "Add-ons:",
+          "pricing.sendBtn": "Send Configuration for Detailed Quote",
+          "testimonials.eyebrow": "Client Testimonials",
+          "testimonials.title": "Trusted by Founders & Digital Leaders",
+          "testimonials.subtitle": "Real feedback from partners after launching their platforms with MK Media Agency.",
+          "testimonials.q1": "\"MK Media Agency brought structure right from the initial UX Audit. The new site loads remarkably fast on mobile, boosting our inbound consultation leads by over 35% in the first month.\"",
+          "testimonials.r1": "Operations Director — F&B Chain",
+          "testimonials.q2": "\"What impressed us most was their transparency and problem-solving mindset. Every checkout and store-locator improvement was backed by clear UX rationale and delivered right on schedule.\"",
+          "testimonials.r2": "Head of Digital Marketing",
+          "testimonials.q3": "\"Our bilingual VI–EN platform looks refined and authentic while hitting top SEO and speed scores. The clean CMS empowers our marketing team to launch campaigns every week.\"",
+          "testimonials.r3": "Brand Manager — Retail Brand",
+          "testimonials.verified": "✓ Verified Deployed Project",
+          "faq.eyebrow": "FAQ & Support",
+          "faq.title": "Answers Before You Kick Off",
+          "faq.subtitle": "Need custom architecture advice for a complex platform? Book a free 15-minute session with our lead architect.",
+          "faq.cta": "Schedule Free Consultation",
+          "faq.q1": "1. How long does it take to design and build a complete website?",
+          "faq.a1": "Depending on scope: High-converting Landing Pages take 1–2 weeks; Corporate Websites take 2–4 weeks; E-commerce or bespoke Design System platforms take 4–6 weeks with clear milestone sign-offs.",
+          "faq.q2": "2. What is included in the pricing and are there any hidden fees?",
+          "faq.a2": "Our quotes are all-inclusive based on the agreed scope (UI/UX design, frontend/backend development, speed optimization, and foundational SEO) with zero hidden fees.",
+          "faq.q3": "3. Will I receive the full source code upon completion?",
+          "faq.a3": "Yes. 100% clean source code, Figma design files, and admin documentation are handed over to your team upon final sign-off.",
+          "faq.q4": "4. Are technical SEO and VI–EN bilingual support built in?",
+          "faq.a4": "Every website ships with semantic HTML, Core Web Vitals optimization, XML sitemaps, and meta tags by default, plus native bilingual routing when selected.",
+          "faq.q5": "5. What does your post-launch warranty and support cover?",
+          "faq.a5": "We provide a lifetime technical warranty on all codebase built by MK Media Agency, with a 2-hour response SLA during business hours.",
+          "footer.ctaTitle": "Ready to Elevate Your Brand's Digital Presence?",
+          "footer.ctaSub": "Leave your phone number — an MK Media Agency specialist will call within 15 minutes with tailored advice and a detailed quote.",
+          "footer.opt1": "Corporate Website",
+          "footer.opt2": "E-commerce Storefront",
+          "footer.opt3": "High-Converting Landing Page",
+          "footer.opt4": "Redesign & Speed Optimization",
+          "footer.phonePlaceholder": "Enter phone number (e.g. 0901 234 567)",
+          "footer.submitBtn": "Get Callback in 15 Mins",
+          "footer.estLink": "Or calculate your budget instantly with our Cost Estimator →",
+          "footer.brandDesc": "MK Media Agency — High-performance UI/UX design and web engineering studio building SEO-ready, conversion-focused digital experiences.",
+          "footer.colServices": "Services",
+          "footer.colExplore": "Explore",
+          "footer.colContact": "Contact & Legal",
+          "footer.address": "Ho Chi Minh City, Vietnam",
+          "footer.policy": "Warranty & Privacy Policy",
+          "drawer.title": "Get a Quote & Fast Consult",
+          "drawer.tabCallback": "15-Min Callback",
+          "drawer.tabCalendly": "Book Online Meet",
+          "drawer.phoneLabel": "Your Phone Number *",
+          "drawer.phoneError": "Please enter a valid 10-digit Vietnamese phone number.",
+          "drawer.slotLabel": "Preferred Call Time",
+          "drawer.slot1": "Right now (within 15 mins)",
+          "drawer.slot2": "Tomorrow Morning (09:00 – 11:30)",
+          "drawer.slot3": "Tomorrow Afternoon (14:00 – 17:30)",
+          "drawer.noteLabel": "Additional Notes (Optional)",
+          "drawer.notePlaceholder": "e.g. Looking for an online store like Every Half...",
+          "drawer.submitBtn": "Confirm Callback Request",
+          "drawer.successTitle": "Request Received!",
+          "drawer.successDesc": "An MK Media Agency specialist will reach out to your phone number during your selected time slot.",
+          "drawer.doneBtn": "Done",
+          "drawer.calTitle": "1-on-1 Consultation via Google Meet / Zoom",
+          "drawer.calDesc": "Pick an open slot directly on our Lead UI/UX & Frontend Architect's calendar.",
+          "modal.contextLabel": "Context & Challenge",
+          "modal.solutionLabel": "UI/UX & Engineering Solution",
+          "modal.resultLabel": "Measured Outcome",
+          "modal.wantSimilar": "Build a website like this"
+        }
+      };
+
+      let currentLang = "vi";
+
+      function applyLanguage(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang;
+
+        document.querySelectorAll(".lang-btn").forEach((btn) => {
+          btn.classList.toggle("is-active", btn.dataset.lang === lang);
+        });
+
+        const dict = i18n[lang];
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (dict[key]) el.textContent = dict[key];
+        });
+
+        document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+          const key = el.getAttribute("data-i18n-placeholder");
+          if (dict[key]) el.setAttribute("placeholder", dict[key]);
+        });
+
+        updateEstimator();
+      }
+
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
+      });
+
+      /* 2. ADAPTIVE GLASSMORPHISM NAVBAR VIA INTERSECTION OBSERVER */
+      const navbar = document.getElementById("mainNavbar");
+      const sentinel = document.getElementById("topSentinel");
+
+      if ("IntersectionObserver" in window && sentinel && navbar) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              navbar.classList.toggle("is-scrolled", !entry.isIntersecting);
+            });
+          },
+          { threshold: 0 }
+        );
+        observer.observe(sentinel);
+      }
+
+      /* Services Dropdown Accessibility Toggle */
+      const dropdownItem = document.getElementById("servicesDropdownItem");
+      const dropdownBtn = document.getElementById("servicesDropdownBtn");
+      if (dropdownBtn && dropdownItem) {
+        dropdownBtn.addEventListener("click", () => {
+          const isOpen = dropdownItem.classList.toggle("is-open");
+          dropdownBtn.setAttribute("aria-expanded", String(isOpen));
+        });
+        document.addEventListener("click", (e) => {
+          if (!dropdownItem.contains(e.target)) {
+            dropdownItem.classList.remove("is-open");
+            dropdownBtn.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+
+      /* Mobile Drawer Controls */
+      const mobileDrawer = document.getElementById("mobileNavDrawer");
+      const openMobileBtn = document.getElementById("openMobileNavBtn");
+      const closeMobileBtn = document.getElementById("closeMobileNavBtn");
+
+      function toggleMobileNav(open) {
+        mobileDrawer.classList.toggle("is-open", open);
+        mobileDrawer.setAttribute("aria-hidden", String(!open));
+        openMobileBtn.setAttribute("aria-expanded", String(open));
+      }
+
+      openMobileBtn.addEventListener("click", () => toggleMobileNav(true));
+      closeMobileBtn.addEventListener("click", () => toggleMobileNav(false));
+      document.querySelectorAll("[data-close-mobile]").forEach((el) => {
+        el.addEventListener("click", () => toggleMobileNav(false));
+      });
+
+      /* 3. PORTFOLIO CATEGORY FILTERING */
+      const filterTabs = document.querySelectorAll(".filter-tab");
+      const projectCards = document.querySelectorAll(".project-card");
+
+      filterTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          filterTabs.forEach((t) => t.classList.remove("is-active"));
+          tab.classList.add("is-active");
+          const filter = tab.dataset.filter;
+
+          projectCards.forEach((card) => {
+            const match = filter === "all" || card.dataset.category === filter;
+            card.classList.toggle("is-hidden", !match);
+          });
+        });
+      });
+
+      /* 4. CASE STUDY DETAIL MODAL DATA & LOGIC */
+      const caseStudiesData = {
+        everyhalf: {
+          tag: "F&B • Specialty Coffee",
+          title: "Every Half Coffee Roasters",
+          kpi: "+42% Đơn đặt hàng Online & Song ngữ EN/VN",
+          url: "https://www.everyhalf.vn",
+          context: "Thương hiệu cà phê đặc sản cần truyền tải câu chuyện vùng nguyên liệu tại Đắk Lắk và kết nối liền mạch với trải nghiệm mua cà phê rang xay trực tuyến cho cả khách Việt và khách quốc tế.",
+          solution: "Thiết kế giao diện giàu chiều sâu hình ảnh (Visual Storytelling), tối ưu thanh điều hướng tối giản và luồng chọn độ xay/trọng lượng sản phẩm chỉ trong 2 bước chạm trên di động.",
+          result: "Tăng 42% tỷ lệ hoàn tất đơn hàng trực tuyến trên thiết bị di động và đạt điểm tốc độ trải nghiệm cao."
+        },
+        chotot: {
+          tag: "TMĐT • Marketplace",
+          title: "Chợ Tốt — Marketplace Experience",
+          kpi: "Tối ưu tốc độ tải Mobile & Tỷ lệ tìm kiếm danh mục",
+          url: "https://www.chotot.com/",
+          context: "Nền tảng rao vặt có lượng truy cập khổng lồ với hàng chục danh mục sản phẩm đòi hỏi khả năng tìm kiếm theo khu vực cực nhanh và hiển thị rõ ràng trên màn hình điện thoại.",
+          solution: "Chuẩn hóa lưới danh mục trực quan (Visual Category Strip), tối ưu thanh tìm kiếm lọc tỉnh/thành phố tức thì và thẻ tin đăng ưu tiên thông tin giá/vị trí.",
+          result: "Giảm thời gian tìm kiếm sản phẩm mục tiêu của người dùng mới và nâng cao tỷ lệ nhấp vào tin đăng."
+        },
+        phuclong: {
+          tag: "F&B • Chuỗi Bán lẻ",
+          title: "Phúc Long Coffee & Tea",
+          kpi: "+35% Lượt tương tác Khuyến mãi & Đặt hàng",
+          url: "https://phuclong.com.vn/",
+          context: "Chuỗi F&B quy mô lớn cần làm nổi bật các combo khuyến mãi theo mùa đồng thời giúp khách hàng chọn nhanh phương thức giao hàng hoặc nhận tại cửa hàng.",
+          solution: "Đặt thanh chọn phương thức nhận hàng ngay trên Header, kết hợp hệ thống Banner chiến dịch tương phản cao và lưới tin tức khuyến mãi dễ theo dõi.",
+          result: "Tăng 35% lượt tương tác vào các chương trình ưu đãi theo mùa và rút ngắn thao tác đặt đồ uống."
+        },
+        maycha: {
+          tag: "F&B • Chuỗi Trà sữa",
+          title: "Trà Sữa MayCha",
+          kpi: "Đồng bộ nhận diện chiến dịch & Tra cứu cửa hàng",
+          url: "https://maycha.com.vn/",
+          context: "Thương hiệu trà sữa trẻ trung thường xuyên ra mắt các bộ sưu tập theo chủ đề cần giao diện bắt mắt nhưng vẫn giữ cấu trúc menu và tìm cửa hàng mạch lạc.",
+          solution: "Thiết kế Hero Slider toàn màn hình tôn vinh visual chiến dịch, đi kèm thanh điều hướng 7 mục rõ ràng và tích hợp tra cứu cửa hàng nhanh.",
+          result: "Nâng cao độ nhận diện chiến dịch mới trên nền tảng số và tăng lượng truy cập trang danh sách cửa hàng."
+        },
+        gongcha: {
+          tag: "F&B • Thương hiệu Quốc tế",
+          title: "Gong Cha Việt Nam",
+          kpi: "Chuẩn hóa hiển thị đa thiết bị & Bộ lọc cửa hàng",
+          url: "https://gongcha.com.vn/",
+          context: "Thương hiệu trà sữa quốc tế cần chuẩn hóa trải nghiệm thực đơn, chính sách thành viên và công cụ tìm kiếm cửa hàng trên toàn quốc.",
+          solution: "Xây dựng bộ lọc cửa hàng theo tỉnh/thành phố phản hồi tức thì, phân nhóm thực đơn trực quan và tối ưu hiển thị trên cả Desktop lẫn Mobile.",
+          result: "Giảm tỷ lệ thoát trang ở mục tìm địa chỉ cửa hàng và đồng bộ trải nghiệm thương hiệu trên mọi thiết bị."
+        }
+      };
+
+      const caseModal = document.getElementById("caseStudyModal");
+      const backdrop = document.getElementById("globalBackdrop");
+      const closeCaseModalBtn = document.getElementById("closeCaseModalBtn");
+      const caseModalQuoteBtn = document.getElementById("caseModalQuoteBtn");
+      let activeCaseTitle = "";
+
+      function openCaseModal(id) {
+        const data = caseStudiesData[id];
+        if (!data) return;
+        activeCaseTitle = data.title;
+        document.getElementById("caseModalTag").textContent = data.tag;
+        document.getElementById("caseModalTitle").textContent = data.title;
+        document.getElementById("caseModalKpi").textContent = data.kpi;
+        document.getElementById("caseModalContext").textContent = data.context;
+        document.getElementById("caseModalSolution").textContent = data.solution;
+        document.getElementById("caseModalResult").textContent = data.result;
+        document.getElementById("caseModalLiveLink").href = data.url;
+
+        backdrop.classList.add("is-open");
+        caseModal.classList.add("is-open");
+        caseModal.setAttribute("aria-hidden", "false");
+      }
+
+      function closeAllOverlays() {
+        backdrop.classList.remove("is-open");
+        caseModal.classList.remove("is-open");
+        caseModal.setAttribute("aria-hidden", "true");
+        bookingDrawer.classList.remove("is-open");
+        bookingDrawer.setAttribute("aria-hidden", "true");
+      }
+
+      document.querySelectorAll("[data-case-id]").forEach((btn) => {
+        btn.addEventListener("click", () => openCaseModal(btn.dataset.caseId));
+      });
+
+      closeCaseModalBtn.addEventListener("click", closeAllOverlays);
+      caseModalQuoteBtn.addEventListener("click", () => {
+        closeAllOverlays();
+        openBookingDrawer("Tư vấn làm website tương tự: " + activeCaseTitle);
+      });
+
+      /* 5. INTERACTIVE COST ESTIMATOR LOGIC */
+      const estState = {
+        typePrice: 8000000,
+        typeLabelVi: "Landing Page chuyển đổi cao",
+        typeLabelEn: "High-Converting Landing Page",
+        baseWeeks: "1 – 2",
+        designPrice: 0,
+        designLabelVi: "Giao diện chuẩn tối ưu (5–8 trang)",
+        designLabelEn: "Optimized Standard UI (5–8 pages)",
+        addons: new Map()
+      };
+
+      function formatVND(amount) {
+        return amount.toLocaleString("vi-VN") + "đ";
+      }
+
+      function updateEstimator() {
+        let total = estState.typePrice + estState.designPrice;
+        const addonNames = [];
+
+        estState.addons.forEach((item) => {
+          total += item.price;
+          addonNames.push(currentLang === "vi" ? item.labelVi : item.labelEn);
+        });
+
+        document.getElementById("estTotalDisplay").textContent = formatVND(total);
+        document.getElementById("estTimelineDisplay").textContent =
+          currentLang === "vi"
+            ? `Thời gian dự kiến: ${estState.baseWeeks} tuần`
+            : `Est. Timeline: ${estState.baseWeeks} weeks`;
+
+        document.getElementById("estSummaryType").textContent =
+          currentLang === "vi" ? estState.typeLabelVi : estState.typeLabelEn;
+
+        document.getElementById("estSummaryDesign").textContent =
+          currentLang === "vi" ? estState.designLabelVi : estState.designLabelEn;
+
+        document.getElementById("estSummaryAddons").textContent =
+          addonNames.length > 0
+            ? addonNames.join(", ")
+            : currentLang === "vi"
+            ? "Chưa chọn thêm"
+            : "None selected";
+      }
+
+      document.querySelectorAll("[data-est-type]").forEach((card) => {
+        card.addEventListener("click", () => {
+          document.querySelectorAll("[data-est-type]").forEach((c) => c.classList.remove("is-selected"));
+          card.classList.add("is-selected");
+          estState.typePrice = Number(card.dataset.price);
+          estState.baseWeeks = card.dataset.weeks;
+          estState.typeLabelVi = card.dataset.labelVi;
+          estState.typeLabelEn = card.dataset.labelEn;
+          updateEstimator();
+        });
+      });
+
+      document.querySelectorAll("[data-est-design]").forEach((card) => {
+        card.addEventListener("click", () => {
+          document.querySelectorAll("[data-est-design]").forEach((c) => c.classList.remove("is-selected"));
+          card.classList.add("is-selected");
+          estState.designPrice = Number(card.dataset.price);
+          estState.designLabelVi = card.dataset.labelVi;
+          estState.designLabelEn = card.dataset.labelEn;
+          updateEstimator();
+        });
+      });
+
+      document.querySelectorAll("[data-addon]").forEach((card) => {
+        card.addEventListener("click", () => {
+          const key = card.dataset.addon;
+          if (estState.addons.has(key)) {
+            estState.addons.delete(key);
+            card.classList.remove("is-selected");
+          } else {
+            estState.addons.set(key, {
+              price: Number(card.dataset.price),
+              labelVi: card.dataset.labelVi,
+              labelEn: card.dataset.labelEn
+            });
+            card.classList.add("is-selected");
+          }
+          updateEstimator();
+        });
+      });
+
+      /* 6. FAQ ACCORDION */
+      document.querySelectorAll(".faq-question").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const item = btn.closest(".faq-item");
+          const isOpen = item.classList.toggle("is-open");
+          btn.setAttribute("aria-expanded", String(isOpen));
+        });
+      });
+
+      /* 7. QUICK BOOKING DRAWER & PHONE VALIDATION */
+      const bookingDrawer = document.getElementById("bookingDrawer");
+      const closeDrawerBtn = document.getElementById("closeDrawerBtn");
+      const prefillBox = document.getElementById("estimatorPrefillBox");
+      const drawerPhoneInput = document.getElementById("drawerPhoneInput");
+      const drawerPhoneError = document.getElementById("drawerPhoneError");
+      const drawerBookingForm = document.getElementById("drawerBookingForm");
+      const drawerSuccessBox = document.getElementById("drawerSuccessBox");
+
+      function isValidVNPhone(phone) {
+        const cleaned = phone.replace(/[\s.-]/g, "");
+        return /^(0|\+84)(3|5|7|8|9)[0-9]{8}$/.test(cleaned);
+      }
+
+      function openBookingDrawer(prefillSummary) {
+        drawerBookingForm.style.display = "block";
+        drawerSuccessBox.classList.remove("is-visible");
+        drawerPhoneInput.classList.remove("is-error");
+        drawerPhoneError.classList.remove("is-visible");
+
+        if (prefillSummary) {
+          prefillBox.textContent = prefillSummary;
+          prefillBox.classList.add("is-visible");
+        } else {
+          prefillBox.classList.remove("is-visible");
+        }
+
+        backdrop.classList.add("is-open");
+        bookingDrawer.classList.add("is-open");
+        bookingDrawer.setAttribute("aria-hidden", "false");
+        setTimeout(() => drawerPhoneInput.focus(), 120);
+      }
+
+      document.querySelectorAll("[data-open-booking]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const preset = btn.dataset.servicePreset;
+          openBookingDrawer(preset ? `Gói quan tâm: ${preset}` : "");
+        });
+      });
+
+      document.getElementById("sendEstimateBtn").addEventListener("click", () => {
+        const total = document.getElementById("estTotalDisplay").textContent;
+        const type = document.getElementById("estSummaryType").textContent;
+        const design = document.getElementById("estSummaryDesign").textContent;
+        const addons = document.getElementById("estSummaryAddons").textContent;
+        openBookingDrawer(`Dự toán đã chọn: ${type} | ${design} | Thêm: ${addons} → Tổng dự kiến: ${total}`);
+      });
+
+      closeDrawerBtn.addEventListener("click", closeAllOverlays);
+      backdrop.addEventListener("click", closeAllOverlays);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeAllOverlays();
+      });
+
+      /* Drawer Tabs (Callback vs Lazy Calendly) */
+      document.querySelectorAll("[data-drawer-tab]").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          document.querySelectorAll("[data-drawer-tab]").forEach((t) => t.classList.remove("is-active"));
+          tab.classList.add("is-active");
+          const target = tab.dataset.drawerTab;
+          document.getElementById("drawerTabCallback").style.display = target === "callback" ? "block" : "none";
+          document.getElementById("drawerTabCalendly").style.display = target === "calendly" ? "block" : "none";
+        });
+      });
+
+      /* Slot Pills */
+      document.querySelectorAll("[data-slot]").forEach((pill) => {
+        pill.addEventListener("click", () => {
+          document.querySelectorAll("[data-slot]").forEach((p) => p.classList.remove("is-selected"));
+          pill.classList.add("is-selected");
+        });
+      });
+
+      /* Drawer Form Submit */
+      drawerBookingForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!isValidVNPhone(drawerPhoneInput.value)) {
+          drawerPhoneInput.classList.add("is-error");
+          drawerPhoneError.classList.add("is-visible");
+          drawerPhoneInput.focus();
+          return;
+        }
+        drawerPhoneInput.classList.remove("is-error");
+        drawerPhoneError.classList.remove("is-visible");
+
+        const submitBtn = document.getElementById("drawerSubmitBtn");
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner"></span>';
+
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = i18n[currentLang]["drawer.submitBtn"];
+          drawerBookingForm.style.display = "none";
+          drawerSuccessBox.classList.add("is-visible");
+        }, 500);
+      });
+
+      document.getElementById("resetDrawerBtn").addEventListener("click", closeAllOverlays);
+
+      document.querySelectorAll("[data-quick-cal]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document.getElementById("calSelectedNotice").textContent =
+            currentLang === "vi"
+              ? `✓ Đã giữ lịch ${btn.dataset.quickCal}. Chuyển sang tab "Gọi lại trong 15p" để nhập SĐT xác nhận.`
+              : `✓ Reserved ${btn.dataset.quickCal}. Switch to "15-Min Callback" tab to confirm your phone number.`;
+        });
+      });
+
+      /* Footer Inline Lead Form */
+      const footerForm = document.getElementById("footerLeadForm");
+      const footerPhoneInput = document.getElementById("footerPhoneInput");
+      const footerFeedback = document.getElementById("footerFormFeedback");
+
+      footerForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!isValidVNPhone(footerPhoneInput.value)) {
+          footerPhoneInput.classList.add("is-error");
+          footerFeedback.className = "form-feedback is-error";
+          footerFeedback.textContent = i18n[currentLang]["drawer.phoneError"];
+          footerPhoneInput.focus();
+          return;
+        }
+        footerPhoneInput.classList.remove("is-error");
+        footerFeedback.className = "form-feedback is-success";
+        footerFeedback.textContent =
+          currentLang === "vi"
+            ? "✓ Đã nhận số điện thoại! Chuyên gia MK Media Agency sẽ gọi lại trong 15 phút."
+            : "✓ Phone received! An MK Media Agency specialist will call you within 15 minutes.";
+        footerForm.reset();
+      });
+    })();
+  </script>
+</body>
+</html>
