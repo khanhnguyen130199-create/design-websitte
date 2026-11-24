@@ -349,7 +349,9 @@ img {
   transition: background-color var(--duration-normal) var(--ease-standard),
               border-color var(--duration-normal) var(--ease-standard),
               box-shadow var(--duration-normal) var(--ease-standard),
-              backdrop-filter var(--duration-normal) var(--ease-standard);
+              backdrop-filter var(--duration-normal) var(--ease-standard),
+              transform var(--duration-normal) var(--ease-standard);
+  will-change: transform;
 }
 
 @media (min-width: 1024px) {
@@ -364,6 +366,11 @@ img {
   -webkit-backdrop-filter: var(--nav-blur-scrolled);
   border-bottom-color: var(--nav-border-scrolled);
   box-shadow: var(--nav-shadow-scrolled);
+}
+
+.navbar.is-hidden {
+  transform: translateY(-100%);
+  pointer-events: none;
 }
 
 .navbar-inner {

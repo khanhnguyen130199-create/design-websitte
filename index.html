@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
@@ -1593,6 +1593,49 @@
           { threshold: 0 }
         );
         observer.observe(sentinel);
+      }
+
+      /* Auto-hide navbar on scroll down, show on scroll up */
+      if (navbar) {
+        let lastScrollY = window.scrollY;
+        let navScrollTicking = false;
+        const SCROLL_THRESHOLD = 6;
+        const HIDE_OFFSET = 80;
+
+        window.addEventListener(
+          "scroll",
+          () => {
+            if (navScrollTicking) return;
+            navScrollTicking = true;
+
+            window.requestAnimationFrame(() => {
+              const currentScrollY = Math.max(0, window.scrollY);
+              const delta = currentScrollY - lastScrollY;
+              const isMobileMenuOpen =
+                typeof mobileDrawer !== "undefined" &&
+                mobileDrawer &&
+                mobileDrawer.classList.contains("is-open");
+
+              if (currentScrollY <= HIDE_OFFSET || isMobileMenuOpen) {
+                navbar.classList.remove("is-hidden");
+                lastScrollY = currentScrollY;
+              } else if (delta > SCROLL_THRESHOLD) {
+                navbar.classList.add("is-hidden");
+                if (typeof dropdownItem !== "undefined" && dropdownItem) {
+                  dropdownItem.classList.remove("is-open");
+                  if (dropdownBtn) dropdownBtn.setAttribute("aria-expanded", "false");
+                }
+                lastScrollY = currentScrollY;
+              } else if (delta < -SCROLL_THRESHOLD) {
+                navbar.classList.remove("is-hidden");
+                lastScrollY = currentScrollY;
+              }
+
+              navScrollTicking = false;
+            });
+          },
+          { passive: true }
+        );
       }
 
       /* Services Dropdown Accessibility Toggle */
