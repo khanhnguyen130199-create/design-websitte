@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
@@ -156,14 +156,7 @@
         </div>
 
         <!-- Visual Browser Mockup + Floating Performance Badges -->
-        <div class="hero-visual">
-          <div class="floating-badge top-right">
-            <div class="floating-score">99</div>
-            <div>
-              <div class="floating-text-title">Google Lighthouse</div>
-              <div class="floating-text-sub" data-i18n="hero.badgeSeo">Hiệu năng & SEO tối ưu</div>
-            </div>
-          </div>
+
 
           <div class="hero-browser-card">
             <div class="browser-chrome">
@@ -178,11 +171,11 @@
               <div class="mockup-cards-row">
                 <div class="mockup-mini-card">
                   <div class="mockup-metric-label" data-i18n="hero.mockConvLabel">Tỷ lệ chuyển đổi</div>
-                  <div class="mockup-metric-val">+38.4%</div>
+                  <div class="mockup-metric-val" id="metricConv" data-target-val="+38.4%" data-count-to="38.4" data-prefix="+" data-suffix="%">+38.4%</div>
                 </div>
                 <div class="mockup-mini-card">
                   <div class="mockup-metric-label" data-i18n="hero.mockSpeedLabel">Tốc độ tải trang</div>
-                  <div class="mockup-metric-val">1.1s</div>
+                  <div class="mockup-metric-val" id="metricSpeed" data-target-val="1.1s" data-count-to="1.1" data-prefix="" data-suffix="s">1.1s</div>
                 </div>
               </div>
               <div class="mockup-chart" aria-hidden="true">
@@ -196,12 +189,7 @@
             </div>
           </div>
 
-          <div class="floating-badge bottom-left">
-            <div class="floating-score">1.1s</div>
-            <div>
-              <div class="floating-text-title">Core Web Vitals</div>
-              <div class="floating-text-sub" data-i18n="hero.badgeLcp">LCP đạt chuẩn xanh</div>
-            </div>
+
           </div>
         </div>
       </div>
@@ -214,19 +202,19 @@
       <div class="container">
         <div class="kpi-grid">
           <div class="kpi-card">
-            <div class="kpi-number">50+</div>
+            <div class="kpi-number" data-kpi data-from="0" data-to="50" data-decimals="0" data-prefix="" data-suffix="+">50+</div>
             <div class="kpi-label" data-i18n="proof.kpi1">Dự án triển khai thực tế</div>
           </div>
           <div class="kpi-card">
-            <div class="kpi-number">&lt; 1.5s</div>
+            <div class="kpi-number" data-kpi data-from="3" data-to="1.5" data-decimals="1" data-prefix="&lt; " data-suffix="s">&lt; 1.5s</div>
             <div class="kpi-label" data-i18n="proof.kpi2">Tốc độ tải trang trung bình</div>
           </div>
           <div class="kpi-card">
-            <div class="kpi-number">+38%</div>
+            <div class="kpi-number" data-kpi data-from="0" data-to="38" data-decimals="0" data-prefix="+" data-suffix="%">+38%</div>
             <div class="kpi-label" data-i18n="proof.kpi3">Mức tăng chuyển đổi trung bình</div>
           </div>
           <div class="kpi-card">
-            <div class="kpi-number">99/100</div>
+            <div class="kpi-number" data-kpi data-from="0" data-to="99" data-decimals="0" data-prefix="" data-suffix="/100">99/100</div>
             <div class="kpi-label" data-i18n="proof.kpi4">Điểm chuẩn SEO & Web Vitals</div>
           </div>
         </div>
@@ -2053,5 +2041,121 @@
       });
     })();
   </script>
+
+
+  <!-- ======================================================================
+       KPI GRID — Count-up on scroll script
+       ====================================================================== -->
+  <script>
+    (() => {
+      'use strict';
+
+      function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+
+      function animateKpi(el) {
+        const from     = parseFloat(el.dataset.from)   || 0;
+        const to       = parseFloat(el.dataset.to)     || 0;
+        const decimals = parseInt(el.dataset.decimals) || 0;
+        const suffix   = el.dataset.suffix             || '';
+        const rawPrefix = el.dataset.prefix || '';
+        const duration = 1800;
+        const startMs  = performance.now();
+
+        el.classList.add('kpi-counting');
+        requestAnimationFrame(function step(now) {
+          const progress = Math.min((now - startMs) / duration, 1);
+          const value    = from + (to - from) * easeOutQuart(progress);
+          el.textContent = rawPrefix + value.toFixed(decimals) + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        });
+        el.addEventListener('animationend', () => el.classList.remove('kpi-counting'), { once: true });
+      }
+
+      const kpiEls = Array.from(document.querySelectorAll('[data-kpi]'));
+      if (!kpiEls.length) return;
+
+      const grid = kpiEls[0].closest('.kpi-grid') || kpiEls[0];
+      const io = new IntersectionObserver((entries) => {
+        if (!entries.some(e => e.isIntersecting)) return;
+        io.disconnect();
+        kpiEls.forEach((el, i) => setTimeout(() => animateKpi(el), i * 180));
+      }, { threshold: 0.35 });
+
+      io.observe(grid);
+    })();
+  </script>
+  <!-- ======================================================================
+       HERO BROWSER CARD — Live Counter & Metric Refresh Script
+       ====================================================================== -->
+  <script>
+    (() => {
+      'use strict';
+
+      /* ── Animate numeric count-up ──────────────────────────────── */
+      function countUp(el, from, to, duration, prefix, suffix, decimals) {
+        const start = performance.now();
+        const range = to - from;
+        function step(now) {
+          const elapsed  = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased    = 1 - Math.pow(1 - progress, 4); // ease-out quart
+          const value    = from + range * eased;
+          el.textContent = prefix + value.toFixed(decimals) + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      /* ── Trigger counters when card enters viewport ─────────────── */
+      const metricConv  = document.getElementById('metricConv');
+      const metricSpeed = document.getElementById('metricSpeed');
+
+      if (metricConv && metricSpeed) {
+        // Reset to 0 so the count-up is visible
+        metricConv.textContent  = '+0.0%';
+        metricSpeed.textContent = '0.0s';
+
+        const targetEl = metricConv.closest('.hero-browser-card') || metricConv;
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            io.disconnect();
+            // Wait for CSS entrance animations
+            setTimeout(() => {
+              countUp(metricConv,  0, 38.4, 1600, '+', '%', 1);
+              countUp(metricSpeed, 0, 1.1,  1200, '',  's', 1);
+            }, 1100);
+          });
+        }, { threshold: 0.4 });
+
+        io.observe(targetEl);
+      }
+
+      /* ── Periodic "live data" refresh pulse every 5s ────────────── */
+      const liveMetrics = [
+        { el: metricConv,  base: 38.4, range: 1.2,  prefix: '+', suffix: '%', decimals: 1 },
+        { el: metricSpeed, base: 1.1,  range: 0.08, prefix: '',  suffix: 's', decimals: 1 },
+      ];
+
+      function triggerLiveRefresh() {
+        liveMetrics.forEach(({ el, base, range, prefix, suffix, decimals }) => {
+          if (!el) return;
+          const nudge  = (Math.random() - 0.5) * range;
+          const newVal = +(base + nudge).toFixed(decimals);
+          el.classList.add('is-updating');
+          el.textContent = prefix + newVal + suffix;
+          el.addEventListener('animationend', () => {
+            el.classList.remove('is-updating');
+            el.textContent = prefix + base.toFixed(decimals) + suffix;
+          }, { once: true });
+        });
+      }
+
+      // Start refresh loop after all entrance animations finish
+      setTimeout(() => setInterval(triggerLiveRefresh, 5000), 3500);
+
+    })();
+  </script>
+
 </body>
 </html>
